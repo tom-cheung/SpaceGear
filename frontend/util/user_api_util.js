@@ -20,3 +20,5 @@ export const logoutUser = () => {
         method: 'DELETE'
     })
 }
+
+// remember these util functions are being sent off to the backend routes => controller => database 
