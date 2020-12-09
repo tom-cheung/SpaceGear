@@ -40,14 +40,14 @@ const receiveErrors = (errors) => {
 
 export const createUser = (user) => (dispatch) => {
     return UserAPIUtil.createUser(user) // the structure of how user will be passed in will be determined later
-        .then((user) => dispatch(receiveUser(user)))
+        .then((user) => dispatch(receiveUser(user)), (err) => dispatch(receiveErrors(err.responseJSON)))
         // at the moment the only user information returned is id and email 
         // comes from a form 
 }
 
 export const loginUser = (user) => (dispatch) => {
     return UserAPIUtil.loginUser(user) 
-        .then((user) => dispatch(receiveUser(user)))
+        .then((user) => dispatch(receiveUser(user)), (err) => dispatch(receiveErrors(err.responseJSON)))
         // comes from a form 
 }
 

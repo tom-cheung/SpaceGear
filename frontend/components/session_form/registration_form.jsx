@@ -17,15 +17,20 @@ class RegistrationForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault(); 
-        const user = Object.assign({}, this.state)
+        let user = Object.assign({}, this.state)
         this.props.createUser(user)
-            .then(() => this.props.history.push('/'));
     }
 
     render() {
+
+        let {errors: {session}} = this.props; 
+
         return(
             <form onSubmit={this.handleSubmit}>
                 <h1>{this.props.formType}</h1>
+
+                {session.length > 0 ? session.map((err) => {return <li>{err}</li>}): null}
+
                 <label htmlFor="">Email: 
                     <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
                 </label>

@@ -1,7 +1,7 @@
 import React from 'react' 
 import { Link } from 'react-router-dom'
 
-class SessionForm extends React.Component {
+class LoginForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = this.props.user
@@ -17,14 +17,21 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.loginUser(this.state)
-            // .then(() => this.props.history.push('/')); // this redirects you to the front page upon login 
+        let user = Object.assign({}, this.state)
+        this.props.loginUser(user);
     }
 
     render() {
+
+       const {errors: {session}} = this.props
+
         return(
             <form onSubmit={this.handleSubmit}>
+
                 <h1>{this.props.formType}</h1>
+
+                {session.length > 0 ? session.map((err, idx) => { return <li key={idx}>{err}</li>} ) : null}
+                
                 <label htmlFor="">Email: 
                     <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
                 </label>
@@ -40,4 +47,4 @@ class SessionForm extends React.Component {
     }
 }
 
-export default SessionForm;
+export default LoginForm;
