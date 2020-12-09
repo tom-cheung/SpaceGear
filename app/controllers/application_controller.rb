@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+    helper_method: current_user # makes this available to your views... 
     # CRLLL 
 
     def current_user 

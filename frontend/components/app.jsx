@@ -14,8 +14,8 @@ class App extends React.Component {
             <div>
                 <h1>Hello from app.jsx</h1>
                 <Switch>
-                    <Route path='/login' component={LoginFormContainer}/> 
                     <Route path='/register' component={SignUpFormContainer}/>   
+                    <Route path='/login' component={LoginFormContainer}/> 
                     <Route path='/' component={ProductContainer}/>
                 </Switch>
             </div>

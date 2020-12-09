@@ -16,7 +16,7 @@ class SessionForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault; 
+        e.preventDefault(); 
         this.props.loginUser(this.state)
             .then(() => this.props.history.push('/')); // this redirects you to the front page upon login 
     }
