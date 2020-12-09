@@ -1,11 +1,12 @@
 import { connect } from 'react-redux' // used to connected the store to this container, Provider is also a part of this library
-import SignUpForm from './sign_up_form'
+import RegistrationForm from './registration_form'
 import {createUser} from '../../actions/user_actions'
 
 const mSTP = (state) => {
     return({
         user: {'email': '', 'password': ''},
-        formType: 'Register'
+        formType: 'Register',
+        errors: state.errors
     })
 }
 
@@ -15,7 +16,7 @@ const mDTP = (dispatch) => {
     })
 }
 
-export default connect(mSTP, mDTP)(SignUpForm)
+export default connect(mSTP, mDTP)(RegistrationForm)
 
 
 // remember the purpose of this container is to connect the store to the container to the component 

@@ -2,7 +2,7 @@ import * as UserAPIUtil from '../util/user_api_util'
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const REMOVE_USER = 'REMOVE_USER';
-
+export const RECEIVE_ERRORS = 'RECEIVE_ERRORS'
 // you will need an action creator to create normal POJO objects with at least a type
 // optional payload. Remember this is being sent off to the store via dispatch which will then update
 // the stores state 
@@ -11,7 +11,7 @@ export const REMOVE_USER = 'REMOVE_USER';
 // ajax calls. Name them accordingly
 // how they're structured may affect how you structure your state   
 
-export const receiveUser = (user) => {
+const receiveUser = (user) => {
   return({
       type: RECEIVE_USER, 
       user: user // remember this user key is how you would key into this action in the reducer
@@ -25,6 +25,13 @@ const removeUser = (user) => {
     })
 }
 
+const receiveErrors = (errors) => {
+    return({
+        type: RECEIVE_ERRORS, 
+        errors: errors
+    })
+}
+
 // thunk action creators 
 // these are curried functions which will eventually be dispatched to the store. 
 // however because they're functions they would be caught by the thunk middleware
@@ -33,7 +40,7 @@ const removeUser = (user) => {
 
 export const createUser = (user) => (dispatch) => {
     return UserAPIUtil.createUser(user) // the structure of how user will be passed in will be determined later
-        .then((user) => dispatch(receiveUser(user))) 
+        .then((user) => dispatch(receiveUser(user)))
         // at the moment the only user information returned is id and email 
         // comes from a form 
 }
