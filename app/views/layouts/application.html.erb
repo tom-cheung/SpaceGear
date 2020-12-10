@@ -6,12 +6,23 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    
     <%= javascript_include_tag 'application' %>
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
   </head>
 
+
+  <script type="text/javascript">
+    window.mainLogo = "<%= image_url('logos/spacegear_logo.png') %>";
+    window.splashImage = "<%= image_url('splash/shuttle.jpg') %>";
+  </script>
+
   <body>
-    <h1>Hello from application.html.erb</h1>
     <%= yield %>
   </body>
 </html>

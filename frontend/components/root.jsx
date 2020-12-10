@@ -10,7 +10,6 @@ const Root = ({store}) => {
     return (
         <Provider store={store}> 
             <HashRouter> 
-                <h1>Hello from root.jsx</h1>
                 <App/> 
             </HashRouter>
         </Provider>

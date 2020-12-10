@@ -1,21 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Header from '../header/header'
 
 const productIndex = ({currentUser, logout}) => {
 
 
     return(
-        <div>
-            <h1>Products Page</h1>
-            {currentUser ? <p>Welcome {currentUser.email}</p> : null}
-            <Link to='/login'>Account</Link>
-
-                {/* link this to the user show page but make it a auth route that redirects to the login page unless logged in  */}
-                
-            { currentUser ? <button onClick={logout}>Logout</button> : null}
+        <div id="products-img-container">
+            {/* <Header /> */}
+            {/* <img id="product-main-img" src={window.splashImage}/> */}
+            <h1 id="product-title">Products Page</h1>
         </div>
     )
 
 }
 
 export default productIndex; 
+
+/* 
+    12/8/2020 
+        > added in a link to accounts. Accounts is a protected route that only logged in users can see 
+
+*/

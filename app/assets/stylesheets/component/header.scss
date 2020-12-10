@@ -1,0 +1,50 @@
+
+#main-header {
+    display: flex; 
+    justify-content: space-between;
+    background-color: #000000;
+    color: white; 
+    width: 100%; 
+    padding: 10px;
+    border: none; 
+
+    #main-logo {
+        height: 100px;
+        width: 100px;  
+        // border: 1px solid red; 
+    }
+
+    #product-categories{
+        
+        // border: 1px solid red; 
+
+        ul {
+            // border: 1px solid yellow; 
+            display: flex; 
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+    }
+
+
+    #user-tools {
+        // border: 1px solid red; 
+        float: right; 
+
+        ul {
+            display: flex;
+            margin-top: 50px;
+        }
+
+        li {
+            padding: 0px 10px 0px 10px; 
+        }
+    }
+
+}
