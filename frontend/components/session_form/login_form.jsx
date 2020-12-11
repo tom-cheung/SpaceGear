@@ -49,11 +49,11 @@ class LoginForm extends React.Component {
                     <div id="loginErrorContainer">
                         {session.length > 0 ? session.map((err, idx) => { return <li className="errorMessage" key={idx}>{err}</li>} ) : <li className="errorMessage"></li>}
                     </div>
-                    <input className="sessionInput" type="text" value={this.state.email} placeholder="Email:" onChange={this.handleChange('email')}/>
-                    <input className="sessionInput" type="password" value={this.state.password} placeholder="Password:" onChange={this.handleChange('password')}/>
-                    <button className="sessionButtons">Login</button>
+                    <input className="sessionInput" type="text" value={this.state.email} placeholder="Email" onChange={this.handleChange('email')}/>
+                    <input className="sessionInput" type="password" value={this.state.password} placeholder="Password" onChange={this.handleChange('password')}/>
+                    <button className="sessionButtons">LOGIN</button>
                     <p>Don't have an account? <Link to='/register'>Create one!</Link></p>
-                    <button className="sessionButtons" onClick={this.demo}>Demo Login</button>
+                    <button className="sessionButtons" onClick={this.demo}>DEMO LOGIN</button>
                 </form>
 
             </div>

@@ -5,7 +5,7 @@ import {createUser, clearErrors} from '../../actions/user_actions'
 const mSTP = (state) => {
     return({
         user: {'email': '', 'password': ''},
-        formType: 'Register',
+        formType: 'REGISTER',
         errors: state.errors
     })
 }

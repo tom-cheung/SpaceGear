@@ -32,8 +32,13 @@
     }
 
     .formTitle {
-        font-size: 50px;
-        
+        font-size: 24px;
+    }
+
+    .formMessage {
+        // border: 1px solid red;
+        color: #5c5c5c; 
+        font-weight: lighter;
     }
 
     .errorMessage {
@@ -42,12 +47,18 @@
     }
 
     .sessionInput {
-        padding: 10px;
+        padding: 15px 10px 15px 10px;
         width: 400px; // did this to expand the container 
+        color: black;
+        border-radius: 0;
+        border: 1px solid #e7e7e7;
     }
 
     .sessionButtons {
         padding: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 0;
     }
 
     

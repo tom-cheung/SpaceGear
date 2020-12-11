@@ -4,10 +4,10 @@ import ProductDropdown from './product_dropdown'
 
 const Header = () => {
     return (
-        <div id="main-header">
+        <div id="mainHeader">
 
             <div id="headerLeft">
-                <div id="main-logo" className="animate__animated animate__fadeIn">
+                <div id="mainLogo" className="animate__animated animate__fadeIn">
                     <Link to="/"><img src={window.mainLogo} alt="" width="100" height="100"/></Link>
                 </div>
 
@@ -24,7 +24,7 @@ const Header = () => {
             </div>
             
 
-            <div id="user-tools">
+            <div id="userTools">
                 <ul>
                     <li><Link to="/account">Account</Link></li> 
                     <li><a href="">Search</a></li>
@@ -44,7 +44,7 @@ export default Header;
     
     2:04PM 
         > added in Header component 
-        > added in div items for main header, logo, product-categories, and user-tools 
+        > added in div items for main header, logo, product-categories, and userTools 
 
 
 */

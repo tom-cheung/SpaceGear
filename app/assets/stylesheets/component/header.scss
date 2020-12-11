@@ -1,5 +1,5 @@
 
-#main-header {
+#mainHeader {
     display: flex; 
     justify-content: space-between;
     background-color: #000000;
@@ -15,7 +15,7 @@
         justify-content: space-around;
     }
 
-    #main-logo {
+    #mainLogo {
         height: 100px;
         width: 100px;  
         // border: 1px solid red; 
@@ -48,7 +48,7 @@
         
     }
 
-    #user-tools {
+    #userTools {
         // border: 1px solid red; 
         // float: right; 
         display: flex;
