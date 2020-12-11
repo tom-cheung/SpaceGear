@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
 
     demo(e) {
         e.preventDefault(); 
-        this.setState({email: 'peanut', password: 'peanut'}); // this triggers a rerender 
+        this.setState({email: 'Astronaut@gmail.com', password: 'astronaut'}); // this triggers a rerender 
         setTimeout(() => {this.props.loginUser(this.state)}, 1000);
     }
 

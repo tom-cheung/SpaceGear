@@ -24,8 +24,8 @@ const Header = () => {
             <div id="user-tools">
                 <ul>
                     <li><Link to="/account">Account</Link></li> 
-                    <li>Search</li>
-                    <li>Shopping Cart</li>
+                    <li><a href="">Search</a></li>
+                    <li><a href="">Cart</a></li>
                     {/* want to add in a link to the account here, will likely need to import Link above, and use Link tags */}
                 </ul>
             </div>

@@ -5,7 +5,7 @@ const productDropdown = ({cat, typs}) => {
         <div class="dropDown">
             <li class="dropBtn">{cat}</li>
             <div class="dropdownContent">
-                {typs.map((typ) => {return <a href="">{typ}</a>})}
+                {typs.map((typ, idx) => {return <a href="" key={idx}>{typ}</a>})}
             </div>
         </div>
     )
