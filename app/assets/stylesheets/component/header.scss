@@ -66,8 +66,10 @@
 
     .dropdownContent {
         display: none; 
-        margin-top: 5px; 
+        // margin-top: 5px; 
         position: absolute; 
+        left: 10px;
+        width: 100px;
         border-top: 2px solid white;
         border-left: .5px solid white;
         border-right: .5px solid white;
@@ -87,5 +89,9 @@
 
     .dropDown:hover .dropdownContent {
         display: block;
+    }
+
+    .dropdownContent a:hover {
+        color: grey;
     }
 }
