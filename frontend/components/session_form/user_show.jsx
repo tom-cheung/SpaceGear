@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const UserShow = ({currentUser, logoutUser}) => {
 
     return(
-        <div class="userInfoContainer">
+        <div className="userInfoContainer">
 
             <header id="userHeader">
                 <Link id="logoutButton" onClick={logoutUser} to="/">LOGOUT</Link>

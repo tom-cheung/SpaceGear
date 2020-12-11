@@ -42,18 +42,18 @@ class LoginForm extends React.Component {
        const {errors: {session}} = this.props
 
         return(
-            <div class="formContainer">
-                <form class="sessionForm" onSubmit={this.handleSubmit} width="500">
+            <div className="formContainer">
+                <form className="sessionForm" onSubmit={this.handleSubmit} width="500">
 
-                    <h1 class="formTitle">{this.props.formType}</h1>
+                    <h1 className="formTitle">{this.props.formType}</h1>
                     <div id="loginErrorContainer">
-                        {session.length > 0 ? session.map((err, idx) => { return <li class="errorMessage" key={idx}>{err}</li>} ) : <li class="errorMessage"></li>}
+                        {session.length > 0 ? session.map((err, idx) => { return <li className="errorMessage" key={idx}>{err}</li>} ) : <li className="errorMessage"></li>}
                     </div>
-                    <input class="sessionInput" type="text" value={this.state.email} placeholder="Email:" onChange={this.handleChange('email')}/>
-                    <input class="sessionInput" type="password" value={this.state.password} placeholder="Password:" onChange={this.handleChange('password')}/>
-                    <button class="sessionButtons">Login</button>
+                    <input className="sessionInput" type="text" value={this.state.email} placeholder="Email:" onChange={this.handleChange('email')}/>
+                    <input className="sessionInput" type="password" value={this.state.password} placeholder="Password:" onChange={this.handleChange('password')}/>
+                    <button className="sessionButtons">Login</button>
                     <p>Don't have an account? <Link to='/register'>Create one!</Link></p>
-                    <button class="sessionButtons" onClick={this.demo}>Demo Login</button>
+                    <button className="sessionButtons" onClick={this.demo}>Demo Login</button>
                 </form>
 
             </div>

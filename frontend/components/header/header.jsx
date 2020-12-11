@@ -6,20 +6,23 @@ const Header = () => {
     return (
         <div id="main-header">
 
-            <div id="main-logo" class="animate__animated animate__fadeIn">
-                <Link to="/"><img src={window.mainLogo} alt="" width="100" height="100"/></Link>
-            </div>
+            <div id="headerLeft">
+                <div id="main-logo" className="animate__animated animate__fadeIn">
+                    <Link to="/"><img src={window.mainLogo} alt="" width="100" height="100"/></Link>
+                </div>
 
-            <div id="product-categories">
-                <ul>
-                    <li><ProductDropdown cat={'Men'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
-                    <li><ProductDropdown cat={'Women'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
-                    <li><ProductDropdown cat={'Children'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
-                    <li><ProductDropdown cat={'Accessories'} typs={['Hats', 'Helmets']}/></li>
-                    <li><ProductDropdown cat={'Premium'} typs={['Moon Rocks', 'Space Dust']}/></li>
-                    <li><ProductDropdown cat={'Vehicle'} typs={['Model S', 'Roadster', 'Rocketship']}/></li>
-                </ul>
+                <div id="product-categories">
+                    <ul>
+                        <li><ProductDropdown cat={'Men'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                        <li><ProductDropdown cat={'Women'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                        <li><ProductDropdown cat={'Children'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                        <li><ProductDropdown cat={'Accessories'} typs={['Hats', 'Helmets']}/></li>
+                        <li><ProductDropdown cat={'Premium'} typs={['Moon Rocks', 'Space Dust']}/></li>
+                        <li><ProductDropdown cat={'Vehicle'} typs={['Model S', 'Roadster', 'Rocketship']}/></li>
+                    </ul>
+                </div>
             </div>
+            
 
             <div id="user-tools">
                 <ul>

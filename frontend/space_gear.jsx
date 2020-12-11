@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.loginUser = userActions.loginUser
       window.logoutUser = userActions.logoutUser
       window.clearError = userActions.clearErrors
-      window.receiveErrors = userActions.receiveErrors
       window.store = store; 
       // testing 
   
