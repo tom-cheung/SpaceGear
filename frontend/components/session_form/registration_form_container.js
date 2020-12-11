@@ -1,6 +1,6 @@
 import { connect } from 'react-redux' // used to connected the store to this container, Provider is also a part of this library
 import RegistrationForm from './registration_form'
-import {createUser} from '../../actions/user_actions'
+import {createUser, clearErrors} from '../../actions/user_actions'
 
 const mSTP = (state) => {
     return({
@@ -12,7 +12,8 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return({
-        createUser: (user) => dispatch(createUser(user))
+        createUser: (user) => dispatch(createUser(user)),
+        clearErrors: () => dispatch(clearErrors())
     })
 }
 

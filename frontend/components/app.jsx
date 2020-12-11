@@ -13,7 +13,7 @@ import Header from './header/header'
 
 const App = () => {
     return(
-        <div>
+        <div id="master-container">
             <Header /> 
             <Switch>
                 <ShowRoute path='/account' component={UserShowContainer}/>

@@ -1,0 +1,53 @@
+
+.formContainer {
+    text-align: center;
+}
+
+
+.sessionForm {
+    // border: 2px solid lightblue;
+    // position: absolute; makes it sit over the header 
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%; // 10% of the parent container length i suppose
+
+    // these settings pushes this element away from it's parent container (from app) 
+    left: 0;
+    right: 0;
+    top: 0;   
+    bottom: 0; 
+    // this makes the bottom of the form touch the bottom of it's container (from app) 
+
+    text-align: center; // centers form content 
+
+    display: inline-flex; 
+    flex-direction: column;
+
+    * {
+        margin-top: 10%;
+        padding: 0 5px 0 5px; 
+        // border: 1px solid yellow;
+        
+    }
+
+    .formTitle {
+        font-size: 50px;
+    }
+
+    .errorMessage {
+        list-style: none;
+        margin-top: 0;
+    }
+
+    .sessionInput {
+        padding: 10px;
+        width: 400px; // did this to expand the container 
+    }
+
+    .sessionButtons {
+        padding: 10px;
+    }
+
+    
+    
+}

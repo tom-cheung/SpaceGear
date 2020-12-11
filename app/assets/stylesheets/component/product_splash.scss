@@ -1,8 +1,27 @@
-// #product-img-container {
-//     border: 1px solid yellow; 
-// }
+#products-img-container {
+    width: 100%;
+    // border: 2px solid red; 
 
-// #product-main-img {
-//     width: fit-content;
-// }
+    img {
+        width: 100%;
+    }
+
+    #product-title {
+        // border: 2px dotted yellow; 
+        font-size: 100px;
+        color: white; 
+        
+        // used to center the h1 message 
+        position: absolute; 
+        margin-left: auto; 
+        margin-right: auto;
+        left: 0; 
+        right: 0; 
+        top: 50%; // figure out why 100% doesn't reach down to the bottom of the container
+        bottom: 0;
+        text-align: center;
+    }
+}
+
+
 

@@ -2,7 +2,8 @@ import * as UserAPIUtil from '../util/user_api_util'
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const REMOVE_USER = 'REMOVE_USER';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS'
+export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 // you will need an action creator to create normal POJO objects with at least a type
 // optional payload. Remember this is being sent off to the store via dispatch which will then update
 // the stores state 
@@ -29,6 +30,12 @@ const receiveErrors = (errors) => {
     return({
         type: RECEIVE_ERRORS, 
         errors: errors
+    })
+}
+
+export const clearErrors = () => {
+    return ({
+        type: CLEAR_ERRORS, 
     })
 }
 

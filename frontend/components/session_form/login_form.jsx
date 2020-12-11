@@ -1,5 +1,7 @@
 import React from 'react' 
 import { Link } from 'react-router-dom'
+import { header } from '../header/header'
+
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -30,30 +32,32 @@ class LoginForm extends React.Component {
         console.log(this.props)
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors(); 
+        // this.setState({[this.state.errors.session]: []})
+    }
+
     render() {
 
        const {errors: {session}} = this.props
 
         return(
-            <form onSubmit={this.handleSubmit}>
+            <div class="formContainer">
+                <form class="sessionForm" onSubmit={this.handleSubmit} width="500">
 
-                <h1>{this.props.formType}</h1>
+                    <h1 class="formTitle">{this.props.formType}</h1>
+                    <div id="loginErrorContainer">
+                        {session.length > 0 ? session.map((err, idx) => { return <li class="errorMessage" key={idx}>{err}</li>} ) : <li class="errorMessage"></li>}
+                    </div>
+                    <input class="sessionInput" type="text" value={this.state.email} placeholder="Email:" onChange={this.handleChange('email')}/>
+                    <input class="sessionInput" type="password" value={this.state.password} placeholder="Password:" onChange={this.handleChange('password')}/>
+                    <button class="sessionButtons">Login</button>
+                    <p>Don't have an account? <Link to='/register'>Create one!</Link></p>
+                    <button class="sessionButtons" onClick={this.demo}>Demo Login</button>
+                </form>
 
-                {session.length > 0 ? session.map((err, idx) => { return <li key={idx}>{err}</li>} ) : null}
-                
-                <label htmlFor="">Email: 
-                    <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-                </label>
+            </div>
 
-                <label htmlFor="">Password: 
-                    <input type="password" value={this.state.password} onChange={this.handleChange('password')}/>
-                </label>
-
-                <button>Login</button>
-                <p>Don't have an account? <Link to='/register'>Create one!</Link></p>
-
-                <button onClick={this.demo}>Demo Login</button>
-            </form>
         )
     }
 }

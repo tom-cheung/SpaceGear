@@ -7,8 +7,8 @@ const productIndex = ({currentUser, logout}) => {
     return(
         <div id="products-img-container">
             {/* <Header /> */}
-            {/* <img id="product-main-img" src={window.splashImage}/> */}
-            <h1 id="product-title">Products Page</h1>
+            <img id="product-main-img" src={window.splashImage}/>
+            <h1 id="product-title">Gear Up</h1>
         </div>
     )
 

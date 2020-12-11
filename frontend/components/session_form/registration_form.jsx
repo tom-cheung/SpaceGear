@@ -21,26 +21,30 @@ class RegistrationForm extends React.Component {
         this.props.createUser(user)
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
+
     render() {
 
         let {errors: {session}} = this.props; 
 
         return(
-            <form onSubmit={this.handleSubmit}>
-                <h1>{this.props.formType}</h1>
+            <div class="formContainer">
+            <form class="sessionForm" onSubmit={this.handleSubmit}>
+                <h1 class="formTitle">{this.props.formType}</h1>
 
-                {session.length > 0 ? session.map((err) => {return <li>{err}</li>}): null}
-
-                <label htmlFor="">Email: 
-                    <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-                </label>
-
-                <label htmlFor="">Password: 
-                    <input type="password" value={this.state.password} onChange={this.handleChange('password')}/>
-                </label>
-
-                <button>Submit</button>
+                <div class='session-error-container'>
+                    {session.length > 0 ? session.map((err, idx) => {return <li class="errorMessage" key={idx}>{err}</li>}): <li class="errorMessage" ></li>}   
+                </div>
+                
+                <input class="sessionInput" type="text" value={this.state.email} placeholder="Email:" onChange={this.handleChange('email')}/>
+             
+                <input class="sessionInput" type="password" value={this.state.password} placeholder="Password:" onChange={this.handleChange('password')}/>
+               
+                <button class="sessionButtons">Submit</button>
             </form>
+            </div>
         )
     }
 }
