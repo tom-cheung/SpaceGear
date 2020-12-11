@@ -6,7 +6,7 @@
     color: white; 
     // width: 100%; 
     padding: 10px;
-    border: none; 
+    font-family: 'Noto Sans', sans-serif;
 
     #main-logo {
         height: 100px;
@@ -17,6 +17,7 @@
     #product-categories{
         
         // border: 1px solid red; 
+
 
         ul {
             // border: 1px solid yellow; 
@@ -47,4 +48,38 @@
         }
     }
 
+
+    // dropdown 
+    .dropbtn {
+        // color: white;
+    }
+
+    .dropDown {
+        position: relative; 
+        display: inline-block
+    }
+
+    .dropdownContent {
+        display: none; 
+        position: absolute; 
+        border-top: 2px solid white;
+        border-left: .5px solid white;
+        border-right: .5px solid white;
+        border-bottom: .5px solid white;
+        background-color: black;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdownContent a{
+        text-decoration: none; 
+        display: block;
+        padding: 10px 5px 5px 5px; 
+        color: white;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    .dropDown:hover .dropdownContent {
+        display: block;
+    }
 }

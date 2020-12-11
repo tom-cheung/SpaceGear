@@ -4,17 +4,21 @@ import { Link } from 'react-router-dom'
 const UserShow = ({currentUser, logoutUser}) => {
 
     return(
-        <div>
-            <Link onClick={logoutUser} to="/">LOGOUT</Link>
-            <h1>MY ACCOUNT</h1>
-            <p>Welcome back, {currentUser.email}!</p>
+        <div class="userInfoContainer">
 
-            <div id='order-container'>
-                <p>MY ORDERS</p>
+            <header id="userHeader">
+                <Link id="logoutButton" onClick={logoutUser} to="/">LOGOUT</Link>
+                <h1 id="accountTitle">MY ACCOUNT</h1>
+                <p>Welcome back, {currentUser.email}!</p>
+            </header>
+            
+
+            <div id='orderContainer'>
+                <h2>MY ORDERS</h2>
             </div>
 
-            <div id='address-container'>
-                <p>MY ADDRESS</p>
+            <div id='addressContainer'>
+                <h2>MY ADDRESS</h2>
             </div>
 
         </div>

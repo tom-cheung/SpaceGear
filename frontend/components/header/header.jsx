@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ProductDropdown from './product_dropdown'
 
 const Header = () => {
     return (
@@ -11,11 +12,12 @@ const Header = () => {
 
             <div id="product-categories">
                 <ul>
-                    <li>Men</li>
-                    <li>Women</li>
-                    <li>Children</li>
-                    <li>Accessories</li>
-                    <li>Premium</li>
+                    <li><ProductDropdown cat={'Men'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                    <li><ProductDropdown cat={'Women'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                    <li><ProductDropdown cat={'Children'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                    <li><ProductDropdown cat={'Accessories'} typs={['Hats', 'Helmets']}/></li>
+                    <li><ProductDropdown cat={'Premium'} typs={['Moon Rocks', 'Space Dust']}/></li>
+                    <li><ProductDropdown cat={'Vehicle'} typs={['Model S', 'Roadster', 'Rocketship']}/></li>
                 </ul>
             </div>
 

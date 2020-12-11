@@ -10,6 +10,7 @@
         // border: 2px dotted yellow; 
         font-size: 100px;
         color: white; 
+        font-family: 'Noto Sans', sans-serif;
         
         // used to center the h1 message 
         position: absolute; 
@@ -20,6 +21,7 @@
         top: 50%; // figure out why 100% doesn't reach down to the bottom of the container
         bottom: 0;
         text-align: center;
+        // add this pointer cursor 
     }
 }
 

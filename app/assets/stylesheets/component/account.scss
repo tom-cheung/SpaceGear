@@ -1,0 +1,30 @@
+.userInfoContainer {
+    // border: 2px solid red;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+#userHeader {
+
+    * {
+        margin-top: 10px;
+    }
+
+    #accountTitle {
+        font-size: 50px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+}
+
+#orderContainer {
+    // border: 2px solid yellow;
+    float: left; 
+    margin-top: 5%;
+}
+
+#addressContainer {
+    // border: 2px solid purple;
+    float: right;
+    margin-top: 5%;
+}
