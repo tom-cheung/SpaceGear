@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in? # makes this available to your views... 
+    helper_method :current_user, :logged_in?, :fetch_categories # makes this available to your views... 
     # CRLLL 
 
     def current_user 
@@ -24,5 +24,9 @@ class ApplicationController < ActionController::Base
         current_user.reset_session_token!
         session[:session_token] = nil 
         @current_user = nil 
+    end
+
+    def fetch_categories
+        @categories = Category.all
     end
 end

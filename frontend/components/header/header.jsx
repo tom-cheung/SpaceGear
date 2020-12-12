@@ -1,11 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { fetchCategory } from '../../util/category_util';
 import ProductDropdown from './product_dropdown'
 
-const Header = () => {
-    return (
-        <div id="mainHeader">
+class Header extends React.Component {
+    constructor(props) {
+        super(props)
+       
+    }
 
+    componentDidMount() {
+        this.props.fetchCategory(); 
+    }
+
+    render() {
+
+        let {categories} = this.props
+        let fetched; 
+        let catArray; 
+
+        if(Object.keys(categories).length === 0 && categories.constructor === Object) {
+            fetched = false; 
+        } else {
+            fetched = true; 
+            catArray = Object.values(categories)
+        }
+
+        return (
+        <div id="mainHeader">
+            
             <div id="headerLeft">
                 <div id="mainLogo" className="animate__animated animate__fadeIn">
                     <Link to="/"><img src={window.mainLogo} alt="" width="100" height="100"/></Link>
@@ -13,12 +36,9 @@ const Header = () => {
 
                 <div id="product-categories">
                     <ul>
-                        <li><ProductDropdown cat={'Men'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
-                        <li><ProductDropdown cat={'Women'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
-                        <li><ProductDropdown cat={'Children'} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
-                        <li><ProductDropdown cat={'Accessories'} typs={['Hats', 'Helmets']}/></li>
-                        <li><ProductDropdown cat={'Premium'} typs={['Moon Rocks', 'Space Dust']}/></li>
-                        <li><ProductDropdown cat={'Vehicle'} typs={['Model S', 'Roadster', 'Rocketship']}/></li>
+                        {fetched ? catArray.map((category, idx) => {
+                            return <li key={category.id}><ProductDropdown key={idx} cat={category.category_name} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                        }) : null} 
                     </ul>
                 </div>
             </div>
@@ -34,7 +54,7 @@ const Header = () => {
             </div>
 
         </div>
-    )
+    )}
     
 }
 

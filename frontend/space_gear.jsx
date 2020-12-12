@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import Root from './components/root';
 
 // testing 
-import * as UserAPIUtil from './util/user_api_util'
-import * as userActions from './actions/user_actions'
+import * as catAPIUtil from './util/category_util'
 import configureStore from './store/store'
+import { fetchCategory } from './util/category_util'
 // testing 
 
 
@@ -31,10 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // testing 
-      window.createUser = userActions.createUser
-      window.loginUser = userActions.loginUser
-      window.logoutUser = userActions.logoutUser
-      window.clearError = userActions.clearErrors
+      window.fetchCategory = fetchCategory; 
       window.store = store; 
       // testing 
   

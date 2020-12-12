@@ -40,6 +40,8 @@ class LoginForm extends React.Component {
     render() {
 
        const {errors: {session}} = this.props
+        
+       
 
         return(
             <div className="formContainer">
