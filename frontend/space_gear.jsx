@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
       // testing 
-      window.fetchProducts = catAPIUtil.fetchProducts; 
       window.store = store; 
       // testing 
   
