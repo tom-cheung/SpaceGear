@@ -13,13 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const root = document.getElementById('root');
 
-    let store;
+    let store; 
 
     if (window.currentUser) {
         const preloadedState = {
           session: { id: window.currentUser.id },
           entities: {
-            users: { [window.currentUser.id]: window.currentUser }
+            users: { [window.currentUser.id]: window.currentUser },
+            categories: window.allCategories
           }
         };
         store = configureStore(preloadedState);
@@ -27,10 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
         // the delete will remove the current user after creating a copy of the preloaded state 
         // this would make it so that when you reload you only have 1 current user 
       } else {
-        store = configureStore();
+        const preloadedState = {
+          entities: {
+            categories: window.allCategories
+          }
+        };
+        store = configureStore(preloadedState);
       }
 
+      // preloadedState = Object.assign({}, preloadedState, {categories: window.testCat})
+      // store = configureStore(Object.assign({}, preloadedState, {categories: {'hello': 'hi'}}))
+      // console.log(preloadedState)
+
       // testing 
+      // console.log(Object.assign({}, preloadedState, {categories: window.testCat}))
       window.fetchCategory = fetchCategory; 
       window.store = store; 
       // testing 

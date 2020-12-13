@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :fetch_categories # makes this available to your views... 
+    helper_method :current_user, :logged_in?, :fetch_cat # makes this available to your views... 
     # CRLLL 
 
     def current_user 
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         @current_user = nil 
     end
 
-    def fetch_categories
+    def fetch_cat
         @categories = Category.all
     end
 end

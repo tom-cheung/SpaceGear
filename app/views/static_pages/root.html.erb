@@ -3,9 +3,16 @@
   <script id="bootstrap-current-user" type="text/javascript">
   	window.currentUser = <%= render("api/users/user.json.jbuilder",
       user: current_user).html_safe %>
-
   </script>
 
 <% end %>
+
+
+<script id="bootstrap-cat" type="text/javascript">
+
+  window.allCategories = <%= render("api/categories/bootcat.json.jbuilder",
+    categories: fetch_cat).html_safe %>
+
+</script>
 
 <main id='root'>root.html.erb - there's an error with react</main>

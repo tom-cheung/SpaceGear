@@ -1,4 +1,6 @@
 import React from 'react';
+import {fetchCategory } from '../../util/category_util'
+
 
 class Fetch extends React.Component {
 
@@ -8,7 +10,6 @@ class Fetch extends React.Component {
 
 
     render() {
-        console.log('hi')
         return(
             <p hidden></p>
         )

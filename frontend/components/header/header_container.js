@@ -2,17 +2,28 @@ import { connect } from 'react-redux'
 import {fetchCategory} from '../../actions/category_actions'
 import Header from './header'
 
+// test 
+// import {fetchCategory} from '../../util/category_util'
+//
+
 const mSTP = (state) => {
     return ({
-        categories: state.entities.categories
+        categories: Object.values(state.entities.categories)
     })
 }
 
 const mDTP = (dispatch) => {
     return ({
-        fetchCategory: () => dispatch(fetchCategory())
+    fetchCategory: () => dispatch(fetchCategory())
     })
 }
+
+// dispatching fetch category which is a thunk action creator, inside of that it dispatches the action creator with the 
+// result from the ajax call 
+
+// make an ajax call, . then dispatch the result with a action creator 
+// . then render 
+//    fetchCat: () => fetchCategory().then(() => dispatch().then())
 
 
 export default connect(mSTP, mDTP)(Header);

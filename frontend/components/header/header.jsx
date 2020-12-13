@@ -9,23 +9,12 @@ class Header extends React.Component {
        
     }
 
-    componentDidMount() {
-        this.props.fetchCategory(); 
-    }
+    // componentDidMount() {
+    //     this.props.fetchCategory(); 
+    // }
 
+    
     render() {
-
-        let {categories} = this.props
-        let fetched; 
-        let catArray; 
-
-        if(Object.keys(categories).length === 0 && categories.constructor === Object) {
-            fetched = false; 
-        } else {
-            fetched = true; 
-            catArray = Object.values(categories)
-        }
-
         return (
         <div id="mainHeader">
             
@@ -36,9 +25,9 @@ class Header extends React.Component {
 
                 <div id="product-categories">
                     <ul>
-                        {fetched ? catArray.map((category, idx) => {
+                        {this.props.categories.map((category, idx) => {
                             return <li key={category.id}><ProductDropdown key={idx} cat={category.category_name} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
-                        }) : null} 
+                        })} 
                     </ul>
                 </div>
             </div>

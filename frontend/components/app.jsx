@@ -13,6 +13,10 @@ import LoginFormContainer from './session_form/login_form_container';
 import UserShowContainer from './session_form/user_show_container';
 import HeaderContainer from './header/header_container'
 
+// test
+import FetchContainer from './fetch/fetch_container'
+// 
+
 const App = () => {
     return(
         <div id="master-container">
