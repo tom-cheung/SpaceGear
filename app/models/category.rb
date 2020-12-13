@@ -14,8 +14,12 @@ class Category < ApplicationRecord
         foreign_key: :category_id,
         class_name: :Product
 
-    has_many :types,
-        through: :products, 
-        source: :type
+    # has_many :types,
+    #     through: :products, 
+    #     source: :type
+    #  issue with this is it returns duplicate values because it returns a type for every product. 
+
+    # rails magic
+    has_many :types, -> { distinct }, through: :products 
 
 end

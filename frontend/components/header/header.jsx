@@ -15,6 +15,7 @@ class Header extends React.Component {
 
     
     render() {
+        // console.log(this.props.categories[0].product_types)
         return (
         <div id="mainHeader">
             
@@ -26,7 +27,9 @@ class Header extends React.Component {
                 <div id="product-categories">
                     <ul>
                         {this.props.categories.map((category, idx) => {
-                            return <li key={category.id}><ProductDropdown key={idx} cat={category.category_name} typs={['T-Shirts', 'Outwear', 'View All']}/></li>
+                            return <li key={category.id}>
+                                    <ProductDropdown key={idx} cat={category.category_name} typs={category.product_types}/>
+                                    </li>
                         })} 
                     </ul>
                 </div>
