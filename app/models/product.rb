@@ -18,4 +18,8 @@ class Product < ApplicationRecord
     belongs_to :type, 
         foreign_key: :type_id, 
         class_name: :ProductType
+
+    belongs_to :category, 
+        foreign_key: :category_id,
+        class_name: :Category
 end

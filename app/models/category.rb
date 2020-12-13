@@ -10,11 +10,12 @@
 class Category < ApplicationRecord
     validates :category_name, presence: true 
     
-    has_many :types,
-        foreign_key: :category_id, 
-        class_name: :ProductType
-
     has_many :products, 
-        through: :types, 
-        source: :products
+        foreign_key: :category_id,
+        class_name: :Product
+
+    has_many :types,
+        through: :products, 
+        source: :type
+
 end
