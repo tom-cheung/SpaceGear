@@ -11,6 +11,7 @@
 #  description  :text             not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  category_id  :integer          not null
 #
 class Product < ApplicationRecord
     validates :product_name, :type_id, :category_id, :price, :description, presence: true 

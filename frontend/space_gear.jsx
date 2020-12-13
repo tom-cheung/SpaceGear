@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Root from './components/root';
 
 // testing 
-import * as catAPIUtil from './util/category_util'
+import * as catAPIUtil from './util/product_api_util'
 import configureStore from './store/store'
 import { fetchCategory } from './util/category_util'
 // testing 
@@ -36,13 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         store = configureStore(preloadedState);
       }
 
-      // preloadedState = Object.assign({}, preloadedState, {categories: window.testCat})
-      // store = configureStore(Object.assign({}, preloadedState, {categories: {'hello': 'hi'}}))
-      // console.log(preloadedState)
+   
 
       // testing 
-      // console.log(Object.assign({}, preloadedState, {categories: window.testCat}))
-      window.fetchCategory = fetchCategory; 
+      window.fetchProducts = catAPIUtil.fetchProducts; 
       window.store = store; 
       // testing 
   
