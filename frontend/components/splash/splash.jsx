@@ -3,12 +3,11 @@ import Header from '../header/header'
 
 const ProductIndex = ({currentUser, logout}) => {
 
-    let name = splashImage 
     return(
         <div id="products-img-container">
             {/* <Header /> */}
-            <img id="product-main-img" src={window.splashImage}/>
-            {/* <img id="product-main-img" src={require("../../../app/assets/images/splash/astronaut.jpg")}/> */}
+            <img id="product-main-img" src={window.productImages['splashImage']}/>
+            {/* <img id="product-main-img" src="assets/splash/astronaut.jpg"/> */}
             <h1 id="product-title">Gear Up</h1>
         </div>
     )
