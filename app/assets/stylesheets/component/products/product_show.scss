@@ -1,0 +1,29 @@
+.product-show-container {
+    border: 1px solid red; 
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+
+    .product-show-row {
+        border: 2px solid green; 
+        display: flex; 
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .product-show-picture {
+        border: 2px solid blue; 
+        display: flex; 
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .product-show-details {
+        border: 2px solid yellow;
+        display: flex; 
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: left;
+    }
+
+    
+}

@@ -10,7 +10,7 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchCategory(); 
+        console.log('hello from header component did mount')
         this.props.fetchProducts(); 
     }
 

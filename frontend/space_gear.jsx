@@ -11,8 +11,6 @@ import { receiveProducts, fetchProducts } from './actions/product_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  console.log(window.splashImage)
-
     const root = document.getElementById('root');
     // grabs the root.html.erb file 
 

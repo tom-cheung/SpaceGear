@@ -14,6 +14,7 @@ import UserShowContainer from './session_form/user_show_container';
 import HeaderContainer from './header/header_container'
 import ProductCategoryContainer from './product/product_category_container'
 import ProductTypeContainer from './product/product_type_container'
+import ProductShowContainer from './product/product_show_container'
 
 // test
 import FetchContainer from './fetch/fetch_container'
@@ -24,6 +25,7 @@ const App = () => {
         <div id="master-container">
             <HeaderContainer /> 
             <Switch>
+                <Route exact path='/product/:productId' component={ProductShowContainer}/>
                 <Route exact path='/products/:categoryName/:categoryId/:typeName/:typeId' component={ProductTypeContainer}/>
                 <Route exact path='/products/:categoryName/:categoryId' component={ProductCategoryContainer}/>
                 <ShowRoute path='/account' component={UserShowContainer}/>
@@ -38,3 +40,10 @@ const App = () => {
 export default App; 
 
 // this doesn't have access to the store yet because it hasn't been passed into the App component via root.jsx 
+/*
+12/14/2020
+11:54AM 
+
+when you import a file, it gets run everything this page loads, if you put console logs in there you will see them pop up 
+
+*/
