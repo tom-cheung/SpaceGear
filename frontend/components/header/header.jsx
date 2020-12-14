@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { fetchCategory } from '../../util/category_util';
-import ProductDropdown from './product_dropdown'
+import HeaderDropdown from './header_dropdown'
+import { withRouter } from 'react-router'
 
 class Header extends React.Component {
     constructor(props) {
@@ -9,13 +9,13 @@ class Header extends React.Component {
        
     }
 
-    // componentDidMount() {
-    //     this.props.fetchCategory(); 
-    // }
+    componentDidMount() {
+        // this.props.fetchCategory(); 
+        this.props.fetchProducts(); 
+    }
 
     
     render() {
-        // console.log(this.props.categories[0].product_types)
         return (
         <div id="mainHeader">
             
@@ -28,7 +28,7 @@ class Header extends React.Component {
                     <ul>
                         {this.props.categories.map((category, idx) => {
                             return <li key={category.id}>
-                                    <ProductDropdown key={idx} cat={category.category_name} typs={category.product_types}/>
+                                    <HeaderDropdown key={idx} categoryName={category.category_name} categoryId={category.id} categoryTypes={category.product_types}/>
                                     </li>
                         })} 
                     </ul>
@@ -50,7 +50,7 @@ class Header extends React.Component {
     
 }
 
-export default Header; 
+export default withRouter(Header); 
 
 /*
     

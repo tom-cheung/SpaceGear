@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
-import {fetchCategory} from '../../actions/category_actions'
 import Header from './header'
+
+import { fetchCategory } from '../../actions/category_actions'
+import { fetchProducts } from '../../actions/product_actions'
 
 // test 
 // import {fetchCategory} from '../../util/category_util'
@@ -14,7 +16,8 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return ({
-    fetchCategory: () => dispatch(fetchCategory())
+    fetchCategory: () => dispatch(fetchCategory()), 
+    fetchProducts: () => dispatch(fetchProducts())
     })
 }
 

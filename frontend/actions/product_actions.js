@@ -10,8 +10,7 @@ export const receiveProducts = (products) => {
 }
 
 export const fetchProducts = () => dispatch => {
-    return ProductAPIUtil.fetchProducts()
-        .then((products) => dispatch(receiveProducts(products))
-        // error handling 
-    )
+    return ProductAPIUtil.fetchProducts().then((products) => dispatch(receiveProducts(products)))
 }
+// this is going to be dispatched to my reducer (twice since this is a thunk actions)
+// so build it the reducer 

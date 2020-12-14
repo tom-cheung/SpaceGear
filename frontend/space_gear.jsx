@@ -1,17 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Root from './components/root';
+import configureStore from './store/store'
 
 // testing 
-import * as catAPIUtil from './util/product_api_util'
-import configureStore from './store/store'
-import { fetchCategory } from './util/category_util'
+// import {fetchProducts} from './util/product_api_util'
+import { receiveProducts, fetchProducts } from './actions/product_actions' 
 // testing 
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  console.log(window.splashImage)
+
     const root = document.getElementById('root');
+    // grabs the root.html.erb file 
 
     let store; 
 

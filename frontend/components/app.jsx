@@ -7,11 +7,13 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
 import { ShowRoute } from '../util/user_show_util';
 
-import ProductContainer from './product/product_container';
+import SplashContainer from './splash/splash_container';
 import RegistrationFormContainer from './session_form/registration_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import UserShowContainer from './session_form/user_show_container';
 import HeaderContainer from './header/header_container'
+import ProductCategoryContainer from './product/product_category_container'
+import ProductTypeContainer from './product/product_type_container'
 
 // test
 import FetchContainer from './fetch/fetch_container'
@@ -22,10 +24,12 @@ const App = () => {
         <div id="master-container">
             <HeaderContainer /> 
             <Switch>
+                <Route exact path='/products/:categoryName/:categoryId/:typeName/:typeId' component={ProductTypeContainer}/>
+                <Route exact path='/products/:categoryName/:categoryId' component={ProductCategoryContainer}/>
                 <ShowRoute path='/account' component={UserShowContainer}/>
                 <AuthRoute path='/register' component={RegistrationFormContainer}/>   
                 <AuthRoute path='/login' component={LoginFormContainer}/> 
-                <Route path='/' component={ProductContainer}/>
+                <Route path='/' component={SplashContainer}/>
             </Switch>
         </div>
     )
