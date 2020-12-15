@@ -7,9 +7,9 @@ const ProductIndexItem = ({product}) => {
 
     return(
         <div className="product-container">
-            <Link to={`/product/${product.id}`}><img className="product-index-pictures" src={window.productImages[hold]} width="200" height="200"/></Link>
-            <Link to={`/product/${product.id}`}><p>{product.product_name}</p></Link>
-            <p>{product.price}</p>
+            <Link className='product-container-links' to={`/product/${product.id}`}><img className="product-index-pictures" src={window.productImages[product.img_name]} width="275" height="275"/></Link>
+            <Link className='product-container-links' to={`/product/${product.id}`}><p className="product-index-details">{product.product_name}</p></Link>
+            <p className="product-index-details">${product.price}0</p>
         </div>
     )
 }

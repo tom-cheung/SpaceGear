@@ -2,16 +2,15 @@ import { connect } from 'react-redux'
 import ProductIndex from './splash'
 import { logoutUser } from '../../actions/user_actions'
 
-const mSTP = ({session, entities: { users }}) => {
-
+const mSTP = (state, ownProps) => {
     return ({
-        currentUser: users[session.id]
+        categories: Object.values(state.entities.categories)
     })
 }
 
 const mDTP = (dispatch) => {
     return ({
-        logout: () => dispatch(logoutUser())
+
     })
 }
 

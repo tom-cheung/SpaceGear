@@ -6,6 +6,7 @@ const ProductCategory = ({filteredProducts, categoryName}) => {
     
     return(
         <div className="product-index-container">
+            
             <div className="product-header-container">
                 <h1>{categoryName}</h1>
             </div>

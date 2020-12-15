@@ -1,0 +1,37 @@
+.product-index-container {
+    // border: 2px solid yellow;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+
+    .product-header-container {
+        font-size: 24px;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .items-container {
+        display: flex; 
+        justify-content: center;
+
+    }
+
+    .product-container {
+        padding: .75%; 
+    }
+
+    .product-container-links {
+        text-decoration: none;
+        color: black;
+        // border: 2px solid red;
+    }
+
+    .product-index-details {
+        // border: 2px solid red; 
+        margin-top: 10px;
+    }
+    
+}
+
+
+
+

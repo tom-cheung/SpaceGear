@@ -18,64 +18,145 @@ category_four = Category.create(category_name: 'Miscellaneous')
 type_one = ProductType.create(type_name: 'T-Shirt')
 type_two =ProductType.create(type_name: 'Outwear')
 
+# MEN
+
 product_one = Product.create(   
-                                product_name: "Men's Plain White T-Shirt",
+                                product_name: "Men's Starman T-Shirt",
                                 type_id: type_one.id,
                                 category_id: category_one.id,
-                                color: 'White',
+                                color: 'Black',
                                 size: 'Medium',
-                                description: 'SpaceGear logo on the right sleeve, 100% cotton',
-                                price: 17.99
+                                description: 'Starman Picture',
+                                price: 25.00,
+                                img_name: 'mensstarman'
+                            )
+                            
+product_two = Product.create(   
+                                product_name: "Mens Dragon Long Sleeve T-Shirt",
+                                type_id: type_one.id,
+                                category_id: category_one.id,
+                                color: 'Black',
+                                size: 'Medium',
+                                description: 'Dragon Logo',
+                                price: 30.00,
+                                img_name: 'mensdragontshirtlong'
                             )
 
-product_two = Product.create(   
-                                product_name: "Women's Plain White T-Shirt",
-                                type_id: type_one.id,
-                                category_id: category_two.id,
-                                color: 'White',
-                                size: 'Medium',
-                                description: 'SpaceGear logo on the left sleeve, 100% cotton ',
-                                price: 17.99
-)
-
 product_three = Product.create(   
-                                product_name: "Kid's Space T-Shirt",
-                                type_id: type_one.id,
-                                category_id: category_three.id,
-                                color: 'Light blue',
-                                size: 'Small',
-                                description: 'Milkyway picture on the front, 100% cotton ',
-                                price: 17.99,
-)
-
-product_four = Product.create(   
-                                product_name: "Men's Pilot Jacket",
+                                product_name: "Mens Bomber Jacket",
                                 type_id: type_two.id,
                                 category_id: category_one.id,
-                                color: 'Dark Grey',
+                                color: 'Charcoal',
                                 size: 'Medium',
-                                description: 'Official jacket worn by astronauts',
-                                price: 49.99,
-)
+                                description: 'Premium Bomber Jacket',
+                                price: 145.00,
+                                img_name: 'mensbomberjacket'
+                            )
+
+product_four = Product.create(   
+                                product_name: "Unisex Space Track Jacket",
+                                type_id: type_two.id,
+                                category_id: category_one.id,
+                                color: 'Gray',
+                                size: 'Medium',
+                                description: 'Built for space',
+                                price: 40.00,
+                                img_name: 'unisextrackjacket'
+                            )
+
+# WOMEN
+
 
 product_five = Product.create(   
-                                product_name: "Women's Pilot Jacket",
-                                type_id: type_two.id,
+                                product_name: "Womens Starman T-Shirt",
+                                type_id: type_one.id,
                                 category_id: category_two.id,
-                                color: 'Dark Blue', 
+                                color: 'Black',
                                 size: 'Medium',
-                                description: 'Official jacket worn by astronauts',
-                                price: 49.99
+                                description: 'Starman Picture',
+                                price: 25.00,
+                                img_name: 'womensstarman'
 )
 
 product_six = Product.create(   
-                                product_name: "Kid's Astronaut Coat",
+                                product_name: "Womens ISS Sweatshirt",
+                                type_id: type_two.id,
+                                category_id: category_two.id,
+                                color: 'Gray',
+                                size: 'Medium',
+                                description: 'SpaceGear logo on the left sleeve, 100% cotton ',
+                                price: 45.00,
+                                img_name: 'womensisssweatshirt'
+)
+
+product_seven = Product.create(   
+                                product_name: "Womens bomber jacket",
+                                type_id: type_two.id,
+                                category_id: category_two.id,
+                                color: 'Black',
+                                size: 'Medium',
+                                description: 'Premium Bomber Jacket ',
+                                price: 145.00,
+                                img_name: 'womensbomberjacket'
+)
+
+product_eight = Product.create(   
+                                product_name: "Womens Occupy Mars T-Shirt",
+                                type_id: type_one.id,
+                                category_id: category_two.id,
+                                color: 'Black',
+                                size: 'Medium',
+                                description: 'SpaceGear logo on the left sleeve, 100% cotton ',
+                                price: 25.00,
+                                img_name: 'womensoccupymarstshirt'
+)
+
+
+# KIDS 
+
+
+product_nine = Product.create(   
+                                product_name: "Kids Spacesuit Onesie",
                                 type_id: type_two.id,
                                 category_id: category_three.id,
-                                color: 'White', 
+                                color: 'White',
                                 size: 'Small',
-                                description: 'Mini astronaut coat',
-                                price: 39.99
+                                description: '100% cotton for your little astronaut!',
+                                price: 45.00,
+                                img_name: 'kidsonesie'
+)
+
+product_ten = Product.create(   
+                                product_name: "Kids Starman Pullover Hoodie",
+                                type_id: type_two.id,
+                                category_id: category_three.id,
+                                color: 'Black',
+                                size: 'Small',
+                                description: 'For the future starman!',
+                                price: 28.00,
+                                img_name: 'kidsstarmanpullover'
+)
+
+product_eleven = Product.create(   
+                                product_name: "Kids Dragon T-Shirt",
+                                type_id: type_one.id,
+                                category_id: category_three.id,
+                                color: 'Black', 
+                                size: 'Small',
+                                description: 'Wear the dragon proudly!',
+                                price: 28.00,
+                                img_name: 'kidsdragontshirt'
+)
+
+product_twelve = Product.create(   
+                                product_name: "Kids F9 T-Shirt",
+                                type_id: type_one.id,
+                                category_id: category_three.id,
+                                color: 'Black', 
+                                size: 'Small',
+                                description: 'Fly as high as the Falcon',
+                                price: 20.00,
+                                img_name: 'kidsf9tshirt'
 )
 
 
