@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ProductIndexItem = ({product}) => {
-    console.log('hello from product_index_jsx')
-    let hold = 'placeholder'
 
     return(
         <div className="product-container">

@@ -29,7 +29,6 @@ class LoginForm extends React.Component {
         e.preventDefault(); 
         let user = Object.assign({}, this.state)
         this.props.loginUser(user);
-        console.log(this.props)
     }
 
     componentWillUnmount() {

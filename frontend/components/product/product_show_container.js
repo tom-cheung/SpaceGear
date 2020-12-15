@@ -2,8 +2,6 @@ import { connect } from 'react-redux'
 import ProductShow from './product_show'
 
 
-// console.log('Hello from show container')
-
 const mSTP = (state, ownProps) => {
     return ({
         filteredProduct: state.entities.products[ownProps.match.params.productId]

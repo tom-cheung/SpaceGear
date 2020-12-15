@@ -5,8 +5,6 @@ import SplashProductItems from './splash_product_items'
 
 const ProductIndex = ({categories}) => {
 
-    console.log(categories)
-
     return(
         <div id="splash-container">
             <img id="product-main-img" src={window.productImages['splashImage']}/>
