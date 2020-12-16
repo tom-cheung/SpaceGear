@@ -30,15 +30,17 @@ class ProductShowItem extends React.Component{
             <div>
                 <div className="product-show-row">
                     <div className="product-show-picture" >
-                        <img src={window.productImages[product.img_name]} alt="" width="400" height="400"/>
+                        <img src={window.productImages[product.img_name]} alt="" width="600" height="600"/>
                     </div>
 
 
-                    <div>
-                        <div className="product-show-details">
-                            <h1>{product.product_name}</h1>
-                            <h3>${parseFloat(product.price).toFixed(2)}</h3>
-                            <p>{product.description}</p>
+                    <div className="product-column">
+                        <div className="product-details">
+                            <h1>{product.product_name.toUpperCase()}</h1>
+                            <h3 className="product-show-price">${parseFloat(product.price).toFixed(2)}</h3>
+                            <label htmlFor="">Description: 
+                                <p className="product-description">{product.description}</p>
+                            </label>
                         </div>
 
                         <div>
@@ -46,10 +48,30 @@ class ProductShowItem extends React.Component{
                         </div>
 
 
-                        <div>
+                        <div className="product-options">
                             {/* <Link to='/'><button onClick={this.addToCart}>ADD TO CART</button></Link> */}
-                            <input type="number" min="1" value={this.state['quantity']} onChange={this.changeQuantity('quantity')}/>
-                            <Link to="/cart"><button onClick={this.addToCart}>ADD TO CART</button></Link>
+                            <div className="color-picker">
+                                <label htmlFor="">Color: 
+                                    <select name="" id="">
+                                        <option value="White">White</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Black">Black</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div className="size-picker">
+                                <label htmlFor="">Size: 
+                                    <select name="" id="">
+                                        <option value="White">White</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Black">Black</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <input className="quantity-picker" type="number" min="1" value={this.state['quantity']} onChange={this.changeQuantity('quantity')}/>
+                            <Link to="/cart"><button onClick={this.addToCart} className="add-to-cart">ADD TO CART</button></Link>
                         </div>
                     </div>
                     

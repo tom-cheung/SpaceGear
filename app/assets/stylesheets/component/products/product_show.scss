@@ -1,28 +1,116 @@
 .product-show-container {
-    border: 1px solid red; 
+    // border: 1px solid red; 
     text-align: center;
     font-family: 'Noto Sans', sans-serif;
 
     .product-show-row {
-        border: 2px solid green; 
+        // border: 2px solid green; 
         display: flex; 
         flex-direction: row;
         justify-content: center;
+        margin: 10px;
     }
 
     .product-show-picture {
-        border: 2px solid blue; 
+        // border: 2px solid blue; 
         display: flex; 
         flex-direction: column;
         flex-wrap: wrap;
+        margin-top: 20px;
+
     }
 
-    .product-show-details {
-        border: 2px solid yellow;
+
+    .product-column {
+        margin-left: 20px;
+        width: 500px;
+    }
+
+    .product-details {
+        // border: 2px solid yellow;
         display: flex; 
         flex-direction: column;
         flex-wrap: wrap;
         text-align: left;
+        padding-bottom: 20px; 
+        margin-top: 20px;
+        // width: 700px;
+
+        h1{
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .product-show-price {
+            font-size: 36px;
+            font-weight: 300;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid black;
+        }
+
+        .product-description {
+            margin-top: 10px;
+        }
+
+    }
+
+    .product-options {
+
+        text-align: left;
+        display: flex; 
+        flex-direction: column;
+        align-items: stretch;
+        font-weight: 100;
+
+        .color-picker {
+            border: 1px solid lightgray;
+            // position: absolute;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px 5px 10px 5px;
+        }
+
+        select {
+            border: none;
+            font-size: inherit;
+            width: 90%;
+            float: right;
+            // max-width: 200px;
+            display: block;
+            color: gray;
+            line-height: 1.75;
+            text-decoration: none;
+            // border: 1px solid yellow;
+        }
+
+
+        .size-picker {
+            border: 1px solid lightgray;
+            padding: 10px 5px 10px 5px;
+            margin-bottom: 10px;
+        }
+
+        .quantity-picker {
+            border: 1px solid lightgray;
+            padding: 10px 5px 10px 5px;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart {
+            text-decoration: none;
+            width: 100%;
+            background-color: black;
+            color: white;
+            border-radius: 0;
+            padding: 15px 0px 15px 0px; 
+        }
+
+        .add-to-cart:hover {
+            color: black; 
+            background-color: white;
+        }
     }
 
     

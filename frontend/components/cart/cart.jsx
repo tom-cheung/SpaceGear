@@ -47,34 +47,58 @@ class Cart extends React.Component {
         console.log(this.cartItems())
 
         return (
-            <div>
+            <div className="shopping-cart-container">
 
+                {this.cartItems().length != 0 ? 
+
+                <div>
+                    <div className="cart-title">
+                        <h1>CART</h1>
+                    </div>
+
+                    <div className="cart-product-list">
+
+                        <div className="cart-details">
+                            <h3 className="cart-cell">PRODUCT</h3>
+                        </div>
+
+                        <div className="cart-metrics">
+                            <h3>QUANTITY</h3>
+                            <h3 className="cart-total">TOTAL</h3>
+                        </div>
+
+                    </div>
+                </div>
+                : null
+                }
+                
                 {this.cartItems().length != 0 ? this.cartItems().map((item, idx) => {
                     return (
                         <div key={item.product.id}>
 
-                            <div>
-                                <h1>CART</h1>
-                            </div>
+                            <div className="items-in-cart">
 
-                            <div>
-                                <img src={window.productImages[item.product.img_name]} alt="" width="200" height="200"/>
-                            </div>
+                                <div>
+                                    <img src={window.productImages[item.product.img_name]} alt="" width="200" height="200"/>
+                                </div>
 
-                            <div>
-                                <h2>{item.product.product_name}</h2>
-
-                                <h2>${  
-                                    (parseFloat(JSON.parse(localStorage.getItem(item.product.id)).quantity) * parseFloat(item.product.price)).toFixed(2)
-                                }</h2>
+                                <div>
+                                    <h2>{item.product.product_name}</h2>   
+                                </div>
                                 
-                                <input type="number" defaultValue={item.quantity} onChange={this.updateQuantity(item)} min="0"/>
+                                <div className="cart-quantity">
+                                    <input type="number" defaultValue={item.quantity} onChange={this.updateQuantity(item)} min="0"/>
 
-                                <button onClick={()=>{this.removeItem(item.product.id)}}>Delete Item</button>
-                            </div>
+                                    <button onClick={()=>{this.removeItem(item.product.id)}}>Delete Item</button>
+                                </div>
 
-                            <div>
-                                <label htmlFor="">Total: ${parseFloat(this.state.total).toFixed(2)}</label>
+                                <div>
+                                    <h2>${  
+                                        (parseFloat(JSON.parse(localStorage.getItem(item.product.id)).quantity) * parseFloat(item.product.price)).toFixed(2)
+                                    }</h2>
+                                    
+                                </div>
+
                             </div>
                         </div> 
                     )
@@ -90,9 +114,15 @@ class Cart extends React.Component {
                         <Link><button>SHOP OUR PRODUCTS</button></Link>
                     </div>
                 </div>
-
-
                 }
+
+                {this.cartItems().length != 0 ? 
+                    <div className="grand-total">
+                        <label htmlFor="">Total: ${parseFloat(this.state.total).toFixed(2)}</label>
+                    </div>
+                : null
+                }
+
 
                 <br/><br/><br/>
 
