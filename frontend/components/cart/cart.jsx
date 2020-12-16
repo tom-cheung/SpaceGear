@@ -24,6 +24,9 @@ class Cart extends React.Component {
     }
 
     cartItems() {
+        // let localStorageCopy = Object.assign({})
+        // delete items["better_errors_previous_commands"];
+
         let items = Object.keys(localStorage);
         items = items.map( (id) => {return JSON.parse(localStorage.getItem(id))})
         return items;
@@ -44,33 +47,29 @@ class Cart extends React.Component {
 
 
     render() {
-        console.log(this.cartItems())
 
         return (
             <div className="shopping-cart-container">
 
                 {this.cartItems().length != 0 ? 
-
-                <div>
-                    <div className="cart-title">
-                        <h1>CART</h1>
-                    </div>
-
-                    <div className="cart-product-list">
-
-                        <div className="cart-details">
-                            <h3 className="cart-cell">PRODUCT</h3>
+                    <div>
+                        <div className="cart-title">
+                            <h1>CART</h1>
                         </div>
 
-                        <div className="cart-metrics">
-                            <h3>QUANTITY</h3>
-                            <h3 className="cart-total">TOTAL</h3>
-                        </div>
+                        <div className="cart-product-header">
 
+                            <div className="cart-details">
+                                <h3 className="cart-cell">PRODUCT</h3>
+                            </div>
+
+                            <div className="cart-metrics">
+                                <h3>QUANTITY</h3>
+                                <h3 className="subtotal">TOTAL</h3>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                : null
-                }
+            : null }
                 
                 {this.cartItems().length != 0 ? this.cartItems().map((item, idx) => {
                     return (
@@ -82,21 +81,23 @@ class Cart extends React.Component {
                                     <img src={window.productImages[item.product.img_name]} alt="" width="200" height="200"/>
                                 </div>
 
-                                <div>
-                                    <h2>{item.product.product_name}</h2>   
+                                <div className="cart-item-details">
+                                    <h2 className="cart-item-content">{item.product.product_name.toUpperCase()}</h2>
+                                    <h2 className="cart-item-content">{item.product.color.toUpperCase()} / {item.product.size.toUpperCase()}</h2> 
+                                    <h2>${parseFloat(item.product.price).toFixed(2)}</h2>  
                                 </div>
                                 
-                                <div className="cart-quantity">
-                                    <input type="number" defaultValue={item.quantity} onChange={this.updateQuantity(item)} min="0"/>
+                                <div className="cart-item-details">
+                                    <input className="cart-item-content" id="cart-item-quantity" type="number" defaultValue={item.quantity} onChange={this.updateQuantity(item)} min="0"/>
 
-                                    <button onClick={()=>{this.removeItem(item.product.id)}}>Delete Item</button>
+                                    <button className="cart-remove-item" onClick={()=>{this.removeItem(item.product.id)}}>REMOVE</button>
                                 </div>
 
-                                <div>
+                                <div className="cart-item-details">
                                     <h2>${  
                                         (parseFloat(JSON.parse(localStorage.getItem(item.product.id)).quantity) * parseFloat(item.product.price)).toFixed(2)
                                     }</h2>
-                                    
+                                
                                 </div>
 
                             </div>
@@ -105,20 +106,23 @@ class Cart extends React.Component {
 
                 }) : 
                 
-                <div>
-                    <div>
+                <div className="cart-empty-container">
+                    <div className="cart-empty-header">
                         <h1>YOUR CART IS EMPTY</h1>
                     </div>
 
                     <div>
-                        <Link><button>SHOP OUR PRODUCTS</button></Link>
+                        <Link><button className="cart-empty-link">SHOP OUR PRODUCTS</button></Link>
                     </div>
                 </div>
                 }
 
                 {this.cartItems().length != 0 ? 
                     <div className="grand-total">
-                        <label htmlFor="">Total: ${parseFloat(this.state.total).toFixed(2)}</label>
+                        <label htmlFor="">TOTAL:</label>
+                        <h2 id="cart-order-total">${parseFloat(this.state.total).toFixed(2)}</h2>
+                        <p id="cart-shipping-message">Shipping & taxes calculated at checkout</p>
+                        <button id="cart-checkout-button">CHECKOUT</button>
                     </div>
                 : null
                 }

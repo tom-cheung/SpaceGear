@@ -17,8 +17,10 @@ class ProductShowItem extends React.Component{
     }
 
     addToCart() {
+        let quantity;
+        this.state.quantity < 1 ? quantity = 1 : quantity = this.state.quantity 
         localStorage.setItem(this.props.product.id, JSON.stringify({
-            'quantity': this.state['quantity'], 
+            'quantity': quantity, 
             'product': this.props.product,
         }))
     }
@@ -26,6 +28,7 @@ class ProductShowItem extends React.Component{
 
     render() {
         let product = this.props.product
+
         return(
             <div>
                 <div className="product-show-row">
@@ -71,7 +74,10 @@ class ProductShowItem extends React.Component{
                             </div>
 
                             <input className="quantity-picker" type="number" min="1" value={this.state['quantity']} onChange={this.changeQuantity('quantity')}/>
+                            
+                            
                             <Link to="/cart"><button onClick={this.addToCart} className="add-to-cart">ADD TO CART</button></Link>
+                            
                         </div>
                     </div>
                     

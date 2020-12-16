@@ -7,8 +7,10 @@ const ProductIndex = ({categories}) => {
 
     return(
         <div id="splash-container">
-            <img id="product-main-img" src={window.productImages['splashImage']}/>
-            <h1 id="product-title">Gear Up</h1>
+            <div className="splash-main-img"> 
+                <img id="product-main-img" src={window.productImages['splashImage']}/>
+                <h1 id="product-title">Gear Up</h1>
+            </div>
             
             <div id="splash-product-container">
               
