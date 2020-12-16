@@ -56,9 +56,7 @@ class ProductShowItem extends React.Component{
                             <div className="color-picker">
                                 <label htmlFor="">Color: 
                                     <select name="" id="">
-                                        <option value="White">White</option>
-                                        <option value="Blue">Blue</option>
-                                        <option value="Black">Black</option>
+                                        <option>{product.color}</option>
                                     </select>
                                 </label>
                             </div>
@@ -66,9 +64,7 @@ class ProductShowItem extends React.Component{
                             <div className="size-picker">
                                 <label htmlFor="">Size: 
                                     <select name="" id="">
-                                        <option value="White">White</option>
-                                        <option value="Blue">Blue</option>
-                                        <option value="Black">Black</option>
+                                        <option>{product.size}</option>
                                     </select>
                                 </label>
                             </div>
