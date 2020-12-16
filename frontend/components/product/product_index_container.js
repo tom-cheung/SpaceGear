@@ -4,7 +4,7 @@ import ProductIndex from './product_index'
 
 const mSTP = (state) => {
     return ({
-
+        filteredProducts: Object.values(state.entities.products)
     })
 }
 

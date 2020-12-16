@@ -112,7 +112,7 @@ class Cart extends React.Component {
                     </div>
 
                     <div>
-                        <Link><button className="cart-empty-link">SHOP OUR PRODUCTS</button></Link>
+                        <Link to="/allproducts"><button className="cart-empty-link">SHOP OUR PRODUCTS</button></Link>
                     </div>
                 </div>
                 }
