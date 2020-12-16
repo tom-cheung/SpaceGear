@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import ProductCategory from './product_category'
+import ProductIndex from './product_index'
 
 
 const mSTP = (state, ownProps) => {
@@ -19,4 +19,4 @@ const mDTP = (dispatch) => {
 
 // returns objects because the props are objects being passed into the component 
 
-export default connect(mSTP, mDTP)(ProductCategory)
+export default connect(mSTP, mDTP)(ProductIndex)

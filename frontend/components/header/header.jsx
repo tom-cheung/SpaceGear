@@ -39,7 +39,7 @@ class Header extends React.Component {
                 <ul>
                     <li><Link to="/account">Account</Link></li> 
                     <li><a href="">Search</a></li>
-                    <li><a href="">Cart</a></li>
+                    <Link to="/cart">Cart</Link>
                     {/* want to add in a link to the account here, will likely need to import Link above, and use Link tags */}
                 </ul>
             </div>

@@ -28,31 +28,61 @@
         cursor: default; 
     }
 
+    #splash-product-container {
+        // border: 2px solid red; 
+    }
+
     #splash-category-container {
         display: flex;
-        justify-content: space-around;
         margin-top: 20px;
     }
 
     .splash-category {
         text-align: left;
+        flex: 1;
+        height: 700px;
+        
     }
 
-    .splash-category-title {
-        position: relative;
-        margin-left: auto; 
-        margin-right: auto;
-        left: 10px; 
-        right: 0; 
-        bottom: 90%;
-        color: darkgray;
-        font-size: 24px;
-        text-decoration: none;
+    #splash-category-1 {
+        background: image-url('womensbomberjacket.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #ededf1;
+        // background-size: cover;
     }
 
-    .splash-category-link {
-        text-decoration: none;
+    #splash-category-2 {
+        background: image-url('mensbomberjacket.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #ededf1;
+        // background-size: cover;
     }
+
+    #splash-category-3 {
+        background: image-url('kidsstarmanpullover.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #ededf1;
+        // background-size: cover;
+    }
+
+    // .splash-category-title {
+    //     position: relative;
+    //     margin-left: auto; 
+    //     margin-right: auto;
+    //     left: 10px; 
+    //     right: 0; 
+    //     bottom: 90%;
+    //     color: darkgray;
+    //     font-size: 24px;
+    //     text-decoration: none;
+    // }
+
+    // .splash-category-link {
+    //     text-decoration: none;
+    // }
 
 }
 

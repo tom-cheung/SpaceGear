@@ -15,7 +15,7 @@ import HeaderContainer from './header/header_container'
 import ProductCategoryContainer from './product/product_category_container'
 import ProductTypeContainer from './product/product_type_container'
 import ProductShowContainer from './product/product_show_container'
-
+import CartContainer from './cart/cart_container'
 // test
 import FetchContainer from './fetch/fetch_container'
 // 
@@ -28,6 +28,7 @@ const App = () => {
                 <Route exact path='/product/:productId' component={ProductShowContainer}/>
                 <Route exact path='/products/:categoryName/:categoryId/:typeName/:typeId' component={ProductTypeContainer}/>
                 <Route exact path='/products/:categoryName/:categoryId' component={ProductCategoryContainer}/>
+                <Route path='/cart' component={CartContainer}/>
                 <ShowRoute path='/account' component={UserShowContainer}/>
                 <AuthRoute path='/register' component={RegistrationFormContainer}/>   
                 <AuthRoute path='/login' component={LoginFormContainer}/> 

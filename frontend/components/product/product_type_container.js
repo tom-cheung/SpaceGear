@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ProductType from './product_type'
+import ProductIndex from './product_index'
 
 const mSTP = (state, ownProps) => {
     let categoryId = parseInt(ownProps.match.params.categoryId)
@@ -18,4 +18,4 @@ const mDTP = (dispatch) => {
     })
 }
 
-export default connect(mSTP, mDTP)(ProductType);
+export default connect(mSTP, mDTP)(ProductIndex);

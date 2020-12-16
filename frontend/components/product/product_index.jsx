@@ -1,16 +1,19 @@
 import React from 'react'
 import ProductIndexItem from './product_index_item'
 
-const ProductCategory = ({filteredProducts, categoryName}) => {
+const ProductIndex = ({filteredProducts, categoryName=null, typeName=null}) => {
 
     
     return(
         <div className="product-index-container">
             
-            <div className="product-header-container">
-                <h1>{categoryName}</h1>
-            </div>
-            
+            { categoryName ?
+                <div className="product-header-container">
+                    {typeName ? <h1>{categoryName + " " + typeName}</h1> : <h1>{categoryName}</h1>}
+                </div>
+                : <div className="product-header-container">PRODUCTS</div>
+            }
+
             <div className="items-container">
                 {filteredProducts.map( (product) => { return <ProductIndexItem key={product.id} product={product}/>} )}
             </div>
@@ -19,7 +22,7 @@ const ProductCategory = ({filteredProducts, categoryName}) => {
     )
 } 
 
-export default ProductCategory;
+export default ProductIndex;
 
 // notice that when you refresh the page that mounts this component, filtered products is actually empty 
 // that's why the elements that depend on it dont load right away. 
