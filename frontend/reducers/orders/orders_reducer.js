@@ -1,4 +1,4 @@
-import { RECEIVE_ORDER } from '../actions/order_actions'
+import { RECEIVE_ORDER } from '../../actions/order_actions'
 
 const orderReducer = (oldState = {}, action ) => {
     Object.freeze(oldState);

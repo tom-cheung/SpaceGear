@@ -1,6 +1,8 @@
 import * as OrderAPIUtil from '../util/order_util'
 
 export const RECEIVE_ORDER = "RECEIVE_ORDER"
+export const RECEIVE_ORDER_ERRORS = "RECEIVE_ORDER_ERRORS"
+export const CLEAR_ORDER_ERRORS = "CLEAR_ORDER_ERRORS"
 
 const receiveOrder = (order) => {
     return({
@@ -8,6 +10,19 @@ const receiveOrder = (order) => {
         order: order 
     })
 } 
+
+const receiveError = (errors) => {
+    return({
+        type: RECEIVE_ORDER_ERRORS, 
+        errors: errors
+    })
+}
+
+const clearErrors = () => {
+    return({
+        type: CLEAR_ORDER_ERRORS,
+    })
+}
 
 
 // the purpose of this regular action creator is to take in the order created by an ajax call and return a POJO with a type and a payload which can be dispatched to the store  
