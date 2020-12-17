@@ -22,6 +22,10 @@ class User < ApplicationRecord
     attr_reader :password
     before_validation :ensure_session_token
 
+    has_many :orders,
+        foreign_key: :purchaser_id,
+        class_name: :Order
+
     def self.find_by_credentials(email, password)
         @user = User.find_by(email: email)
 
@@ -50,4 +54,5 @@ class User < ApplicationRecord
     def ensure_session_token 
         self.session_token ||= SecureRandom.urlsafe_base64
     end
+
 end

@@ -1,18 +1,14 @@
 # == Schema Information
 #
-# Table name: products
+# Table name: orders
 #
 #  id           :bigint           not null, primary key
-#  product_name :string           not null
-#  type_id      :integer          not null
-#  color        :string
-#  size         :string
-#  price        :decimal(, )      not null
-#  description  :text             not null
+#  purchaser_id :integer
+#  address_id   :integer
+#  payment_id   :integer
+#  total        :decimal(, )
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  category_id  :integer          not null
-#  img_name     :string           not null
 #
 
 # This model initially had no columns defined. If you add columns to the

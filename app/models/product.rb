@@ -12,6 +12,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  category_id  :integer          not null
+#  img_name     :string           not null
 #
 class Product < ApplicationRecord
     validates :product_name, :type_id, :category_id, :price, :description, presence: true 
@@ -23,4 +24,15 @@ class Product < ApplicationRecord
     belongs_to :category, 
         foreign_key: :category_id,
         class_name: :Category
+
+    has_many :ordered_products
+
+    has_many :orders, 
+        through: :ordered_products, 
+        source: :order
+
+    has_many :orderers, 
+        through: :orders, 
+        source: :orderer
+
 end

@@ -4,8 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store'
 
 // testing 
-// import {fetchProducts} from './util/product_api_util'
-import { receiveProducts, fetchProducts } from './actions/product_actions' 
+import { createOrder, editOrder } from './util/order_util'
 // testing 
 
 
@@ -40,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
       // testing 
+      window.createOrder = createOrder; 
+      window.editOrder = editOrder;
       window.store = store; 
       // testing 
   

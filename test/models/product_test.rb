@@ -12,6 +12,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  category_id  :integer          not null
+#  img_name     :string           not null
 #
 require 'test_helper'
 
