@@ -27,7 +27,6 @@ class ProductShowItem extends React.Component{
 
         let oldCart = JSON.parse(localStorage.getItem('cart')); // turns the stringified cart back into a json object
         let newCart = Object.assign({}, oldCart, { [this.props.product.id]: { 'quantity': quantity, 'product': this.props.product} })
-
         localStorage.setItem('cart', JSON.stringify(newCart))
 
        

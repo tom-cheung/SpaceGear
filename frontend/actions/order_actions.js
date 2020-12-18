@@ -4,6 +4,7 @@ export const RECEIVE_ORDER = "RECEIVE_ORDER"
 export const RECEIVE_ORDER_ERRORS = "RECEIVE_ORDER_ERRORS"
 export const CLEAR_ORDER_ERRORS = "CLEAR_ORDER_ERRORS"
 export const CLEAR_ORDERS = "CLEAR_ORDERS"
+export const DELETE_ORDER = "DELETE_ORDER"
 
 const receiveOrder = (order) => {
     return({
@@ -14,6 +15,13 @@ const receiveOrder = (order) => {
 
 // the purpose of this regular action creator is to take in the order created by an ajax call and return a POJO with a type and a payload which can be dispatched to the store  
 // the payload is determined by how you structured the view page of for the create order action 
+
+const removeOrder = (order) => {
+    return({
+        type: DELETE_ORDER, 
+        orderId: Object.keys(order)
+    })
+}
 
 export const clearOrders = () => {
     return({
@@ -58,4 +66,11 @@ export const editOrder = (order, products) => (dispatch) => {
         .then((order) => dispatch(receiveOrder(order))
             ,(error) => dispatch(receiveError(error.responseJSON))
         )
+}
+
+export const deleteOrder = (orderId) => (dispatch) => {
+    return OrderAPIUtil.deleteOrder(orderId)
+        .then((order) => dispatch(removeOrder(order))
+            ,(error) => dispatch(receiveError(error.responseJSON))
+)
 }

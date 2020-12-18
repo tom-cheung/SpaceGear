@@ -1,7 +1,7 @@
 import UserShow from './user_show';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/user_actions'
-import { fetchOrders, clearOrders } from '../../actions/order_actions'
+import { fetchOrders, clearOrders, deleteOrder } from '../../actions/order_actions'
 
 
 const mSTP = (state) => {
@@ -18,7 +18,8 @@ const mDTP = (dispatch) => {
         {
             logoutUser: () => dispatch(logoutUser()),
             fetchOrders: () => dispatch(fetchOrders()), // dispatches and ajax call then dispatches the object it returns, which will be the orders 
-            clearOrders: () => dispatch(clearOrders())
+            clearOrders: () => dispatch(clearOrders()),
+            deleteOrder: (orderId) => dispatch(deleteOrder(orderId))
         }
     )
 }

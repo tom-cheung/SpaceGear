@@ -19,7 +19,6 @@ class UserShow extends React.Component {
     }
 
     render() {
-        console.log(this.props.orders)
         return(
             <div className="userInfoContainer">
                 <div>
@@ -34,13 +33,15 @@ class UserShow extends React.Component {
                     <h2>MY ORDERS</h2>
                     
                     <ul>
-                        {this.props.orders ? this.props.orders.map((order) => {return <Link to={`/order/${order.id}`} key={order.id}><li key={order.id}>Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</li></Link>} ) : null}
+                        {this.props.orders.map((order) => {
+                            return (
+                                <div key={order.id}>
+                                    <h1>Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</h1> 
+                                    <button onClick={() => this.props.deleteOrder(order.id)}>Cancel Order</button> 
+                                </div>
+                            )})}
                     </ul>
-                    {/* <ul>
-                        {orders.map( (order) => {
-                            return <Link to={`/order/${order.id}`} key={order.id}><li key={order.id}>Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</li></Link>
-                        })}
-                    </ul> */}
+                
 
                 </div>
 

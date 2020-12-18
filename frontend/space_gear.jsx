@@ -5,7 +5,7 @@ import configureStore from './store/store'
 
 // testing 
 // import { createOrder, editOrder } from './util/order_util'
-import { createOrder, editOrder } from './actions/order_actions'
+import {deleteOrder} from './actions/order_actions'
 // testing 
 
 
@@ -41,8 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
       // testing 
-      window.createOrder = createOrder; 
-      window.editOrder = editOrder;
+      window.deleteOrder = deleteOrder;
       window.store = store; 
       // testing 
   

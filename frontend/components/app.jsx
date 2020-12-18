@@ -34,7 +34,7 @@ const App = () => {
                 <Route exact path="/allproducts" component={ProductIndexContainer}/>
                 <Route path='/cart' component={CartContainer}/>
                 <ShowRoute path='/checkout' component={OrderFormContainer}/>
-                <ShowRoute path='/order/:orderId' component={OrderShowContainer}/>
+                {/* <ShowRoute path='/order/:orderId' component={OrderShowContainer}/> */}
                 <ShowRoute path='/account' component={UserShowContainer}/>
                 <AuthRoute path='/register' component={RegistrationFormContainer}/>   
                 <AuthRoute path='/login' component={LoginFormContainer}/> 
