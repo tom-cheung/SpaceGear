@@ -20,34 +20,39 @@ class UserShow extends React.Component {
 
     render() {
         return(
-            <div className="userInfoContainer">
-                <div>
-                    <header id="userHeader">
-                        <Link id="logoutButton" onClick={this.logoutUser} to="/">LOGOUT</Link>
-                        <h1 id="accountTitle">MY ACCOUNT</h1>
-                        <p>Welcome back, {this.props.currentUser.email}!</p>
-                    </header>
+            <div className="account-container">
+                <div className="header-container">
+                    <Link id="logout-button" onClick={this.logoutUser} to="/">LOGOUT</Link>
+                    <h1 id="account-title">MY ACCOUNT</h1>
+                    <p id="welcome-message">Welcome back, {this.props.currentUser.email}!</p>
                 </div>
 
-                <div id='orderContainer'>
-                    <h2>MY ORDERS</h2>
-                    
-                    <ul>
-                        {this.props.orders.map((order) => {
-                            return (
-                                <div key={order.id}>
-                                    <h1>Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</h1> 
-                                    <button onClick={() => this.props.deleteOrder(order.id)}>Cancel Order</button> 
-                                </div>
-                            )})}
-                    </ul>
+                <div className="user-information-container">
+
+                    <div className='order-container'>
+                        <h1 id="order-title">MY ORDERS</h1>
+
+                        <ul>
+                            {this.props.orders.map((order) => {
+                                return (
+                                    <div key={order.id}>
+                                        <h1 className="order-ref">Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</h1> 
+                                        <button className="order-cancel-button" onClick={() => this.props.deleteOrder(order.id)}>Cancel Order</button> 
+                                    </div>
+                                )})}
+                        </ul>
+                    </div>
+
+                    <div className='address-container'>
+                        <h1 id="address-title">MY ADDRESS</h1>
+                        <p>732 Harris Street</p>
+                        <p>New York, NY 10017</p>
+                    </div>
+
+                </div>
+
+
                 
-
-                </div>
-
-                <div id='addressContainer'>
-                    <h2>MY ADDRESS</h2>
-                </div>
 
             </div>
     )}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import OrderItemDetails from './order_item_details'
 
 class OrderForm extends React.Component {
     constructor(props) {
@@ -21,12 +22,18 @@ class OrderForm extends React.Component {
     cartItems() {
 
         let cart = JSON.parse(localStorage.getItem('cart'));
-        let items = Object.keys(cart)
-        items = items.map( (key) => {
-            return cart[key]
-        })
-        console.log(items)
-        return items 
+        
+
+        if(cart) {
+            let items = Object.keys(cart)
+            items = items.map( (key) => {
+                return cart[key]
+            })
+            return items
+        } else {
+            return []
+        }
+ 
     }
 
     total() {
@@ -46,24 +53,60 @@ class OrderForm extends React.Component {
         window.localStorage.clear(); // clears the cart after checkout 
     }
 
+
+    calcTotal() {
+        let total = this.cartItems().map((item) => {return (parseInt(item.quantity) * parseFloat(item.product.price)).toFixed(2)})
+        total = total.reduce( (a, b) => parseFloat(a)+parseFloat(b), 0);
+        return total
+    }
+
     render() {
-        console.log(this.orderedProducts())
         return(
             <div className="order-form-container">  
-                <div className="order-form">
-                    <h1>SpaceGear logo to take you back to homepage</h1>
-                    <h1>Place Your Order</h1>
-                    <h1>Address Form Goes Here</h1>
-                    <h1>Payment Form Goes here</h1>
-                    {this.state.total ? <Link to="/account"><button onClick={this.handleSubmit}>Order Button Goes here</button></Link> : 
-                        <button>Calculating...</button>
-                    }
-                    
-                </div> 
 
                 <div className="order-form">
-                    <h1>cart details goes here</h1>
+                    <div className="form-logo-container">
+                        <Link to="/" className="order-form-logo">SpaceGear</Link>
+                    </div>
+                    
+
+                    {this.state.total ? <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> : 
+                        <button>Your cart is empty! Click here to continue shopping!</button>
+                    }
+                </div> 
+
+                <div className="items-info">
+                    {this.cartItems().map((details) => {
+                        return <OrderItemDetails item={details} key={details.product.id}/>
+                    })}
+
+                    <div className="price-info"> 
+
+                        <div className="promo">
+                            <input type="text" defaultValue="PROMO CODE"/> <button>Apply</button> 
+                        </div>
+
+                        <div className="shipping">
+                            <p>Shipping + Handling</p>
+                            <p>FREE 1 DAY DELIVERY</p>
+                        </div>
+
+                        <div className="tax">
+                            <p>Taxes</p>
+                            <p>NONE</p>
+                        </div>
+
+                        <div className="order-total">
+                            <div className="price-details">
+                                <span>Total</span>
+                                <span>usd ${parseFloat(this.state.total).toFixed(2)}</span>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
+
             </div>
         )
     }

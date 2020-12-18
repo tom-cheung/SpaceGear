@@ -56,11 +56,18 @@ class Cart extends React.Component {
             let newCart = Object.assign({}, oldCart, { [product.id]: { 'quantity': e.currentTarget.value, 'product': product} })
     
             localStorage.setItem('cart', JSON.stringify(newCart))
+
+            this.total();
         }
     }
 
     removeItem(id) {
-        localStorage.removeItem('cart');
+        // localStorage.removeItem('cart');
+        let oldCart = JSON.parse(localStorage.getItem('cart'));
+        delete oldCart[id]
+        let newCart = Object.assign({}, oldCart)
+        localStorage.setItem('cart', JSON.stringify(newCart))
+        // console.log(oldCart)
         this.total(); 
     }
 
