@@ -2,6 +2,9 @@
 
 SpaceGear is a clone of the SpaceX online store. The site sells aerospace related merchandise.
 
+<a href="https://spacegear.herokuapp.com/#/">Visit SpaceGear</a>
+
+
 
 
 <!-- This README would normally document whatever steps are necessary to get the
