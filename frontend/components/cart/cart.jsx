@@ -26,29 +26,47 @@ class Cart extends React.Component {
     cartItems() {
         // let localStorageCopy = Object.assign({})
         // delete items["better_errors_previous_commands"];
+        // needs to return an array
 
-        let items = Object.keys(localStorage);
-        items = items.map( (id) => {return JSON.parse(localStorage.getItem(id))})
-        return items;
+        // let items = Object.keys(localStorage).filter( (key) => parseInt(key) != NaN);
+        // items = items.map( (id) => {return JSON.parse(localStorage.getItem(id))})
+        // return items; 
+        
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if(cart) {
+            let items = Object.keys(cart)
+            items = items.map( (key) => {
+                return cart[key]
+            })
+            return items 
+        } else {
+            return [];
+        }
     }
 
     updateQuantity({product}) {
         return(e) => {
-            localStorage.setItem(product.id, JSON.stringify({'quantity': e.currentTarget.value, 'product': product}))
-            this.total();
+
+            // localStorage.setItem(product.id, JSON.stringify({'quantity': e.currentTarget.value, 'product': product}))
+            // this.total();
+
+            // console.log(product)
+
+            let oldCart = JSON.parse(localStorage.getItem('cart')); // turns the stringified cart back into a json object
+            let newCart = Object.assign({}, oldCart, { [product.id]: { 'quantity': e.currentTarget.value, 'product': product} })
+    
+            localStorage.setItem('cart', JSON.stringify(newCart))
         }
     }
 
     removeItem(id) {
-        localStorage.removeItem(id);
+        localStorage.removeItem('cart');
         this.total(); 
     }
 
-
-
     render() {
-        console.log(this.props)
-        console.log(this.props.history.location)
+        // console.log(this.props)
+        // console.log(this.props.history.location)
 
         return (
             <div className="shopping-cart-container">
@@ -97,7 +115,7 @@ class Cart extends React.Component {
 
                                 <div className="cart-item-details">
                                     <h2>${  
-                                        (parseFloat(JSON.parse(localStorage.getItem(item.product.id)).quantity) * parseFloat(item.product.price)).toFixed(2)
+                                        (parseFloat(item.quantity) * parseFloat(item.product.price)).toFixed(2)
                                     }</h2>
                                 
                                 </div>
@@ -123,7 +141,7 @@ class Cart extends React.Component {
                     <div className="grand-total">
                         <label htmlFor="">TOTAL:</label>
                         <h2 id="cart-order-total">${parseFloat(this.state.total).toFixed(2)}</h2>
-                        <p id="cart-shipping-message">Shipping & taxes calculated at checkout</p>
+                        {/* <p id="cart-shipping-message">Shipping & taxes calculated at checkout</p> */}
                         <Link to="/checkout"><button id="cart-checkout-button">CHECKOUT</button></Link>
                     </div>
                 : null

@@ -10,6 +10,16 @@ class Api::OrdersController < ApplicationController
         end
     end
 
+    def index 
+        @current_user = current_user
+        if @current_user
+            @orders = @current_user.orders 
+            render 'api/orders/index'
+        else
+            render json: ["Not logged in"], status: 404
+        end
+    end
+
     def update 
         @order = Order.find_by(id: params[:id])
 

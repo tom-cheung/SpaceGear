@@ -1,12 +1,14 @@
 import UserShow from './user_show';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/user_actions'
+import { fetchOrders, clearOrders } from '../../actions/order_actions'
 
 
 const mSTP = (state) => {
     return (
         {
-            currentUser: state.entities.users[state.session.id]
+            currentUser: state.entities.users[state.session.id],
+            orders: Object.values(state.entities.orders)
         }
     )
 }
@@ -14,7 +16,9 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return (
         {
-            logoutUser: () => dispatch(logoutUser())
+            logoutUser: () => dispatch(logoutUser()),
+            fetchOrders: () => dispatch(fetchOrders()), // dispatches and ajax call then dispatches the object it returns, which will be the orders 
+            clearOrders: () => dispatch(clearOrders())
         }
     )
 }

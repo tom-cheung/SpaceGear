@@ -19,10 +19,22 @@ class ProductShowItem extends React.Component{
     addToCart() {
         let quantity;
         this.state.quantity < 1 ? quantity = 1 : quantity = this.state.quantity 
-        localStorage.setItem(this.props.product.id, JSON.stringify({
-            'quantity': quantity, 
-            'product': this.props.product,
-        }))
+        
+        // localStorage.setItem(this.props.product.id, JSON.stringify({
+        //     'quantity': quantity, 
+        //     'product': this.props.product,
+        // }))
+
+        let oldCart = JSON.parse(localStorage.getItem('cart')); // turns the stringified cart back into a json object
+        let newCart = Object.assign({}, oldCart, { [this.props.product.id]: { 'quantity': quantity, 'product': this.props.product} })
+
+        localStorage.setItem('cart', JSON.stringify(newCart))
+
+       
+
+        // localStorage.setItem(['cart'], JSON.stringify({
+        //     Object.assign({}, oldCart, { [this.props.product.id]: { 'quantity': quantity, 'product': this.props.product} })
+        // }))
     }
 
 

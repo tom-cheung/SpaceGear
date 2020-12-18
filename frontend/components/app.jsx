@@ -18,6 +18,7 @@ import ProductShowContainer from './product/product_show_container'
 import ProductIndexContainer from './product/product_index_container'
 import CartContainer from './cart/cart_container'
 import OrderFormContainer from './order/order_form_container'
+import OrderShowContainer from './order/order_show_container'
 // test
 import FetchContainer from './fetch/fetch_container'
 // 
@@ -32,7 +33,8 @@ const App = () => {
                 <Route exact path='/products/:categoryName/:categoryId' component={ProductCategoryContainer}/>
                 <Route exact path="/allproducts" component={ProductIndexContainer}/>
                 <Route path='/cart' component={CartContainer}/>
-                <Route path='/checkout' component={OrderFormContainer}/>
+                <ShowRoute path='/checkout' component={OrderFormContainer}/>
+                <ShowRoute path='/order/:orderId' component={OrderShowContainer}/>
                 <ShowRoute path='/account' component={UserShowContainer}/>
                 <AuthRoute path='/register' component={RegistrationFormContainer}/>   
                 <AuthRoute path='/login' component={LoginFormContainer}/> 

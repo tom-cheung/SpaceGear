@@ -7,6 +7,12 @@ export const createOrder = (order, products) => {
         // 
     })}
 
+export const fetchOrders = () => {
+    return $.ajax({
+        url: "/api/orders",
+        method: "GET"
+    })
+}
 
 export const editOrder = (order, products) => {
     return $.ajax({

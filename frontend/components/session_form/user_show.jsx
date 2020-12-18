@@ -1,28 +1,55 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const UserShow = ({currentUser, logoutUser}) => {
+class UserShow extends React.Component {
 
-    return(
-        <div className="userInfoContainer">
+    constructor(props) {
+        super(props)
+        this.logoutUser = this.logoutUser.bind(this)
+    }
 
-            <header id="userHeader">
-                <Link id="logoutButton" onClick={logoutUser} to="/">LOGOUT</Link>
-                <h1 id="accountTitle">MY ACCOUNT</h1>
-                <p>Welcome back, {currentUser.email}!</p>
-            </header>
-            
+    componentDidMount() {
+        this.props.fetchOrders();
+    }
 
-            <div id='orderContainer'>
-                <h2>MY ORDERS</h2>
+    logoutUser(e) {
+        e.preventDefault;
+        this.props.logoutUser();
+        this.props.clearOrders();
+    }
+
+    render() {
+        console.log(this.props.orders)
+        return(
+            <div className="userInfoContainer">
+                <div>
+                    <header id="userHeader">
+                        <Link id="logoutButton" onClick={this.logoutUser} to="/">LOGOUT</Link>
+                        <h1 id="accountTitle">MY ACCOUNT</h1>
+                        <p>Welcome back, {this.props.currentUser.email}!</p>
+                    </header>
+                </div>
+
+                <div id='orderContainer'>
+                    <h2>MY ORDERS</h2>
+                    
+                    <ul>
+                        {this.props.orders ? this.props.orders.map((order) => {return <Link to={`/order/${order.id}`} key={order.id}><li key={order.id}>Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</li></Link>} ) : null}
+                    </ul>
+                    {/* <ul>
+                        {orders.map( (order) => {
+                            return <Link to={`/order/${order.id}`} key={order.id}><li key={order.id}>Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</li></Link>
+                        })}
+                    </ul> */}
+
+                </div>
+
+                <div id='addressContainer'>
+                    <h2>MY ADDRESS</h2>
+                </div>
+
             </div>
-
-            <div id='addressContainer'>
-                <h2>MY ADDRESS</h2>
-            </div>
-
-        </div>
-    )
+    )}
 }
 
 export default UserShow; 
