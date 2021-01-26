@@ -1,0 +1,22 @@
+1/26/21 
+    
+    create a orders show page which allows users to update the quantity of products ordered 
+        click the link, routes you to a new route "/order/${orderID}"
+        only accessible if you are logged in and if there are orders 
+        the controller action behind pulling orders only pulls orders from the current user 
+        shows the order details 
+        shows shipping address
+        shows payment info 
+        should be able to update multiple areas 
+        start with just creating the route and the component 
+
+    create a search bar 
+
+    create a footer 
+
+    http://localhost:3000/#/checkout - make it so the product details doesn't show up when the cart is empty 
+
+
+    seed more 
+
+    decide on whether to include the header and footer during checkout 

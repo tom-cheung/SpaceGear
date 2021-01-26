@@ -36,7 +36,7 @@ class UserShow extends React.Component {
                             {this.props.orders.map((order) => {
                                 return (
                                     <div key={order.id}>
-                                        <h1 className="order-ref">Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</h1> 
+                                        <Link id="order-show-page" to={`/order/${order.id}`}><h1 className="order-ref">Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</h1></Link> 
                                         <button className="order-cancel-button" onClick={() => this.props.deleteOrder(order.id)}>Cancel Order</button> 
                                     </div>
                                 )})}

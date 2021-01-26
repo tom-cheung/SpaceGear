@@ -23,6 +23,7 @@ export const editOrder = (order, products) => {
 }
 // needs to be an ARRAY of objects
 // 12/16/2020 - both work 
+// window.editOrder({id: 58}, [{id: 86, quantity: 1}])
 
 export const deleteOrder = (orderId) => {
     return $.ajax({

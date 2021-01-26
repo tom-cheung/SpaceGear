@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+
 
 const OrderItemDetails = ({item}) => {
 
-    console.log(item)
+    // console.log(item)
     return(
         <div className="item-details-container">
             <img className="item-img" src={window.productImages[item.product.img_name]} alt="" width="70" height="70"/>
