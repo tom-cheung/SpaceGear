@@ -10,7 +10,7 @@ import { ShowRoute } from '../util/user_show_util';
 import SplashContainer from './splash/splash_container';
 import RegistrationFormContainer from './session_form/registration_form_container';
 import LoginFormContainer from './session_form/login_form_container';
-import UserShowContainer from './session_form/user_show_container';
+import UserShowContainer from './user_profile/user_show_container';
 import HeaderContainer from './header/header_container';
 import ProductCategoryContainer from './product/product_category_container';
 import ProductTypeContainer from './product/product_type_container';
