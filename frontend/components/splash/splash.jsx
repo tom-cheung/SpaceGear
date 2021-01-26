@@ -1,5 +1,5 @@
 import React from 'react'
-// import Header from '../header/header'
+import Header from '../header/header'
 import { Link } from 'react-router-dom'
 // import SplashProductItems from './splash_product_items'
 

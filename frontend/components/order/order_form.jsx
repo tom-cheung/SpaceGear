@@ -68,7 +68,15 @@ class OrderForm extends React.Component {
                     <div className="form-logo-container">
                         <Link to="/" className="order-form-logo">SpaceGear</Link>
                     </div>
-                    
+
+                    <div className="address-form">
+                        <form action="">
+                            <label htmlFor="">
+                                
+                            </label>
+                        </form>
+                    </div>
+
 
                     {this.state.total ? <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> : 
                         <button>Your cart is empty! Click here to continue shopping!</button>

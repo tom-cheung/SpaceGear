@@ -11,17 +11,18 @@ import SplashContainer from './splash/splash_container';
 import RegistrationFormContainer from './session_form/registration_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import UserShowContainer from './session_form/user_show_container';
-import HeaderContainer from './header/header_container'
-import ProductCategoryContainer from './product/product_category_container'
-import ProductTypeContainer from './product/product_type_container'
-import ProductShowContainer from './product/product_show_container'
-import ProductIndexContainer from './product/product_index_container'
-import CartContainer from './cart/cart_container'
-import OrderFormContainer from './order/order_form_container'
+import HeaderContainer from './header/header_container';
+import ProductCategoryContainer from './product/product_category_container';
+import ProductTypeContainer from './product/product_type_container';
+import ProductShowContainer from './product/product_show_container';
+import ProductIndexContainer from './product/product_index_container';
+import CartContainer from './cart/cart_container';
+import OrderFormContainer from './order/order_form_container';
+
+
 import OrderShowContainer from './order/order_show_container'
-// test
-import FetchContainer from './fetch/fetch_container'
-// 
+
+
 
 const App = () => {
     return(
@@ -33,7 +34,7 @@ const App = () => {
                 <Route exact path='/products/:categoryName/:categoryId' component={ProductCategoryContainer}/>
                 <Route exact path="/allproducts" component={ProductIndexContainer}/>
                 <Route path='/cart' component={CartContainer}/>
-                <ShowRoute path='/checkout' component={OrderFormContainer}/>
+                <ShowRoute path='/checkout' component={OrderFormContainer}/> 
                 {/* <ShowRoute path='/order/:orderId' component={OrderShowContainer}/> */}
                 <ShowRoute path='/account' component={UserShowContainer}/>
                 <AuthRoute path='/register' component={RegistrationFormContainer}/>   
@@ -54,3 +55,6 @@ export default App;
 when you import a file, it gets run everything this page loads, if you put console logs in there you will see them pop up 
 
 */
+
+// make the checkout component similar to this App, with a switch statement inside of it and the product details like the header 
+//
