@@ -20,3 +20,7 @@
     seed more 
 
     decide on whether to include the header and footer during checkout 
+
+    notes
+
+        orders is being put into the preloaded state 

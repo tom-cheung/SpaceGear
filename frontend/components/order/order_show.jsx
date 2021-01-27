@@ -5,6 +5,11 @@ import OrderedProduct from './ordered_products';
 const OrderShow = (props) => {
     
     const [order, updateOrder] = useState(props.order)
+    const [orderedProducts, updateProducts] = useState([...props.order.ordered_product])
+
+    updateQuantity = (e) => {
+
+    }
 
     return (
 
@@ -13,12 +18,25 @@ const OrderShow = (props) => {
 
          
             {Object.values(props.order).length ? 
+
                     <div className="order-show-container">
                         <h1>Order Number: {order.id}</h1>
                         <h1>Order Total: ${parseFloat(order.total).toFixed(2)}</h1>
                         <h1>Ordered Products:</h1>
-                        {order.ordered_product.map((product, idx) => {
-                            return <OrderedProduct key={product.id} product={product}/>
+                        {orderedProducts.map((details, idx) => {
+                            return <div>
+                                        <OrderedProduct key={details.id} details={details} product={props.products[details.product_id]}/> 
+                                        <button onClick={() => {updateProducts(orderedProducts.filter(product => product.id != details.id) ) }}>Remove Item</button>
+
+                                        <input type="number" onChange={(e) => { updateProducts( orderedProducts.map(product => {
+                                            if(product.id === details.id) {
+                                                product.quantity = parseInt(e.currentTarget.value);
+                                                return product;
+                                            } else {
+                                                return product
+                                            }
+                                        }) ) }}/>
+                                    </div>
                         })}
                         {/* <div>
                             <h1>Order Show and Edit Form</h1>

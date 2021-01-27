@@ -7,18 +7,10 @@ import { Redirect } from 'react-router-dom'
 const mSTP = (state, ownProps) => {
 
     let order = state.entities.orders[ownProps.match.params.orderId];
-    // let orderedProducts; 
-
+    
     return({
         order: order ?  order : {},
-        // order: state.entities.orders[ownProps.match.params.orderId], 
-        // orderedProducts: (state.entities.orders[ownProps.match.params.orderId]).ordered_product.map((detail) => {
-        //     return {
-        //         'id': detail.id,
-        //         'quantity': detail.quantity, 
-        //         'product': state.entities.products[detail.product_id]
-        //     }
-        // })
+        products: state.entities.products, 
     })
 }
 
