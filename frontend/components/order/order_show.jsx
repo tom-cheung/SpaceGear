@@ -47,8 +47,18 @@ const OrderShow = (props) => {
                 newTotal += (order.quantity * parseInt(props.products[order.product_id].price))
             })
             updateTotal(newTotal)
+
+            updateOrder(Object.assign({}, order, {total: newTotal}))
         }
     }
+
+    const submitUpdate = () => {
+        console.log('hi')
+        console.log(order)
+        console.log(orderedProducts)
+        props.editOrder(order, orderedProducts)
+    }
+
 
     return (
         <div>
@@ -58,6 +68,9 @@ const OrderShow = (props) => {
             {Object.values(props.order).length ? 
 
                     <div className="order-show-container">
+
+                        
+
                         <h1>Order Number: {order.id}</h1>
                         <h1>Order Total: ${parseFloat(total).toFixed(2)}</h1>
                         <h1>Ordered Products:</h1>
@@ -71,7 +84,8 @@ const OrderShow = (props) => {
                                     </div>
                         })}
 
-                        <button>Update Order</button>
+
+                        <button onClick={() => submitUpdate()}>Update Order</button>
 
                     </div>   
                     

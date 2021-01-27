@@ -16,7 +16,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = (dispatch) => {
     return({
-        editOrder: (order, products) => dispatch(editOrder()), 
+        editOrder: (order, products) => dispatch(editOrder(order, products)), 
         deleteOrder: (orderId) => dispatch(deleteOrder(orderId))
     })
 }
