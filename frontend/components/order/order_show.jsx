@@ -5,7 +5,7 @@ import OrderedProduct from './ordered_products';
 const OrderShow = (props) => {
     
     const [order, updateOrder] = useState(Object.assign({}, props.order))
-    const [orderedProducts, updateProducts] = useState([...props.order.ordered_product])
+    const [orderedProducts, updateProducts] = useState([...props.orderedProducts])
     const [total, updateTotal] = useState(props.order.total)
 
     useEffect(() => {
@@ -53,50 +53,58 @@ const OrderShow = (props) => {
     }
 
     const submitUpdate = () => {
-        console.log('hi')
-        console.log(order)
-        console.log(orderedProducts)
         props.editOrder(order, orderedProducts)
     }
 
+    // const redirect = () => (
+    //     setTimeout(() => {return <Redirect to="/"/>}, 3000)
+    // )
+
 
     return (
-        <div>
-            
-            {console.log(orderedProducts)}
-         
-            {Object.values(props.order).length ? 
 
+        <div className="order-summary-container">
+
+            {Object.values(props.order).length ? 
                     <div className="order-show-container">
 
-                        
+                        <div className="order-address-payment">
+                            <div>
+                                Address
+                            </div>
 
-                        <h1>Order Number: {order.id}</h1>
-                        <h1>Order Total: ${parseFloat(total).toFixed(2)}</h1>
-                        <h1>Ordered Products:</h1>
+                            <div>
+                                Payment
+                            </div>
 
-                        {orderedProducts.map((details) => {
-                            return <div>
-                                        <OrderedProduct key={details.id} details={details} product={props.products[details.product_id]}/> 
-                                        <input type="number" onChange={(e) => updateQuantity(e, details.id)} placeholder={details.quantity} min='0'/>
-                                        {/* <button onClick={() => {updateProducts(orderedProducts.filter(product => product.id != details.id) ) }}>Remove Item</button> */}
-                                        <button onClick={() => removeItem(details.id)}>Remove Item</button>
-                                    </div>
-                        })}
+                            <Link to="/account"><button onClick={() => submitUpdate()}>Update Order</button></Link>
+                        </div>
 
+                        <div className="ordered-products-container">
+                            
+                            <h1>Order Number: {order.id}</h1>
+                            <h1>Order Total: ${parseFloat(total).toFixed(2)}</h1>
+                            <h1>Ordered Products:</h1>
 
-                        <button onClick={() => submitUpdate()}>Update Order</button>
+                            {orderedProducts.map((details) => {
+                                return <div>
 
-                    </div>   
-                    
-                                    
+                                            <OrderedProduct key={details.id} details={details} product={props.products[details.product_id]}/> 
+                                            
+                                            <div className="order-input-fields">
+                                                <input type="number" onChange={(e) => updateQuantity(e, details.id)} placeholder={details.quantity} min='0'/>
+                                                <button onClick={() => removeItem(details.id)}>Remove Item</button>
+                                            </div>
+                                        </div>
+                            })}
+                        </div>
+
+                    </div>                  
                 : 
-                
-                <div>
-                    <div>No Order Found </div> 
-                    {/* {redirect()};  */}
-                </div>
-
+                    <div className="no-exiting-orders">
+                        <div>No Order Found </div> 
+                        {/* {redirect()} */}
+                    </div>
                 }
         </div>
     )

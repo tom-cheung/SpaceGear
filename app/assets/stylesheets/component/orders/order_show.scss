@@ -1,0 +1,49 @@
+.order-summary-container {
+    border: 1px solid red; 
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75vw;
+}
+
+.order-show-container {
+    border: 1px solid purple;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.ordered-products-container {
+    border: 1px solid yellow;
+    // display: inline-block;
+    min-width: 50%;
+
+    .order-input-fields {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+.order-address-payment {
+    border: 1px solid blue;
+    text-align: center;
+    min-width: 50%;
+    
+}
+
+.order-product-details {
+    border: 1px solid green;
+    display: flex; 
+    justify-content: space-between;
+
+    .order-product-img {
+        min-width: 50%;
+    }
+
+    .order-product-text {
+        border: 1px solid pink;
+        align-items: center;
+        min-width: 50%;
+    }
+}

@@ -10,6 +10,7 @@ const mSTP = (state, ownProps) => {
     
     return({
         order: order ?  order : {},
+        orderedProducts: order ? order.ordered_product : [],
         products: state.entities.products, 
     })
 }
