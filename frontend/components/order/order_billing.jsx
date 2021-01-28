@@ -70,11 +70,7 @@ class OrderForm extends React.Component {
                     </div>
 
                     <div className="address-form">
-                        <form action="">
-                            <label htmlFor="">
-                                
-                            </label>
-                        </form>
+                        
                     </div>
 
 

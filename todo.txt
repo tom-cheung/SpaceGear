@@ -1,3 +1,17 @@
+1/27/21
+
+    Checkout page
+    
+    Have form for the address
+
+    Have form for the payment 
+
+    On submission of the order it posts the address, posts the payment, and finally posts the order
+
+    use async and await 
+
+    save the address and payments regardless, since you're already having the user login to checkout 
+
 1/26/21 
     
     create a orders show page which allows users to update the quantity of products ordered 
@@ -10,17 +24,21 @@
         should be able to update multiple areas 
         start with just creating the route and the component 
 
+    notes
+
+        orders is being put into the preloaded state 
+
+
+To Do 
+
+    http://localhost:3000/#/checkout - make it so the product details doesn't show up when the cart is empty 
+
+    seed more 
+
     create a search bar 
 
     create a footer 
 
-    http://localhost:3000/#/checkout - make it so the product details doesn't show up when the cart is empty 
+DECISIONS 
 
-
-    seed more 
-
-    decide on whether to include the header and footer during checkout 
-
-    notes
-
-        orders is being put into the preloaded state 
+    Include the header and footer during checkout for now 
