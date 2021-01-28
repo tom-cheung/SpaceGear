@@ -17,5 +17,9 @@
 #  updated_at  :datetime         not null
 #
 class Contact < ApplicationRecord
-    
+    validates :first_name, :last_name, :address_one, :city, :country, :state, :zipcode, :phone, :user_id, presence: true
+
+    belongs_to :user, 
+        foreign_key: :user_id, 
+        class_name: :User
 end
