@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store'
 
 // testing 
-import { createOrder, editOrder } from './util/order_util'
+import { createContact, editContact, deleteContact, retrieveContact } from './util/contact_util'
 // import {deleteOrder} from './actions/order_actions'
 // testing 
 
@@ -41,8 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
       // testing 
-      window.store = store;
-      window.editOrder = editOrder;  
+      window.store = store; 
+      window.createContact = createContact; 
+      window.editContact = editContact; 
+      window.deleteContact = deleteContact;
+      window.retrieveContact = retrieveContact;
       // testing 
   
     ReactDOM.render(<Root store={store}/>, root); 
