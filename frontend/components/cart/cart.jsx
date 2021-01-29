@@ -149,7 +149,7 @@ class Cart extends React.Component {
                         <label htmlFor="">TOTAL:</label>
                         <h2 id="cart-order-total">${parseFloat(this.state.total).toFixed(2)}</h2>
                         {/* <p id="cart-shipping-message">Shipping & taxes calculated at checkout</p> */}
-                        <Link to="/checkout"><button id="cart-checkout-button">CHECKOUT</button></Link>
+                        <Link to="/checkout/contact"><button id="cart-checkout-button">CHECKOUT</button></Link>
                     </div>
                 : null
                 }

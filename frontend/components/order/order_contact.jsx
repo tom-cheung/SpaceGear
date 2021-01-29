@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import OrderItemDetails from './order_item_details'
 
-class OrderForm extends React.Component {
+class OrderContactForm extends React.Component {
     constructor(props) {
         super(props)
 
@@ -69,12 +69,69 @@ class OrderForm extends React.Component {
                         <Link to="/" className="order-form-logo">SpaceGear</Link>
                     </div>
 
-                    <div className="address-form">
-                        
+                    
+
+
+                    {this.state.total ? 
+                    
+                    <div className="order-contact-container"> 
+                        <div className="address-form">
+                            <form action="">
+                                <div className="contact-name">
+                                    <label htmlFor="">First name
+                                        <input type="text"/>
+                                    </label>
+                                    <label htmlFor="">Last name
+                                        <input type="text"/>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="">Address
+                                        <input type="text"/>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="">Apartment, suite, etc. (optional)
+                                        <input type="text"/>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="">City
+                                        <input type="text"/>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="">Country/Region
+                                        <select name="" id="">
+
+                                        </select>
+                                    </label>
+                                    <label htmlFor="">State
+                                        <input type="text"/>
+                                    </label>
+                                    <label htmlFor="">ZIP code
+                                        <input type="text"/>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="">Phone
+                                        <input type="tel"/>
+                                    </label>
+                                </div>
+
+                                <button>Continue to Shipping</button>
+
+                            </form>
+                        </div>
+                    
+                    <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link> 
                     </div>
-
-
-                    {this.state.total ? <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> : 
+                    : 
                         <button>Your cart is empty! Click here to continue shopping!</button>
                     }
                 </div> 
@@ -116,7 +173,7 @@ class OrderForm extends React.Component {
     }
 }
 
-export default OrderForm; 
+export default OrderContactForm; 
 
 /*
 

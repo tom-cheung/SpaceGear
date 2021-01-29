@@ -18,7 +18,7 @@ import ProductShowContainer from './product/product_show_container';
 import ProductIndexContainer from './product/product_index_container';
 import CartContainer from './cart/cart_container';
 import OrderFormContainer from './order/order_form_container';
-
+import OrderContactForm from './order/order_contact_container'
 
 import OrderShowContainer from './order/order_show_container'
 
@@ -35,7 +35,7 @@ const App = () => {
                 <Route exact path='/products/:categoryName/:categoryId' component={ProductCategoryContainer}/>
                 <Route exact path="/allproducts" component={ProductIndexContainer}/>
                 <Route path='/cart' component={CartContainer}/>
-                <ShowRoute path='/checkout' component={OrderFormContainer}/> 
+                <ShowRoute path='/checkout/contact' component={OrderContactForm}/> 
                 <ShowRoute path='/order/:orderId' component={OrderShowContainer}/>
                 <ShowRoute path='/account' component={UserShowContainer}/>
                 <AuthRoute path='/register' component={RegistrationFormContainer}/>   
