@@ -60,30 +60,72 @@ class OrderContactForm extends React.Component {
         return total
     }
 
+    inputText(e, id) {
+        console.log(id)
+        let label = document.getElementById(id)
+        if(e.target.value === "") {
+            label.classList.remove("filled_label")
+        } else {
+            label.classList.add("filled_label")
+        }
+    }
+
     render() {
         return(
             <div className="order-form-container">  
 
                 <div className="order-form">
+
                     <div className="form-logo-container">
                         <Link to="/" className="order-form-logo">SpaceGear</Link>
                     </div>
 
                     
-
-
                     {this.state.total ? 
                     
                     <div className="order-contact-container"> 
-                        <div className="address-form">
+            
                             <form action="">
-                                <div className="contact-name">
-                                    <label htmlFor="">First name
-                                        <input type="text"/>
-                                    </label>
-                                    <label htmlFor="">Last name
-                                        <input type="text"/>
-                                    </label>
+
+                                <div className="order-name-container">
+                                    <div className='field'>
+                                        <label id="first-name" htmlFor="">First Name</label>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'first-name')} required/>
+                                    </div>
+
+
+                                    <div className='field'>
+                                        <label id="last-name">Last Name</label>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'last-name')} required/>
+                                    </div>
+                                </div>
+
+                                <div className="order-address-one">
+                               
+                                        <label htmlFor="">Address</label>
+                                        <input type="text" required/>
+                                
+                                </div> 
+
+                                <div className="order-address-two">
+
+                                    <label htmlFor="">Apartment, suite, etc. (optional)</label>
+                                    <input type="text" required/>
+                                    
+                                </div>
+
+                                <div className="order-city">
+
+                                </div>
+
+
+
+                                {/* <div className="contact-name">
+                        
+                                    <input type="text" className="contact-input" required placeholder="first name"/>        
+                                
+                                    <input type="text" className="contact-input" required placeholder="last name"/>
+                                      
                                 </div>
 
                                 <div>
@@ -124,12 +166,13 @@ class OrderContactForm extends React.Component {
                                     </label>
                                 </div>
 
-                                <button>Continue to Shipping</button>
+                                <button>Continue to Shipping</button> */}
 
                             </form>
-                        </div>
+                        
+                            <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link> 
+                
                     
-                    <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link> 
                     </div>
                     : 
                         <button>Your cart is empty! Click here to continue shopping!</button>

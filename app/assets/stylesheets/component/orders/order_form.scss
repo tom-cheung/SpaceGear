@@ -1,42 +1,177 @@
+// order_contact.jsx
 .order-form-container {
     display: flex;
-    // justify-content: space-between;
     min-height: 100vh;
-    min-width: 100vw;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid red; 
-    text-align: center;
 
     * {
         font-family: 'Noto Sans', sans-serif;
     }
 
+    // order_contact.jsx
     .order-form {
-        // border: 2px solid yellow;
-        min-width: 700px;
-        // margin-left: 50px;
+        min-width: 50%;
         padding-top: 50px;
         text-align: center;
+        border: 1px solid blue;
+
+        // .form-logo-container {
+            // text-align: center;
+            // box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
+        // }
+
+        .order-form-logo {
+            font-size: 24px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .order-contact-container {
+            border: 1px solid pink;
+            max-width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+
+            form {
+
+                .order-name-container {
+                    display: flex; 
+
+                    .field {
+                        width: 95%;
+                    }
+
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    input, 
+                    label {
+                        position: relative;
+                        display: inline-block;
+                        width: 95%;
+                        text-align: left;
+                    }
+                
+                    label {
+                        display: inline-block;
+                        margin: 0 auto;
+                        padding: 0 0 5px 0;
+                        top: 40px; 
+                        z-index: 1;
+                        transition: all 0.5s ease-in-out;
+                    }
+                
+                    input[type="text"] {
+                        font-size: 1.25em;
+                        padding: 10px 0 10px 0;
+                        // margin-bottom: 0.5em;
+                        z-index: 10;
+                        background: transparent;
+                    }
+                
+                    .filled_label {
+                        top: 18px; 
+                        font-size: 0.7em;
+                        min-width: 90%;
+                    }
+                }
+
+                .order-address-one {
+                    width: 95%;
+                    border: 1px solid yellow;
+
+                    input, 
+                    label {
+                        position: relative;
+                        display: inline-block;
+                        width: 100%;
+                        text-align: left;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    label {
+                        display: inline-block;
+                        margin: 0 auto;
+                        padding: 0 0 5px 0;
+                        top: 40px; 
+                        z-index: 1;
+                        transition: all 0.5s ease-in-out;
+                    }
+                
+                    input[type="text"] {
+                        font-size: 1.25em;
+                        padding: 10px 0 10px 0;
+                        // margin-bottom: 0.5em;
+                        z-index: 10;
+                        background: transparent;
+                    }
+                
+                    .filled_label {
+                        top: 18px; 
+                        font-size: 0.7em;
+                        min-width: 90%;
+                    }
+
+                }
+            }
+
+
+
+            // test
+
+            // .contact-name {
+            //     display: flex;
+            //     justify-content: space-between;
+            
+
+            //     .contact-test {
+            //         // border: 1px solid purple;
+            //         position: static;
+            //         width: 50%;
+            //         text-align: left;
+
+            //         input:focus ~ .floating-label, 
+            //         input:not(:focus):valid ~ .floating-label {
+            //             // top: 180px;
+            //             // bottom: 10px; 
+            //             // left: 200px; 
+            //             // font-size: 11px; 
+            //             // opacity: 1; 
+            //         } 
+
+            //         .contact-input {
+            //             font-size: 14px; 
+            //             width: 80%; 
+            //             height: 100%;
+            //         }
+
+            //         .floating-first-name {
+            //             position: absolute; 
+            //             pointer-events: none;
+            //             color: red;
+            //             left: 12%;
+            //             top: 27%;
+            //         }
+
+            //     }
+            // }
+
+            .order-form-button {
+                margin-top: 100px;
+                font-size: 24px;
+                color: white;
+                background-color: black;
+            }
+
+        }
     }
 
-    .form-logo-container {
-        text-align: center;
-        box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
-    }
-    .order-form-logo {
-        font-size: 24px;
-        text-decoration: none;
-        color: black;
-    }
-
-    .order-form-button {
-        margin-top: 100px;
-        font-size: 24px;
-        color: white;
-        background-color: black;
-    }
-
+    
+    
+    // order_contact.jsx 
     .items-info {
         display: flex;
         flex-direction: column;
@@ -44,98 +179,102 @@
         background-color: whitesmoke;
         border-bottom: 1px solid lightgrey;
         padding-top: 50px;
-    }
-
-    .item-details-container {
-        display: flex;
-        justify-content: space-between;
-
-        min-width: 400px;
-        max-width: 600px;
-        max-height: 70px;
-        background-color: whitesmoke;
-        margin-left: 30px;
-        margin-bottom: 10px;
-
-
-        .item-img {
-            border-radius: 10%;
-            border: 1px solid grey;
-        }
-
-        .item-details {
+        border: 1px solid yellow;
+    
+    // order_item_details.jsx
+        .item-details-container {
             display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            text-align: left;
-        }
+            justify-content: space-between;
 
-        .price-details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-    }
-
-    .floating-quantity {
-        position: absolute;
-        background-color: grey;
-        border-radius: 50%;
-        padding: 5px;
-        margin-left: 60px;
-    }
-
-    .price-info {
-        border-top: 1px solid lightgrey;
-        min-width: 400px;
-        max-width: 600px;
-        margin-left: 30px;
-    }
-
-    .promo {
-        min-width: 400px;
-        max-width: 600px;
-
-        input {
-            border-radius: 3%;
-            min-width: 450px;
-            margin-right: 10px;
-            min-height: 40px;
-            margin-top: 10px;
+            min-width: 400px;
+            max-width: 600px;
+            max-height: 70px;
+            background-color: whitesmoke;
+            margin-left: 30px;
             margin-bottom: 10px;
+
+
+            .item-img {
+                border-radius: 10%;
+                border: 1px solid grey;
+            }
+
+            .item-details {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                text-align: left;
+            }
+
+            .floating-quantity {
+                position: absolute;
+                background-color: grey;
+                border-radius: 50%;
+                padding: 5px;
+                margin-left: 60px;
+            }
+
+            .price-details {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
         }
 
-        button {
-            padding: 10px;
-            color: white;
-            background-color: lightgrey;
-            border-radius: 3%;
-        }
-    }
 
-    .shipping {
-        display: flex;
-        justify-content: space-between;
-        border-top: 1px solid lightgrey;
-        margin-top: 10px;
-        
-        p {
+
+        .price-info {
+            border-top: 1px solid lightgrey;
+            min-width: 400px;
+            max-width: 600px;
+            margin-left: 30px;
+        }
+
+        .promo {
+            min-width: 400px;
+            max-width: 600px;
+
+            input {
+                border-radius: 3%;
+                min-width: 450px;
+                margin-right: 10px;
+                min-height: 40px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                padding: 10px;
+                color: white;
+                background-color: lightgrey;
+                border-radius: 3%;
+            }
+        }
+
+        .shipping {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid lightgrey;
+            margin-top: 10px;
+
+            p {
+                margin-top: 10px;
+            }
+        }
+
+        .tax {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
             margin-top: 10px;
         }
-    }
 
-    .tax {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
-
-    .price-details { 
-        border-top: 1px solid lightgrey;
-        display: flex;
-        justify-content: space-between;
-        padding-top: 10px;
+        .price-details { 
+            border-top: 1px solid lightgrey;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
     }
 }
