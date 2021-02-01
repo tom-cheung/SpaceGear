@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import OrderItemDetails from './order_item_details';
-import CountryList from './order_country';
+import CountryList from './order_contact_countries';
 
 class OrderContactForm extends React.Component {
     constructor(props) {
@@ -18,7 +18,8 @@ class OrderContactForm extends React.Component {
             state: "AL", 
             zipcode: "", 
             phone: "", 
-            user_id: ""
+            user_id: "",
+            save: false,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,6 +28,10 @@ class OrderContactForm extends React.Component {
     componentDidMount() {
         this.props.currentUser ? this.setState({'user_id': this.props.currentUser[0]}) : null;
         this.total(); 
+    }
+
+    componentWillUnmount() {
+        this.props.removeContactError();
     }
 
     cartItems() {
@@ -89,21 +94,33 @@ class OrderContactForm extends React.Component {
         this.setState({state: state})
     }
 
+    saveContact(e) {
+        console.log(e.target.checked)
+        if(e.target.checked === true) {
+            this.setState({save: true})
+        } else {
+            this.setState({save: false})
+        }
+    }
+
     render() {
-        {console.log(this.state)}
+       
         return(
             <div className="order-form-container">  
 
                 <div className="order-form">
-
-                    <div className="form-logo-container">
-                        <Link to="/" className="order-form-logo">SpaceGear</Link>
-                    </div>
-
                     
                     {this.state.total ? 
                     
                     <div className="order-contact-container"> 
+
+                        <div className="form-logo-container">
+                            <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                        </div>
+
+                        <h1>Contact Information</h1>
+
+
             
                             {/* <form action="" onSubmit={(e) => this.handleSubmit(e)}> */}
 
@@ -480,10 +497,21 @@ class OrderContactForm extends React.Component {
                                     </div>
                                 </div>
 
-                                <Link to="/cart">Return to cart</Link>
-                                {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link>  */}
-                                <button onClick={this.handleSubmit}>Continue to Shipping</button>
-                                <button>test button</button>
+                                <div className="order-save-contact">
+                                    <input type="checkbox" onChange={(e) => this.saveContact(e)}/>
+                                    <label htmlFor="">Save this information for next time</label>
+                                </div>
+
+                                <div className="order-contact-buttons">    
+                                    <div className="order-cart-button">
+                                        <Link className="order-redirect-cart" to="/cart"><span className="cart-arrow">&#60;</span> Return to cart</Link>
+                                    </div>
+                        
+                                    <button className="order-form-button" onClick={this.handleSubmit}>Continue to Shipping</button>
+                                
+                                    {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link>  */}
+                                </div>
+
                             {/* </form> */}
 
                             <div>
