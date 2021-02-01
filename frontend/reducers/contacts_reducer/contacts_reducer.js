@@ -5,6 +5,7 @@ const contactReducer = (oldState = {}, action) => {
     let nextState = Object.assign({}, oldState)
     switch (action.type) {
         case RECEIVE_CONTACT:
+            // console.log(action)
             let contact_ids = Object.keys(action.contacts)
             contact_ids.forEach(key => {
                 nextState[key] = action.contacts[key]

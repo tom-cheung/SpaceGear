@@ -9,6 +9,10 @@
         font-family: 'Noto Sans', sans-serif;
     }
 
+    .contact-error {
+        color: red;
+    }
+
     // order_contact.jsx
     .order-form {
         min-width: 50%;
@@ -132,7 +136,7 @@
 
                 .order-address-one {
                     // border: 2px solid blue;
-
+                    text-align: left;
                     input, 
                     label {
                         position: relative;
@@ -210,7 +214,7 @@
                 }
 
                 .order-city {
-
+                    text-align: left;
 
                     input, 
                     label {
@@ -250,7 +254,8 @@
                 }
 
                 .order-phone {
-
+                    text-align: left;
+                    
                     input, 
                     label {
                         position: relative;

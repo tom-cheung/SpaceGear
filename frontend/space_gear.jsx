@@ -6,6 +6,7 @@ import configureStore from './store/store'
 // testing 
 import { } from './util/contact_util';
 import {createContact, retrieveContact, editContact, deleteContact } from './actions/contact_actions';
+// import {createContact} from './util/contact_util';
 // testing 
 
 
@@ -42,10 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // testing 
       window.store = store; 
-      window.editContact = editContact; 
-      window.deleteContact = deleteContact;
-      window.retrieveContact = retrieveContact;
-      window.createContact = createContact; 
+      window.createContact = createContact
+      // window.editContact = editContact; 
+      // window.deleteContact = deleteContact;
+      // window.retrieveContact = retrieveContact;
+      // window.createContact = createContact; 
       // testing 
   
     ReactDOM.render(<Root store={store}/>, root); 

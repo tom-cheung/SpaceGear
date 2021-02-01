@@ -8,15 +8,24 @@ class OrderContactForm extends React.Component {
         super(props)
 
         this.state = {
-            purchaser_id: null,
             total: null, 
+            first_name: "", 
+            last_name: "", 
+            address_one: "",
+            address_two: "", 
+            city: "", 
+            country: "United States",  
+            state: "AL", 
+            zipcode: "", 
+            phone: "", 
+            user_id: ""
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        this.props.currentUser ? this.setState({'purchaser_id': this.props.currentUser[0]}) : null;
+        this.props.currentUser ? this.setState({'user_id': this.props.currentUser[0]}) : null;
         this.total(); 
     }
 
@@ -49,9 +58,10 @@ class OrderContactForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault;
-        this.props.createOrder(this.state, this.orderedProducts())
-        window.localStorage.clear(); // clears the cart after checkout 
+        e.preventDefault();
+        this.props.createContact(this.state)
+        // this.props.createOrder(this.state, this.orderedProducts())
+        // window.localStorage.clear(); // clears the cart after checkout 
     }
 
 
@@ -68,17 +78,19 @@ class OrderContactForm extends React.Component {
         } else {
             label.classList.add("filled_label")
         }
+        this.setState({[id]: e.target.value})
     }
 
     selectCountry(e, country) {
-
+        this.setState({country: country})
     }
 
-    selectState(e, country) {
-
+    selectState(e, state) {
+        this.setState({state: state})
     }
 
     render() {
+        {console.log(this.state)}
         return(
             <div className="order-form-container">  
 
@@ -93,21 +105,23 @@ class OrderContactForm extends React.Component {
                     
                     <div className="order-contact-container"> 
             
-                            {/* <form action=""> */}
+                            {/* <form action="" onSubmit={(e) => this.handleSubmit(e)}> */}
 
                                 <div className="order-name">
                                
                                         <div className='field-first-name'>
-                                            <label id="first-name" htmlFor="">First Name</label>
-                                            <input type="text" onChange={(e) => this.inputText(e, 'first-name')} required/>
+                                            <label id="first_name" htmlFor="">First Name</label>
+                                            <input type="text" onChange={(e) => this.inputText(e, 'first_name')} required/>
+                                            <span className="contact-error">{this.props.contactErrors.first ? this.props.contactErrors.first : null}</span>
                                         </div>
 
 
                                         <div className="field-last-name">
                                             <div className="last-name-container">
                                                 <div className="last-name-align">
-                                                    <label id="last-name">Last Name</label>
-                                                    <input type="text" onChange={(e) => this.inputText(e, 'last-name')} required/>
+                                                    <label id="last_name">Last Name</label>
+                                                    <input type="text" onChange={(e) => this.inputText(e, 'last_name')} required/>
+                                                    <span className="contact-error">{this.props.contactErrors.last ? this.props.contactErrors.last : null}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,15 +130,16 @@ class OrderContactForm extends React.Component {
 
                                 <div className="order-address-one">
                                     <div className="field">
-                                        <label id="address-one">Address</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'address-one')} required/>
+                                        <label id="address_one">Address</label>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'address_one')} required/>
+                                        <span className="contact-error">{this.props.contactErrors.address ? "Address can't be blank" : null}</span>
                                     </div>
                                 </div> 
 
                                 <div className="order-address-two">
                                     <div className="field">
-                                        <label id="address-two">Apartment, suite, etc. (optional)</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'address-two')} required/>
+                                        <label id="address_two">Apartment, suite, etc. (optional)</label>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'address_two')}/>
                                     </div>
                                 </div>
 
@@ -132,14 +147,15 @@ class OrderContactForm extends React.Component {
                                     <div className="field">
                                         <label id="city">City</label>
                                         <input type="text" onChange={(e) => this.inputText(e, 'city')} required/>
+                                        <span className="contact-error">{this.props.contactErrors.city ? this.props.contactErrors.city : null}</span>
                                     </div>
                                 </div>
 
                                 <div className="order-country-state-zipcode">
                                     <div className="order-country">
                                         <label>Country/Region</label>
-                                        <select name="" id="" onChange={(e) => this.selectCountry(e, e.target.value) }>
-                                            <option value="United States" defaultValue>United States</option>
+                                        <select name="" id="" onChange={(e) => this.selectCountry(e, e.target.value)}>
+                                            <option value="United States">United States</option>
                                             <option value="Canada">Canada</option>
                                             <option value="United Kingdom">United Kingdom</option>
                                             <option value="Germany">Germany</option>
@@ -386,7 +402,7 @@ class OrderContactForm extends React.Component {
 
                                         <div className="order-state">
                                             <label htmlFor="">State</label>
-                                            <select name="" id="" onChange={(e) => this.selectState(e, e.target.value) }>
+                                            <select name="" id="" onChange={(e) => this.selectState(e, e.target.value)}>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AK">Alaska</option>
                                                 <option value="AZ">Arizona</option>
@@ -448,7 +464,8 @@ class OrderContactForm extends React.Component {
                                         <div className="order-zipcode">
                                             <div className="field">
                                                 <label id="zipcode">Zipcode</label>
-                                                <input type="text" onChange={(e) => this.inputText(e, 'zipcode')} required/>
+                                                <input type="text" onChange={(e) => this.inputText(e, 'zipcode')}  required/>
+                                                <span className="contact-error">{this.props.contactErrors.zipcode ? this.props.contactErrors.zipcode : null}</span>
                                             </div>
                                         </div>
                                     {/* </div> */}
@@ -459,14 +476,18 @@ class OrderContactForm extends React.Component {
                                     <div className="field">
                                         <label id="phone">Phone</label>
                                         <input type="text" onChange={(e) => this.inputText(e, 'phone')} required/>
+                                        <span className="contact-error">{this.props.contactErrors.phone ? this.props.contactErrors.phone : null}</span>
                                     </div>
                                 </div>
 
+                                <Link to="/cart">Return to cart</Link>
+                                {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link>  */}
+                                <button onClick={this.handleSubmit}>Continue to Shipping</button>
+                                <button>test button</button>
                             {/* </form> */}
 
                             <div>
-                            <Link to="/cart">Return to cart</Link>
-                            <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link> 
+                            {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link>  */}
                             </div>
                         
                 
