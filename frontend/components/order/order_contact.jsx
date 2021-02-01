@@ -74,6 +74,10 @@ class OrderContactForm extends React.Component {
 
     }
 
+    selectState(e, country) {
+
+    }
+
     render() {
         return(
             <div className="order-form-container">  
@@ -89,21 +93,25 @@ class OrderContactForm extends React.Component {
                     
                     <div className="order-contact-container"> 
             
-                            <form action="">
+                            {/* <form action=""> */}
 
                                 <div className="order-name">
-                                    <div className="order-name-container">
-                                        <div className='field'>
+                               
+                                        <div className='field-first-name'>
                                             <label id="first-name" htmlFor="">First Name</label>
                                             <input type="text" onChange={(e) => this.inputText(e, 'first-name')} required/>
                                         </div>
 
 
-                                        <div className='field'>
-                                            <label id="last-name">Last Name</label>
-                                            <input type="text" onChange={(e) => this.inputText(e, 'last-name')} required/>
+                                        <div className="field-last-name">
+                                            <div className="last-name-container">
+                                                <div className="last-name-align">
+                                                    <label id="last-name">Last Name</label>
+                                                    <input type="text" onChange={(e) => this.inputText(e, 'last-name')} required/>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+        
                                 </div>
 
                                 <div className="order-address-one">
@@ -376,13 +384,74 @@ class OrderContactForm extends React.Component {
                                         </select>
                                     </div>
 
-                                    <div>
-                                        state
-                                    </div>
+                                        <div className="order-state">
+                                            <label htmlFor="">State</label>
+                                            <select name="" id="" onChange={(e) => this.selectState(e, e.target.value) }>
+                                                <option value="AL">Alabama</option>
+                                                <option value="AK">Alaska</option>
+                                                <option value="AZ">Arizona</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="CA">California</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="DC">District Of Columbia</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="HI">Hawaii</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">Massachusetts</option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">Mississippi</option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="NH">New Hampshire</option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">North Carolina</option>
+                                                <option value="ND">North Dakota</option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="PA">Pennsylvania</option>
+                                                <option value="RI">Rhode Island</option>
+                                                <option value="SC">South Carolina</option>
+                                                <option value="SD">South Dakota</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="TX">Texas</option>
+                                                <option value="UT">Utah</option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WA">Washington</option>
+                                                <option value="WV">West Virginia</option>
+                                                <option value="WI">Wisconsin</option>
+                                                <option value="WY">Wyoming</option>
+                                                <option value="AFA">Armed Forces America</option>
+                                                <option value="AFE">Armed Forces Europe</option>
+                                                <option value="AFP">Armed Forces Pacific</option>
+                                            </select>
+                                        </div>
 
-                                    <div>
-                                        zipcode
-                                    </div>
+                                    {/* <div> */}
+                                        <div className="order-zipcode">
+                                            <div className="field">
+                                                <label id="zipcode">Zipcode</label>
+                                                <input type="text" onChange={(e) => this.inputText(e, 'zipcode')} required/>
+                                            </div>
+                                        </div>
+                                    {/* </div> */}
 
                                 </div>
 
@@ -393,61 +462,13 @@ class OrderContactForm extends React.Component {
                                     </div>
                                 </div>
 
+                            {/* </form> */}
 
-
-
-
-                                {/* <div className="contact-name">
-                        
-                                    <input type="text" className="contact-input" required placeholder="first name"/>        
-                                
-                                    <input type="text" className="contact-input" required placeholder="last name"/>
-                                      
-                                </div>
-
-                                <div>
-                                    <label htmlFor="">Address
-                                        <input type="text"/>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="">Apartment, suite, etc. (optional)
-                                        <input type="text"/>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="">City
-                                        <input type="text"/>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="">Country/Region
-                                        <select name="" id="">
-
-                                        </select>
-                                    </label>
-                                    <label htmlFor="">State
-                                        <input type="text"/>
-                                    </label>
-                                    <label htmlFor="">ZIP code
-                                        <input type="text"/>
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="">Phone
-                                        <input type="tel"/>
-                                    </label>
-                                </div>
-
-                                <button>Continue to Shipping</button> */}
-
-                            </form>
-                        
+                            <div>
+                            <Link to="/cart">Return to cart</Link>
                             <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link> 
+                            </div>
+                        
                 
                     
                     </div>

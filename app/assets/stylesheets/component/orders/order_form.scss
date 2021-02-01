@@ -4,7 +4,6 @@
     min-height: 100vh;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid red; 
 
     * {
         font-family: 'Noto Sans', sans-serif;
@@ -15,12 +14,7 @@
         min-width: 50%;
         padding-top: 50px;
         text-align: center;
-        border: 1px solid blue;
-
-        // .form-logo-container {
-            // text-align: center;
-            // box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
-        // }
+    
 
         .order-form-logo {
             font-size: 24px;
@@ -29,69 +23,121 @@
         }
 
         .order-contact-container {
-            border: 1px solid pink;
             max-width: 75%;
             margin-left: auto;
             margin-right: auto;
 
-            form {
+            // form {
 
                 .order-name {
+                    display: flex;
+                    justify-content: space-between;
 
-                    .field {
+                    .field-first-name {
                         width: 100%;  // keeps the input from changing sizes when typing 
-                        background-color: yellow;
-                    }
+                        text-align: left;
 
-                    .order-name-container, .order-address-one {
-
-                        border: 2px solid red;;
-                
-                        display: flex;
-                        justify-content: space-evenly;
-
-                        
-                        input, 
-                        label {
+                        input {
                             position: relative;
                             display: inline-block;
-                            width: 97%;
-                            text-align: left;
-                        }
-                    
-                        label {
-                            display: inline-block;
-                            margin: 0 auto;
-                            padding: 0 0 5px 0;
-                            top: 40px; 
-                            z-index: 1;
-                            transition: all 0.5s ease-in-out;
-                        }
-                    
-                        input[type="text"] {
-                            font-size: 1.25em;
-                            padding: 10px 0 10px 0;
-                            margin-bottom: 0.5em;
+                            width: 90%;
+                            padding: 12px 0 12px 0;
                             z-index: 10;
                             background: transparent;
-                        }
-                    
-                        .filled_label {
-                            top: 18px; 
-                            font-size: 0.7em;
-                            min-width: 90%;
+                            font-size: 1em;
+                            text-indent: 5px;
                         }
                     }
+
+                    .field-last-name {
+                        width: 100%;
+
+                        .last-name-container {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-end;
+                            width: 100%;
+
+                            .last-name-align {
+                                text-align: left;
+                                width: 90%;
+
+                                input {
+                                    position: relative;
+                                    display: inline-block;
+                                    width: 100%;
+                                    padding: 12px 0 12px 0;
+                                    z-index: 10;
+                                    background: transparent;
+                                    font-size: 1em;
+                                    text-indent: 5px;
+                                }
+                            }
+                        }
+                    }
+
+                    label {
+                        position: relative;
+                        display: inline-block;
+                        top: 30px;
+                        left: 5px;
+                        z-index: 1;
+                        transition: all 0.5s ease-in-out;
+                    }
+
+        
+                    .filled_label {
+                        top: 18px; 
+                        font-size: 0.7em;
+                    }
+
+                    // .order-name-container {
+                        // border: 2px solid red;
+                        // // display: flex;
+                        // // justify-content: space-between;
+                        
+                        // input, 
+                        // label {
+                        //     position: relative;
+                        //     display: inline-block;
+                        //     width: 97%;
+                        //     text-align: left;
+                        // }
+                    
+                        // label {
+                        //     display: inline-block;
+                        //     margin: 0 auto;
+                        //     padding: 0 0 5px 0;
+                        //     // top: 40px; 
+                        //     z-index: 1;
+                        //     transition: all 0.5s ease-in-out;
+                        // }
+                    
+                        // input[type="text"] {
+                        //     display: block;
+                        //     font-size: 1em;
+                        //     padding: 10px 0 10px 0;
+                        //     margin-bottom: 0.5em;
+                        //     z-index: 10;
+                        //     background: transparent;
+                        // }
+                    
+                        // .filled_label {
+                        //     top: 18px; 
+                        //     font-size: 0.7em;
+                        //     min-width: 90%;
+                        // }
+                    // }
                 }
 
                 .order-address-one {
-                    border: 2px solid blue;
+                    // border: 2px solid blue;
 
                     input, 
                     label {
                         position: relative;
                         display: inline-block;
-                        width: 97%;
+                        width: 100%;
                         text-align: left;
                         margin-left: auto;
                         margin-right: auto;
@@ -102,16 +148,18 @@
                         margin: 0 auto;
                         padding: 0 0 5px 0;
                         top: 40px; 
+                        left: 5px;
                         z-index: 1;
                         transition: all 0.5s ease-in-out;
                     }
                 
                     input[type="text"] {
-                        font-size: 1.25em;
-                        padding: 10px 0 10px 0;
-                        margin-bottom: 0.5em;
+                        font-size: 1em;
+                        padding: 12px 0 12px 0;
+                        // margin-bottom: 0.5em;
                         z-index: 10;
                         background: transparent;
+                        text-indent: 5px;
                     }
                 
                     .filled_label {
@@ -128,7 +176,7 @@
                     label {
                         position: relative;
                         display: inline-block;
-                        width: 97%;
+                        width: 100%;
                         text-align: left;
                         margin-left: auto;
                         margin-right: auto;
@@ -139,16 +187,18 @@
                         margin: 0 auto;
                         padding: 0 0 5px 0;
                         top: 40px; 
+                        left: 5px;
                         z-index: 1;
                         transition: all 0.5s ease-in-out;
                     }
                 
                     input[type="text"] {
-                        font-size: 1.25em;
-                        padding: 10px 0 10px 0;
-                        margin-bottom: 0.5em;
+                        font-size: 1em;
+                        padding: 12px 0 12px 0;
+                        // margin-bottom: 0.5em;
                         z-index: 10;
                         background: transparent;
+                        text-indent: 5px;
                     }
                 
                     .filled_label {
@@ -161,11 +211,12 @@
 
                 .order-city {
 
+
                     input, 
                     label {
                         position: relative;
                         display: inline-block;
-                        width: 97%;
+                        width: 100%;
                         text-align: left;
                         margin-left: auto;
                         margin-right: auto;
@@ -176,16 +227,18 @@
                         margin: 0 auto;
                         padding: 0 0 5px 0;
                         top: 40px; 
+                        left: 5px;
                         z-index: 1;
                         transition: all 0.5s ease-in-out;
                     }
                 
                     input[type="text"] {
-                        font-size: 1.25em;
-                        padding: 10px 0 10px 0;
-                        margin-bottom: 0.5em;
+                        font-size: 1em;
+                        padding: 12px 0 12px 0;
+                        // margin-bottom: 0.5em;
                         z-index: 10;
                         background: transparent;
+                        text-indent: 5px;
                     }
                 
                     .filled_label {
@@ -202,7 +255,7 @@
                     label {
                         position: relative;
                         display: inline-block;
-                        width: 97%;
+                        width: 100%;
                         text-align: left;
                         margin-left: auto;
                         margin-right: auto;
@@ -213,16 +266,18 @@
                         margin: 0 auto;
                         padding: 0 0 5px 0;
                         top: 40px; 
+                        left: 5px;
                         z-index: 1;
                         transition: all 0.5s ease-in-out;
                     }
                 
                     input[type="text"] {
-                        font-size: 1.25em;
-                        padding: 10px 0 10px 0;
-                        margin-bottom: 0.5em;
+                        font-size: 1em;
+                        padding: 12px 0 12px 0;
+                        // margin-bottom: 0.5em;
                         z-index: 10;
                         background: transparent;
+                        text-indent: 5px;
                     }
                 
                     .filled_label {
@@ -234,46 +289,140 @@
                 }
 
                 .order-country-state-zipcode {
-
-                    width: 97%;
-                    margin-left: auto;
-                    margin-right: auto;
+                    // width: 97%;
+                    // margin-left: auto;
+                    // margin-right: auto;
                     display: flex;
                     justify-content: space-between;
-                    border: 1px solid pink;
 
                     .order-country {
-                        border: 2px solid black;
+                        width: 30%;
                         text-align: left;
-                        width: 33%;
+                        // border: 1px solid green;
+                        // background-color: green;
+                        // width: 33%;
 
                         label {
+                            display: block;        
                             position: relative;
-                            display: block;
-        
+                            top: 20px;
+                            text-indent: 5px;
+                            z-index: 1;  
+                            font-size: 1em;
                         }
 
                         label {
-                            margin: 0 auto;
-                            padding: 0 0 5px 0;
-                            z-index: 1;  
-                            font-size: 1.25em; 
+                            // top: 20px;
+                            // text-indent: 5px;
+                            // z-index: 1;  
+                            // font-size: 1em; 
+                            // margin: 0 auto;
+                            // padding: 0 0 5px 0;
                         }
 
                         select {
-                            font-size: 1.25em;
-                            z-index: 10;
-                            background: transparent;
                             width: 100%;
-                            border-style: none;
-                            text-align: left;
-                            outline: none;
+                            font-size: 1em;
+                            padding: 25px 0 0 0;
+                            z-index: 10;
+                            // background: transparent;
+                            // border-style: none;
+                            // text-align: left;
+                            // outline: none;
                         }
                     }
+
+                    .order-state {
+
+                        // border: 2px solid black;
+                        text-align: left;
+                        width: 30%;
+                 
+                        label {
+                            position: relative;
+                            display: block;
+                            top: 20px;
+                            text-indent: 5px;
+                            z-index: 1;  
+                            font-size: 1em;
+                        }
+
+                        label {
+                            // margin: 0 auto;
+                            // padding: 0 0 5px 0;
+                            // z-index: 1;  
+                            // font-size: 1em; 
+                        }
+
+                        select {
+                            width: 100%;
+                            font-size: 1em;
+                            padding: 25px 0 0 0;
+                            z-index: 10;
+                            // font-size: 1em;
+                            // z-index: 10;
+                            // background: transparent;
+                            // width: 100%;
+                            // border-style: none;
+                            // text-align: left;
+                            // outline: none;
+                        }
+                    }
+
+                    .order-zipcode {
+                        // border: 2px solid red;
+
+                        .field {
+                            text-align: left;
+                        }
+
+                        input, 
+                        label {
+                            position: relative;
+                            display: inline-block;
+                            // // width: 97%;
+                            text-align: left;
+                            // // margin-left: auto;
+                            // // margin-right: auto;
+                            // border: 1px solid yellow;
+                        }
+    
+                        label {
+                            position: relative;
+                            display: inline-block;
+                            top: 35px;
+                            left: 5px;
+                            text-align: left; 
+                            z-index: 1;
+                            transition: all 0.5s ease-in-out;
+                            // // // margin: 0 auto;
+                            // // padding: 0 0 5px 0;
+                            // border: 1px solid blue;
+                        }
+                    
+                        input[type="text"] {
+                            display: block;
+                            padding: 12px 0 12px 0;
+                            font-size: 1em;
+                            z-index: 10;
+                            background: transparent;
+                            text-indent: 5px;
+                            // margin-bottom: 0.5em;
+                            // width: 100%;
+                            // height: 100%;
+                        }
+                    
+                        .filled_label {
+                            top: 18px; 
+                            font-size: 0.7em;
+                            right: 75px;
+                        }
+
+                    }
+
                 }
 
-
-            }
+            // }
 
 
 
