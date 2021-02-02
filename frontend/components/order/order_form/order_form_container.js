@@ -6,7 +6,8 @@ import {retrieveContact} from '../../../actions/contact_actions'
 const mSTP = (state, ownProps) => {
     return({
         currentUser: Object.keys(state.entities.users),
-        contacts: Object.values(state.entities.contacts)
+        contacts: Object.values(state.entities.contacts),
+        userEmail: Object.values(state.entities.users)[0].email,
     })
 } 
 

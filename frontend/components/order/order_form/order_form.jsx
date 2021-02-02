@@ -9,6 +9,7 @@ class OrderForm extends React.Component {
         this.state = {
             purchaser_id: null,
             total: null, 
+            address_id: null,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +18,17 @@ class OrderForm extends React.Component {
     componentDidMount() {
         this.props.currentUser ? this.setState({'purchaser_id': this.props.currentUser[0]}) : null;
         this.total(); 
+        // this.props.retrieveContact(this.props.currentUser[0])
+
+        // brings the user back to the contact page if no contact information is found for shipping 
         this.props.retrieveContact(this.props.currentUser[0])
+        .then( () => {
+            if(this.props.contacts.length === 0) {
+                this.props.history.push("/checkout/contact");
+            } else {
+                this.setState({address_id: String(this.props.contacts[0].id)})
+            }
+        })
     }
 
     cartItems() {
@@ -49,10 +60,12 @@ class OrderForm extends React.Component {
     }
 
     handleSubmit(e) {
-        console.log(e)
         // e.preventDefault();
-        // this.props.createOrder(this.state, this.orderedProducts())
+        console.log(this.orderedProducts())
+        console.log(this.state)
+        this.props.createOrder(this.state, this.orderedProducts())
         // window.localStorage.clear(); // clears the cart after checkout 
+        // this.props.history.push("/account")
     }
 
 
@@ -73,24 +86,68 @@ class OrderForm extends React.Component {
     }
 
     render() {
+
+        let address_one;
+        let address_two;
+        let city;
+        let state; 
+        let country; 
+        let zipcode; 
+
+        if(this.props.contacts.length) {
+            address_one =  this.props.contacts[0].address_one ? this.props.contacts[0].address_one + ", " : ""
+            address_two =  this.props.contacts[0].address_two ? this.props.contacts[0].address_two + ", " : ""
+            city =  this.props.contacts[0].city ? this.props.contacts[0].city + ", " : ""
+            state =  this.props.contacts[0].state ? this.props.contacts[0].state + ", " : ""
+            country =  this.props.contacts[0].country ? this.props.contacts[0].country + ", " : ""
+            zipcode =  this.props.contacts[0].zipcode ? this.props.contacts[0].zipcode : ""
+        }
+
         return(
             <div className="order-form-container">  
 
                 <div className="order-form">
-                        <div className="form-logo-container">
-                            <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
-                        </div>
+                        
 
 
                     {this.state.total ? 
                     
 
                         <form onSubmit={this.handleSubmit}>
+
                             <div className="order-payment-container">
 
+                                <div className="form-logo-container">
+                                    <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                                </div>
+
+                                <div className="order-shipping-information">
+                                    <div className="shipping-info-inner">   
+                                        <div className="shipping-info" id="shipping-email">
+                                            <div >Email</div>
+                                            <span>{
+                                                this.props.userEmail
+                                            }</span>
+                                        </div>
+                                        <div className="shipping-info" id="shipping-option">
+                                            <div >Ship to</div>
+                                            <div id="shipping-address">{this.props.contacts.length ? 
+                                                address_one + address_two + city + state + country + zipcode
+                                                :
+                                                null
+                                            }</div>
+                                        </div>
+                                        <div className="shipping-info">
+                                            <div>Method</div>
+                                            <span>Free - One Day Delivery</span>
+                                            <span id="shipping-price">$0.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="payment-messages">
-                                    <h2>Payment</h2>
-                                    <p>No credit card information will be saved.</p>
+                                    <h2 id="payment-title">Payment</h2>
+                                    <p id="payment-message">No credit card information will be saved.</p>
                                 </div>
 
                                 <div className="credit-card-container">
@@ -133,7 +190,14 @@ class OrderForm extends React.Component {
                                 </div>
 
                                 <div className="order-billing-address">
+                                    <h2 id="billing-title">Billing address</h2>
                                     <span>Will default to your shipping address.</span>
+
+                                    <div id="billing-address-container">
+                                        <input type="radio" readOnly selected/>
+                                        <span>Same as shipping address</span>
+                                    </div>
+                                    
                                 </div>
                                 
                                 <div>

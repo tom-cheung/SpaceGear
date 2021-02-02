@@ -1,9 +1,86 @@
 
+
 .order-payment-container {
     // border: 1px solid blue;
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
+
+    .form-logo-container {
+        // width: 80%;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .order-shipping-information {
+        text-align: left;
+        border: 1px solid lightgrey;
+        padding:  15px 20px 15px 20px;
+        border-radius: 3px;
+        color: darkgrey;
+        margin-bottom: 20px;
+
+        .shipping-info-inner {
+
+            width: 95%;  
+            // background-color: red;          
+            
+            .shipping-info span {
+                // border: 1px solid green;
+                margin-left: 5%;
+                font-size: 1em; 
+                color: black;
+            }
+
+            #shipping-price {
+                font-weight: bolder;
+            }
+
+            .shipping-info div {
+                display: inline-block;
+                // border: 1px solid purple;
+                min-width: 75px;
+            }
+
+            #shipping-email {
+                margin-left: auto;
+                margin-right: auto;
+                border-bottom: 1px solid lightgrey;
+                // border: 1px solid red;
+                padding-bottom: 2%;
+                margin-bottom: 2%;
+            }
+
+            #shipping-address {
+                // border: 1px solid purple;
+                overflow: visible;
+                margin-left: 5%;
+                color: black;
+            }
+
+            #shipping-option {
+                margin-left: auto;
+                margin-right: auto;
+                border-bottom: 1px solid lightgrey;
+                padding-bottom: 2%;
+                margin-bottom: 2%;
+            }
+
+        }
+    }
+
+    #payment-title {
+        font-weight: lighter;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    #payment-message {
+        font-size: 1em;
+        font-weight: lighter;
+    }
 
     .payment-messages {
         text-align: left;
@@ -255,6 +332,32 @@
 
     }
 
+    .order-billing-address {
+
+        // border: 1px solid red;
+        margin-top: 20px;
+        text-align: left;
+
+        #billing-title {
+            font-weight: lighter;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #billing-address-container {
+            border: 1px solid lightgray;
+            border-radius: 3px;
+            padding: 15px 10px 15px 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            span {
+                margin-left: 3px;
+            }
+        }
+
+    }
+
     #submit-order {
         font-size: 24px;
         color: white;
@@ -263,5 +366,7 @@
         padding: 1.4em 1.7em 1.4em 1.7em; 
         border-radius: 3px;
     }
+
+
 
 }

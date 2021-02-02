@@ -46,7 +46,7 @@ class Api::OrdersController < ApplicationController
     private
 
     def order_params 
-        params.require(:order).permit(:purchaser_id, :total, ordered_products_attributes: [:id, :product_id, :quantity])
+        params.require(:order).permit(:purchaser_id, :total, :address_id, ordered_products_attributes: [:id, :product_id, :quantity])
         # pass in an array of objects with the attributes of the associated model 
     end
 
