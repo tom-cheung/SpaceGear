@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import OrderItemDetails from './order_item_details'
+import OrderItemDetails from '../order_item_details'
 
 class OrderForm extends React.Component {
     constructor(props) {
@@ -17,6 +17,7 @@ class OrderForm extends React.Component {
     componentDidMount() {
         this.props.currentUser ? this.setState({'purchaser_id': this.props.currentUser[0]}) : null;
         this.total(); 
+        this.props.retrieveContact(this.props.currentUser[0])
     }
 
     cartItems() {
@@ -65,16 +66,63 @@ class OrderForm extends React.Component {
             <div className="order-form-container">  
 
                 <div className="order-form">
-                    <div className="form-logo-container">
-                        <Link to="/" className="order-form-logo">SpaceGear</Link>
-                    </div>
+                        <div className="form-logo-container">
+                            <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                        </div>
 
-                    <div className="address-form">
+
+                    {this.state.total ? 
+                    
+
+                            <div className="order-payment-container">
+                                <div className="payment-messages">
+                                    <h2>Payment</h2>
+                                    <p>No credit card information will be saved.</p>
+                                </div>
+
+                                <div className="credit-card-container">
+                                    <div className="credit-card-header">
+                                        <span>Credit card</span>
+                                        <span>Credit Card Logos</span>
+                                    </div>
+
+                                    <div className="card-info">
+                                        <div className="card-number">
+                                            <label htmlFor="">Card numbers</label>
+                                            <input type="text"/>
+                                        </div>
+
+                                        <div className="card-name">
+                                            <label htmlFor="">Name on card</label>
+                                            <input type="text"/>
+                                        </div>
+
+                                        <div className="card-date-code">
+                                            <div className="card-exp-date">
+                                                <label htmlFor="">Expiration date (MM/YY)</label>
+                                                <input type="text"/>
+                                            </div>
+
+                                            <div className="card-security-code">
+                                                <label htmlFor="">Security code</label>
+                                                <input type="text"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="order-billing-address">
+                                    <span>Will default to your shipping address.</span>
+                                </div>
+                                
+                                <div>
+                                    <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
+                                </div>
+                            </div>
                         
-                    </div>
-
-
-                    {this.state.total ? <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> : 
+                        : 
+                        
                         <button>Your cart is empty! Click here to continue shopping!</button>
                     }
                 </div> 
@@ -92,7 +140,7 @@ class OrderForm extends React.Component {
 
                         <div className="shipping">
                             <p>Shipping + Handling</p>
-                            <p>FREE 1 DAY DELIVERY</p>
+                            <p>FREE ONE DAY DELIVERY</p>
                         </div>
 
                         <div className="tax">

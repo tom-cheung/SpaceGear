@@ -17,7 +17,7 @@ import ProductTypeContainer from './product/product_type_container';
 import ProductShowContainer from './product/product_show_container';
 import ProductIndexContainer from './product/product_index_container';
 import CartContainer from './cart/cart_container';
-import OrderFormContainer from './order/order_form_container';
+import OrderFormContainer from './order/order_form/order_form_container';
 import OrderContactContainer from './order/order_contact_container';
 import OrderShippingContainer from './order/order_shipping/order_shipping_container';
 

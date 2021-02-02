@@ -1,0 +1,15 @@
+
+.order-payment-container {
+    border: 1px solid blue;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .payment-messages {
+        text-align: left;
+    }
+    .credit-card-container {
+        border: 1px solid red;
+    }
+
+}

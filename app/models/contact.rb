@@ -22,4 +22,8 @@ class Contact < ApplicationRecord
     belongs_to :user, 
         foreign_key: :user_id, 
         class_name: :User
+
+    has_many :orders, 
+        foreign_key: :address_id,
+        class_name: :Order
 end

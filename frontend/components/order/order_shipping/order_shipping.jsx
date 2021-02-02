@@ -59,9 +59,9 @@ class OrderShipping extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault;
-        this.props.createOrder(this.state, this.orderedProducts())
-        window.localStorage.clear(); // clears the cart after checkout 
+        // e.preventDefault();
+        // this.props.createOrder(this.state, this.orderedProducts())
+        // window.localStorage.clear(); // clears the cart after checkout 
     }
 
 
@@ -142,7 +142,7 @@ class OrderShipping extends React.Component {
 
                                     <div className="order-shipping-option">
                                         <div>
-                                            <input type="radio" checked/>
+                                            <input type="radio" readOnly/>
                                             <span>Free - One Day Delivery</span>
                                         </div>
                                         <span className="shipping-price">$0.00</span>

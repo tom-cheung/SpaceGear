@@ -22,5 +22,9 @@ class Order < ApplicationRecord
         foreign_key: :purchaser_id, 
         class_name: :User
 
+    belongs_to :address, 
+        foreign_key: :address_id, 
+        class_name: :Contact 
+
     accepts_nested_attributes_for :ordered_products
 end

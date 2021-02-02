@@ -29,13 +29,11 @@ class OrderContactForm extends React.Component {
         this.props.currentUser ? this.setState({'user_id': this.props.currentUser[0]}) : null;
         this.total(); 
 
-        console.log(this.props.currentUser)
         this.props.retrieveContact(this.props.currentUser[0]).then( 
             () => {
 
                 if(Object.values(this.props.contacts).length) {
                     let contact = Object.values(this.props.contacts)[0]
-                    console.log(Object.keys(contact))
 
                     Object.keys(contact).forEach(key => {
                         let label = document.getElementById(key)
