@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import OrderForm from './order_form'
-import { createOrder } from '../../actions/order_actions'
+import OrderShipping from './order_shipping'
+import { createOrder } from '../../../actions/order_actions'
 
 const mSTP = (state, ownProps) => {
     return({
@@ -14,4 +14,4 @@ const mDTP = (dispatch) => {
     })
 }
 
-export default connect(mSTP, mDTP)(OrderForm);
+export default connect(mSTP, mDTP)(OrderShipping);

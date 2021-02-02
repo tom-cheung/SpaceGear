@@ -63,8 +63,12 @@ class OrderContactForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        this.props.createContact(this.state)
+        this.props.removeContactError()
+        this.props.createContact(this.state).then(() => {
+            if(Object.values(this.props.contactErrors).length === 0) {
+                this.props.history.push("/checkout/shipping")
+            }}
+            )
         // this.props.createOrder(this.state, this.orderedProducts())
         // window.localStorage.clear(); // clears the cart after checkout 
     }
@@ -95,7 +99,6 @@ class OrderContactForm extends React.Component {
     }
 
     saveContact(e) {
-        console.log(e.target.checked)
         if(e.target.checked === true) {
             this.setState({save: true})
         } else {
@@ -104,6 +107,7 @@ class OrderContactForm extends React.Component {
     }
 
     render() {
+
        
         return(
             <div className="order-form-container">  
@@ -119,9 +123,15 @@ class OrderContactForm extends React.Component {
                         </div>
 
                         <h1>Contact Information</h1>
+                        
+                        <div className="order-user-profile">
+                            <img src={window.productImages.profileLogo} alt="" width="50" height="50"/>
+                            <div>
+                                <label htmlFor="">Email: </label>
+                                <span>{this.props.userEmail}</span>
+                            </div>
+                        </div>
 
-
-            
                             {/* <form action="" onSubmit={(e) => this.handleSubmit(e)}> */}
 
                                 <div className="order-name">
@@ -509,7 +519,6 @@ class OrderContactForm extends React.Component {
                         
                                     <button className="order-form-button" onClick={this.handleSubmit}>Continue to Shipping</button>
                                 
-                                    {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link>  */}
                                 </div>
 
                             {/* </form> */}
@@ -538,13 +547,14 @@ class OrderContactForm extends React.Component {
                         </div>
 
                         <div className="shipping">
-                            <p>Shipping + Handling</p>
-                            <p>FREE 1 DAY DELIVERY</p>
+                            <p>Subtotal</p>
+                            <p>usd ${parseFloat(this.state.total).toFixed(2)}</p>
+                            {/* <p>FREE 1 DAY DELIVERY</p> */}
                         </div>
 
                         <div className="tax">
-                            <p>Taxes</p>
-                            <p>NONE</p>
+                            <p>Shipping + Handling</p>
+                            <p>Calculated at next step</p>
                         </div>
 
                         <div className="order-total">

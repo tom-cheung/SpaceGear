@@ -16,13 +16,18 @@
     .order-contact-container {
         text-align: left;
     }
-
-    // .form-logo-container {
-    //     border: 1px solid blue; 
-    //     text-align: left;
-    // }
-
     
+    .order-user-profile {
+        margin-top: 3%;
+        display: flex;
+
+        div {
+            padding-top: 15px;
+            padding-left: 10px;
+            // position: relative;
+            // padding-bottom: 20px;
+        }
+    }
 
     // order_contact.jsx
     .order-form {

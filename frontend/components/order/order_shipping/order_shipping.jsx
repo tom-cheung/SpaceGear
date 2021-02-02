@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import OrderItemDetails from './order_item_details'
+import OrderItemDetails from '../order_item_details'
 
-class OrderForm extends React.Component {
+class OrderShipping extends React.Component {
     constructor(props) {
         super(props)
 
@@ -64,21 +64,48 @@ class OrderForm extends React.Component {
         return(
             <div className="order-form-container">  
 
-                
-
                 <div className="order-form">
-                    <div className="form-logo-container">
-                        <Link to="/" className="order-form-logo">SpaceGear</Link>
-                    </div>
+                    {/* <div className="form-logo-container">
+                        <Link to="/" className="order-form-logo">SPOOK</Link>
+                    </div> */}
 
-                    <div className="address-form">
-                        
-                    </div>
+                    {this.state.total ? 
+                        <div className="form-logo-container">
+                            <div className="form-logo-container">
+                                <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                            </div>
 
+                            <div>
+                                <div>
+                                    <label htmlFor="">Email</label>
+                                    <span></span>
+                                </div>
+                                <div>
+                                    <label htmlFor="">Ship to</label>
+                                    <span></span>
+                                </div>
+                            </div>
 
-                    {this.state.total ? <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> : 
+                            <div>
+                                <div>
+                                    <input type="radio"/>
+                                    <span>Shipping - UPS Home Delivery®</span>
+                                    <span>Price</span>
+                                </div>
+
+                                <div>
+                                    <input type="radio"/>
+                                    <span>Free - One Day Delivery</span>
+                                    <span>Price</span>
+                                </div>
+                            </div>
+
+                            <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
+                        </div>
+                    : 
                         <button>Your cart is empty! Click here to continue shopping!</button>
                     }
+
                 </div> 
 
                 <div className="items-info">
@@ -108,8 +135,6 @@ class OrderForm extends React.Component {
                                 <span>usd ${parseFloat(this.state.total).toFixed(2)}</span>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
 
@@ -118,7 +143,7 @@ class OrderForm extends React.Component {
     }
 }
 
-export default OrderForm; 
+export default OrderShipping; 
 
 /*
 

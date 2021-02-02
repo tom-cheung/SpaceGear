@@ -5,6 +5,7 @@ import { createContact, removeContactError } from '../../actions/contact_actions
 const mSTP = (state, ownProps) => {
     return({
         currentUser: Object.keys(state.entities.users),
+        userEmail: Object.values(state.entities.users)[0].email, 
         contacts: state.entities.contacts, 
         contactErrors: state.errors.contacts
     })

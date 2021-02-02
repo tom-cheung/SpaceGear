@@ -1,3 +1,4 @@
+
 import { RECEIVE_CONTACT, REMOVE_CONTACT } from '../../actions/contact_actions';
 
 const contactReducer = (oldState = {}, action) => {

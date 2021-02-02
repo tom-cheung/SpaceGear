@@ -11,7 +11,7 @@ const contactErrorReducer = (oldState = {}, action) => {
             });
             return nextState;
         case REMOVE_CONTACT_ERROR: 
-            return oldState; 
+            return {}; 
         default:
             return oldState;
     }
