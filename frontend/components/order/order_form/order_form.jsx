@@ -49,9 +49,10 @@ class OrderForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault;
-        this.props.createOrder(this.state, this.orderedProducts())
-        window.localStorage.clear(); // clears the cart after checkout 
+        console.log(e)
+        // e.preventDefault();
+        // this.props.createOrder(this.state, this.orderedProducts())
+        // window.localStorage.clear(); // clears the cart after checkout 
     }
 
 
@@ -59,6 +60,16 @@ class OrderForm extends React.Component {
         let total = this.cartItems().map((item) => {return (parseInt(item.quantity) * parseFloat(item.product.price)).toFixed(2)})
         total = total.reduce( (a, b) => parseFloat(a)+parseFloat(b), 0);
         return total
+    }
+
+    inputText(e, id) {
+        let label = document.getElementById(id)
+        if(e.target.value === "") {
+            label.classList.remove("filled_label")
+        } else {
+            label.classList.add("filled_label")
+        }
+        // this.setState({[id]: e.target.value})
     }
 
     render() {
@@ -74,38 +85,47 @@ class OrderForm extends React.Component {
                     {this.state.total ? 
                     
 
+                        <form onSubmit={this.handleSubmit}>
                             <div className="order-payment-container">
+
                                 <div className="payment-messages">
                                     <h2>Payment</h2>
                                     <p>No credit card information will be saved.</p>
                                 </div>
 
                                 <div className="credit-card-container">
+
                                     <div className="credit-card-header">
                                         <span>Credit card</span>
-                                        <span>Credit Card Logos</span>
+                                        <div className="card-icons">
+                                            <li className="card-list-item"><i className="fa fa-cc-visa fa-2x" id="visa"></i></li>
+                                            <li className="card-list-item"><i className="fa fa-cc-mastercard fa-2x" id="mastercard"></i></li>
+                                            <li className="card-list-item"><i className="fa fa-cc-amex fa-2x" id="americanexpress"></i></li>
+                                            <li className="card-list-item"><i className="fa fa-cc-discover fa-2x" id="discover"></i></li>
+                                            <span> and more ...</span>
+                                        </div>
                                     </div>
 
                                     <div className="card-info">
                                         <div className="card-number">
-                                            <label htmlFor="">Card numbers</label>
-                                            <input type="text"/>
+                                            <label id="card-number">Card numbers</label>
+                                            <input type="text" onChange={(e) => this.inputText(e, 'card-number')} required/>
                                         </div>
 
                                         <div className="card-name">
-                                            <label htmlFor="">Name on card</label>
-                                            <input type="text"/>
+                                            <label id="card-name">Name on card</label>
+                                            <input type="text" onChange={(e) => this.inputText(e, 'card-name')} required/>
                                         </div>
 
                                         <div className="card-date-code">
                                             <div className="card-exp-date">
-                                                <label htmlFor="">Expiration date (MM/YY)</label>
-                                                <input type="text"/>
+                                                <label id="card-exp-date">Expiration date (MM/YY)</label>
+                                                <input type="text" onChange={(e) => this.inputText(e, 'card-exp-date')} required/>
                                             </div>
 
                                             <div className="card-security-code">
-                                                <label htmlFor="">Security code</label>
-                                                <input type="text"/>
+                                                <label id="card-security-code">Security code</label>
+                                                <input type="text" onChange={(e) => this.inputText(e, 'card-security-code')} required/>
                                             </div>
 
                                         </div>
@@ -117,9 +137,14 @@ class OrderForm extends React.Component {
                                 </div>
                                 
                                 <div>
-                                    <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
+                                    {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link>  */}
+                                    <button id="submit-order" onClick={this.handleSubmit} className="order-form-button">Submit Order</button>
                                 </div>
+
+
                             </div>
+
+                        </form>
                         
                         : 
                         
