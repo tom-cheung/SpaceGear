@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import OrderContactForm from './order_contact';
-import { createContact, removeContactError } from '../../actions/contact_actions';
+import { createContact, removeContactError, retrieveContact, editContact } from '../../actions/contact_actions';
 
 const mSTP = (state, ownProps) => {
     return({
@@ -14,7 +14,9 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch) => {
     return({
         createContact: (newContact) => dispatch(createContact(newContact)),
+        retrieveContact: (userID) => dispatch(retrieveContact(userID)), 
         removeContactError: () => dispatch(removeContactError()), 
+        editContact: (contactID) => dispatch(editContact(contactID)), 
     })
 }
 

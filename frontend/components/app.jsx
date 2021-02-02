@@ -38,6 +38,7 @@ const App = () => {
                 <Route path='/cart' component={CartContainer}/>
                 <ShowRoute exact path='/checkout/contact' component={OrderContactContainer}/> 
                 <ShowRoute exact path='/checkout/shipping' component={OrderShippingContainer}/> 
+                <ShowRoute exact path='/checkout/form' component={OrderFormContainer}/>
                 <ShowRoute path='/order/:orderId' component={OrderShowContainer}/>
                 <ShowRoute path='/account' component={UserShowContainer}/>
                 <AuthRoute path='/register' component={RegistrationFormContainer}/>   

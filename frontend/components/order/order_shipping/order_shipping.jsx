@@ -17,6 +17,17 @@ class OrderShipping extends React.Component {
     componentDidMount() {
         this.props.currentUser ? this.setState({'purchaser_id': this.props.currentUser[0]}) : null;
         this.total(); 
+
+        // fetch the address, if none exists redirect to the show page 
+
+        this.props.retrieveContact(this.props.currentUser[0])
+            .then( () => {
+                if(this.props.contact.length === 0) {
+                    this.props.history.push("/checkout/contact");
+                }
+            })
+
+        
     }
 
     cartItems() {
@@ -61,6 +72,23 @@ class OrderShipping extends React.Component {
     }
 
     render() {
+
+        let address_one;
+        let address_two;
+        let city;
+        let state; 
+        let country; 
+        let zipcode; 
+
+        if(this.props.contact.length) {
+            address_one =  this.props.contact[0].address_one ? this.props.contact[0].address_one + ", " : ""
+            address_two =  this.props.contact[0].address_two ? this.props.contact[0].address_two + ", " : ""
+            city =  this.props.contact[0].city ? this.props.contact[0].city + ", " : ""
+            state =  this.props.contact[0].state ? this.props.contact[0].state + ", " : ""
+            country =  this.props.contact[0].country ? this.props.contact[0].country + ", " : ""
+            zipcode =  this.props.contact[0].zipcode ? this.props.contact[0].zipcode : ""
+        }
+
         return(
             <div className="order-form-container">  
 
@@ -70,37 +98,62 @@ class OrderShipping extends React.Component {
                     </div> */}
 
                     {this.state.total ? 
-                        <div className="form-logo-container">
+
+                        <div className="order-shipping-container">
                             <div className="form-logo-container">
                                 <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
                             </div>
 
-                            <div>
-                                <div>
-                                    <label htmlFor="">Email</label>
-                                    <span></span>
-                                </div>
-                                <div>
-                                    <label htmlFor="">Ship to</label>
-                                    <span></span>
+                            <div className="order-shipping-information">
+                                <div className="shipping-info-inner">   
+                                    <div className="shipping-email" id="shipping-email">
+                                        <div >Email</div>
+                                        <span>{
+                                            this.props.userEmail
+                                        }</span>
+                                    </div>
+                                    <div className="shipping-email">
+                                        <div >Ship to</div>
+                                        <div id="shipping-address">{this.props.contact.length ? 
+
+                                            address_one + address_two + city + state + country + zipcode
+                                            :
+                                        
+                                            null
+                                        }</div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <div>
-                                    <input type="radio"/>
-                                    <span>Shipping - UPS Home Delivery®</span>
-                                    <span>Price</span>
+                            <div className="order-shipping-method">
+                                <div id="order-shipping-title">
+                                    <span>Shipping method</span>
                                 </div>
 
-                                <div>
-                                    <input type="radio"/>
-                                    <span>Free - One Day Delivery</span>
-                                    <span>Price</span>
+
+                                <div id="shipping-option-container"> 
+                                    <div className="order-shipping-option" id="order-shipping-option-one">
+                                        <div id="shipping-ups">
+                                            <input type="radio" disabled/>
+                                            <span>Shipping - UPS Home Delivery®</span>
+                                        </div>
+                                        <span className="shipping-price">$11.24</span>
+                                    </div>
+
+                                    <div className="order-shipping-option">
+                                        <div>
+                                            <input type="radio" checked/>
+                                            <span>Free - One Day Delivery</span>
+                                        </div>
+                                        <span className="shipping-price">$0.00</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
+                            <div className="order-button-container">
+                                <Link to="/checkout/form"><button className="order-shipping-button" onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
+                            </div>
+
                         </div>
                     : 
                         <button>Your cart is empty! Click here to continue shopping!</button>
@@ -121,7 +174,7 @@ class OrderShipping extends React.Component {
 
                         <div className="shipping">
                             <p>Shipping + Handling</p>
-                            <p>FREE 1 DAY DELIVERY</p>
+                            <p>FREE ONE DAY DELIVERY</p>
                         </div>
 
                         <div className="tax">

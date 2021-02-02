@@ -1,0 +1,106 @@
+.order-shipping-container {
+
+    max-width: 80%;
+    margin-left: 15%;
+    text-align: left;
+    
+    .order-shipping-information {
+        text-align: left;
+        border: 1px solid lightgrey;
+        padding:  15px 20px 15px 20px;
+        border-radius: 3px;
+        color: darkgrey;
+
+        .shipping-info-inner {
+
+            width: 95%;  
+            // background-color: red;          
+            
+            .shipping-email span {
+                // border: 1px solid green;
+                margin-left: 5%;
+                font-size: 1em; 
+                color: black;
+            }
+            .shipping-email div {
+                display: inline-block;
+                // border: 1px solid purple;
+                min-width: 75px;
+            }
+
+            #shipping-email {
+                margin-left: auto;
+                margin-right: auto;
+                border-bottom: 1px solid lightgrey;
+                // border: 1px solid red;
+                padding-bottom: 2%;
+                margin-bottom: 2%;
+            }
+
+            #shipping-address {
+                // border: 1px solid purple;
+                overflow: visible;
+                margin-left: 5%;
+                color: black;
+            }
+
+        }
+    }
+
+    .order-shipping-method {
+        text-align: left;
+        
+
+        .shipping-price {
+            font-weight: bold;
+        }
+        
+        #order-shipping-title {
+            margin: 5% 0 5% 0;
+        }
+
+        .order-shipping-option {
+            // border: 1px solid blue;
+            width: 95%; 
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-between;
+            
+          
+        }
+
+        #order-shipping-option-one {
+            padding-bottom: 20px;
+            border-bottom: 1px solid lightgrey;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        #shipping-option-container {
+            padding: 10px 10px 20px 10px; 
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
+
+    }
+
+    .order-button-container {
+        text-align: right;
+
+        button {
+            margin-top: 20px;
+            font-size: 24px;
+            color: white;
+            background-color: black;
+            font-size: 1em;
+            padding: 1.4em 1.7em 1.4em 1.7em; 
+            border-radius: 3px;
+        }
+
+
+    }
+
+
+}
+

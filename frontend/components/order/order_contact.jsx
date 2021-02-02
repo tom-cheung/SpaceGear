@@ -28,6 +28,40 @@ class OrderContactForm extends React.Component {
     componentDidMount() {
         this.props.currentUser ? this.setState({'user_id': this.props.currentUser[0]}) : null;
         this.total(); 
+
+        console.log(this.props.currentUser)
+        this.props.retrieveContact(this.props.currentUser[0]).then( 
+            () => {
+
+                if(Object.values(this.props.contacts).length) {
+                    let contact = Object.values(this.props.contacts)[0]
+                    console.log(Object.keys(contact))
+
+                    Object.keys(contact).forEach(key => {
+                        let label = document.getElementById(key)
+
+                        if(label !== null) {
+                            label.classList.add("filled_label")
+                        }
+                    })
+
+
+                    this.setState({
+                        first_name: contact.first_name, 
+                        last_name: contact.last_name, 
+                        address_one: contact.address_one, 
+                        address_two: contact.address_two,
+                        city: contact.city, 
+                        country: contact.country,
+                        state: contact.state, 
+                        zipcode: contact.zipcode, 
+                        phone: contact.phone
+                    })
+                }
+            }
+        )
+   
+
     }
 
     componentWillUnmount() {
@@ -64,11 +98,28 @@ class OrderContactForm extends React.Component {
 
     handleSubmit(e) {
         this.props.removeContactError()
-        this.props.createContact(this.state).then(() => {
-            if(Object.values(this.props.contactErrors).length === 0) {
-                this.props.history.push("/checkout/shipping")
-            }}
-            )
+
+
+        if(Object.values(this.props.contacts).length) {
+            let contactID = Object.values(this.props.contacts)[0].id
+            let newContact = Object.assign({}, this.state, {id: contactID})
+            this.props.editContact(newContact).then(() => {
+                if(Object.values(this.props.contactErrors).length === 0) {
+                    this.props.history.push("/checkout/shipping")
+                }}
+                )
+
+        } else {
+
+            this.props.createContact(this.state).then(() => {
+                if(Object.values(this.props.contactErrors).length === 0) {
+                    this.props.history.push("/checkout/shipping")
+                }}
+                )
+
+        }
+
+
         // this.props.createOrder(this.state, this.orderedProducts())
         // window.localStorage.clear(); // clears the cart after checkout 
     }
@@ -138,7 +189,7 @@ class OrderContactForm extends React.Component {
                                
                                         <div className='field-first-name'>
                                             <label id="first_name" htmlFor="">First Name</label>
-                                            <input type="text" onChange={(e) => this.inputText(e, 'first_name')} required/>
+                                            <input type="text" onChange={(e) => this.inputText(e, 'first_name')} defaultValue={this.state.first_name} required/>
                                             <span className="contact-error">{this.props.contactErrors.first ? this.props.contactErrors.first : null}</span>
                                         </div>
 
@@ -147,7 +198,7 @@ class OrderContactForm extends React.Component {
                                             <div className="last-name-container">
                                                 <div className="last-name-align">
                                                     <label id="last_name">Last Name</label>
-                                                    <input type="text" onChange={(e) => this.inputText(e, 'last_name')} required/>
+                                                    <input type="text" onChange={(e) => this.inputText(e, 'last_name')} defaultValue={this.state.last_name} required/>
                                                     <span className="contact-error">{this.props.contactErrors.last ? this.props.contactErrors.last : null}</span>
                                                 </div>
                                             </div>
@@ -158,7 +209,7 @@ class OrderContactForm extends React.Component {
                                 <div className="order-address-one">
                                     <div className="field">
                                         <label id="address_one">Address</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'address_one')} required/>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'address_one')} defaultValue={this.state.address_one} required/>
                                         <span className="contact-error">{this.props.contactErrors.address ? "Address can't be blank" : null}</span>
                                     </div>
                                 </div> 
@@ -166,14 +217,14 @@ class OrderContactForm extends React.Component {
                                 <div className="order-address-two">
                                     <div className="field">
                                         <label id="address_two">Apartment, suite, etc. (optional)</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'address_two')}/>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'address_two')} defaultValue={this.state.address_two}/>
                                     </div>
                                 </div>
 
                                 <div className="order-city">
                                     <div className="field">
                                         <label id="city">City</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'city')} required/>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'city')} defaultValue={this.state.city} required/>
                                         <span className="contact-error">{this.props.contactErrors.city ? this.props.contactErrors.city : null}</span>
                                     </div>
                                 </div>
@@ -181,7 +232,7 @@ class OrderContactForm extends React.Component {
                                 <div className="order-country-state-zipcode">
                                     <div className="order-country">
                                         <label>Country/Region</label>
-                                        <select name="" id="" onChange={(e) => this.selectCountry(e, e.target.value)}>
+                                        <select name="" id="" onChange={(e) => this.selectCountry(e, e.target.value)} defaultValue={this.state.country}>
                                             <option value="United States">United States</option>
                                             <option value="Canada">Canada</option>
                                             <option value="United Kingdom">United Kingdom</option>
@@ -429,7 +480,7 @@ class OrderContactForm extends React.Component {
 
                                         <div className="order-state">
                                             <label htmlFor="">State</label>
-                                            <select name="" id="" onChange={(e) => this.selectState(e, e.target.value)}>
+                                            <select name="" id="" onChange={(e) => this.selectState(e, e.target.value)} value={this.state.state}>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AK">Alaska</option>
                                                 <option value="AZ">Arizona</option>
@@ -491,7 +542,7 @@ class OrderContactForm extends React.Component {
                                         <div className="order-zipcode">
                                             <div className="field">
                                                 <label id="zipcode">Zipcode</label>
-                                                <input type="text" onChange={(e) => this.inputText(e, 'zipcode')}  required/>
+                                                <input type="text" onChange={(e) => this.inputText(e, 'zipcode')} defaultValue={this.state.zipcode} required/>
                                                 <span className="contact-error">{this.props.contactErrors.zipcode ? this.props.contactErrors.zipcode : null}</span>
                                             </div>
                                         </div>
@@ -502,7 +553,7 @@ class OrderContactForm extends React.Component {
                                 <div className="order-phone">
                                     <div className="field">
                                         <label id="phone">Phone</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'phone')} required/>
+                                        <input type="text" onChange={(e) => this.inputText(e, 'phone')} defaultValue={this.state.phone} required/>
                                         <span className="contact-error">{this.props.contactErrors.phone ? this.props.contactErrors.phone : null}</span>
                                     </div>
                                 </div>
