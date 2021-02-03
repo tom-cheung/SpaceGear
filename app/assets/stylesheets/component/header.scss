@@ -1,70 +1,79 @@
 
 #mainHeader {
-    display: flex; 
-    justify-content: space-between;
     background-color: #000000;
-    color: white; 
-    padding: 0px 10px 0px 10px;
     font-family: 'Noto Sans', sans-serif;
+    border: 1px solid red;
+    // color: white; 
+
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+    }
 
     #headerLeft {
-        // border: 1px solid red;
         display: flex; 
         justify-content: space-around;
+        margin-left: 30px;
     }
 
     #mainLogo {
-        height: 100px;
-        width: 100px;  
-        // border: 1px solid red; 
+
+        img {
+            vertical-align: middle;
+        }
     }
 
-
     #product-categories{
+        border: 1px solid red;
         
-        // border: 1px solid yellow;
-        margin-left: 10px; 
+        margin-left: 20px; 
         display: flex;
         align-items: flex-end;
-
-        ul {
-            // border: 1px solid purple; 
-            display: flex; 
-            padding: 1%;
-            margin-bottom: 22px;
-        }
-
-        li {
-            // border: 1px solid purple;
-            margin-left: 10px;
+        width: 100%;
+        
+        ul { 
+            border: 1px solid yellow;
+            display: flex;
         }
 
         a {
             text-decoration: none;
             color: white;
+        }
+
+        .header-category-name {
+            font-size: 1.5em;
+            margin-right: 50px;
+            margin-bottom: 50px;
         }
         
     }
 
     #userTools {
-        // border: 1px solid red; 
-        // float: right; 
         display: flex;
         align-items: flex-end;
+        margin-right: 30px;
+        font-size: 1.5em;
 
         ul {
-            // border: 1px solid yellow;
             display: flex;
-            margin-bottom: 22px;
         }
 
         li {
-            margin: 0px 20px 5px 0px;
+            margin-left: 50px;
+            margin-bottom: 50px;
+
+            span {
+                color: white;
+                cursor: pointer;
+            }
         }
 
         a {
             text-decoration: none;
             color: white;
+
         }
     }
 
@@ -80,9 +89,8 @@
 
 
     .dropdownContent {
-        display: none; 
-        // margin-top: 5px; 
-        position: absolute; 
+        display: none; // hides the bar 
+        position: absolute; // sets it underneath the headerbar 
         width: 100px;
         border-top: 2px solid white;
         border-left: .5px solid white;
@@ -91,6 +99,7 @@
         background-color: black;
         box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
         z-index: 1;
+        // margin-top: 5px; 
     }
 
     .dropdownContent a{
@@ -107,5 +116,12 @@
 
     .dropdownContent a:hover {
         color: grey;
+    }
+
+    #search-bar {
+        border: 1px solid blue;
+        position: absolute;
+        color: white;
+        width: 100%;
     }
 }

@@ -6,7 +6,9 @@
 
     footer 
 
-    style empty card pages for order contact / shipping / form 
+    make the header fixed 
+
+    style empty card pages for order contact / shipping / form - DONE
 
     order edit page - check the css for the credit card field - DONE
 
