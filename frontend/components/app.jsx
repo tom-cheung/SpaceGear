@@ -21,7 +21,7 @@ import OrderFormContainer from './order/order_form/order_form_container';
 import OrderContactContainer from './order/order_contact_container';
 import OrderShippingContainer from './order/order_shipping/order_shipping_container';
 
-import OrderShowContainer from './order/order_show_container'
+import OrderShowContainer from './order/order_show/order_show_container'
 
 
 

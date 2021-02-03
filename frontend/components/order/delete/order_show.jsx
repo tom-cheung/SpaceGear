@@ -70,7 +70,7 @@ const OrderShow = (props) => {
 
                         <div className="order-address-payment">
                             <div>
-                                Address
+                                ADDRESS!!!
                             </div>
 
                             <div>
@@ -112,4 +112,4 @@ const OrderShow = (props) => {
 }
 
 
-export default OrderShow
+// export default OrderShow

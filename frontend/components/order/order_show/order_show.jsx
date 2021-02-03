@@ -1,235 +1,159 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import OrderItemDetails from './order_item_details';
+import React, { useState, useEffect } from 'react';
+import {Link, Redirect} from 'react-router-dom';
+import OrderedProduct from './ordered_products';
 
-class OrderContactForm extends React.Component {
-    constructor(props) {
-        super(props)
+const OrderShow = (props) => {
+    
+    const [order, updateOrder] = useState(Object.assign({}, props.order));
+    const [orderedProducts, updateProducts] = useState([...props.orderedProducts]);
+    const [total, updateTotal] = useState(props.order.total);
+    const [contact, updateContact] = useState({});
 
-        this.state = {
-            total: null, 
-            first_name: "", 
-            last_name: "", 
-            address_one: "",
-            address_two: "", 
-            city: "", 
-            country: "United States",  
-            state: "AL", 
-            zipcode: "", 
-            phone: "", 
-            user_id: "",
-            save: false,
+
+    useEffect(() => {
+        
+        let inputs = document.getElementsByClassName("product-quantity")
+        for(let i = 0; i < inputs.length; i++) {
+            inputs[i].value = orderedProducts[i].quantity
         }
+        
+    })
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    useEffect(() => {
+        calcTotal()
+    }, [orderedProducts])
 
-    componentDidMount() {
-        this.props.currentUser ? this.setState({'user_id': this.props.currentUser[0]}) : null;
-        this.total(); 
+    useEffect(() => {
+        props.retrieveContact(props.currentUser.id).then( res => {
+            updateContact(Object.values(res.contacts)[0])
+        })
 
-        this.props.retrieveContact(this.props.currentUser[0]).then( 
-            () => {
-
-                if(Object.values(this.props.contacts).length) {
-                    let contact = Object.values(this.props.contacts)[0]
-
-                    Object.keys(contact).forEach(key => {
-                        let label = document.getElementById(key)
-
-                        if(label !== null) {
-                            label.classList.add("filled_label")
-                        }
-                    })
+    }, [])
 
 
-                    this.setState({
-                        first_name: contact.first_name, 
-                        last_name: contact.last_name, 
-                        address_one: contact.address_one, 
-                        address_two: contact.address_two,
-                        city: contact.city, 
-                        country: contact.country,
-                        state: contact.state, 
-                        zipcode: contact.zipcode, 
-                        phone: contact.phone
-                    })
-                }
+    const updateQuantity = (e, id) => {
+
+        console.log(e.currentTarget.value === NaN)
+        updateProducts(
+            orderedProducts.map(product => {
+            if(product.id === id) {
+                product.quantity = parseInt(e.currentTarget.value);
+                return product;
+            } else {
+                return product; 
             }
-        )
-   
-
-    }
-
-    componentWillUnmount() {
-        this.props.removeContactError();
-    }
-
-    cartItems() {
-
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        
-
-        if(cart) {
-            let items = Object.keys(cart)
-            items = items.map( (key) => {
-                return cart[key]
             })
-            return items
-        } else {
-            return []
+        )
+    }
+
+    const removeItem = (id) => {
+        updateProducts( orderedProducts.filter((product) => product.id !== id ) )
+    }
+
+    const calcTotal = () => {
+
+        if(Object.values(props.products).length) {
+
+            let newTotal = 0; 
+            orderedProducts.forEach(order => {
+                newTotal += (order.quantity * parseInt(props.products[order.product_id].price))
+            })
+            updateTotal(newTotal)
+
+            updateOrder(Object.assign({}, order, {total: newTotal}))
         }
- 
     }
 
-    total() {
-        let total = this.cartItems().map((item) => {return (parseInt(item.quantity) * parseFloat(item.product.price)).toFixed(2)})
-        total = total.reduce( (a, b) => parseFloat(a)+parseFloat(b), 0);
-        this.setState({total: parseFloat(total)})
+    const submitUpdate = () => {
+        props.editOrder(order, orderedProducts)
     }
 
-    orderedProducts() {
-        return this.cartItems().map((item) => {return {'product_id': parseInt(item.product.id), 'quantity': parseInt(item.quantity)}})
-        
-    }
-
-    handleSubmit(e) {
-        this.props.removeContactError()
-
-
-        if(Object.values(this.props.contacts).length) {
-            let contactID = Object.values(this.props.contacts)[0].id
-            let newContact = Object.assign({}, this.state, {id: contactID})
-            this.props.editContact(newContact).then(() => {
-                if(Object.values(this.props.contactErrors).length === 0) {
-                    this.props.history.push("/checkout/shipping")
-                }}
-                )
-
-        } else {
-
-            this.props.createContact(this.state).then(() => {
-                if(Object.values(this.props.contactErrors).length === 0) {
-                    this.props.history.push("/checkout/shipping")
-                }}
-                )
-
-        }
-
-
-        // this.props.createOrder(this.state, this.orderedProducts())
-        // window.localStorage.clear(); // clears the cart after checkout 
-    }
-
-
-    calcTotal() {
-        let total = this.cartItems().map((item) => {return (parseInt(item.quantity) * parseFloat(item.product.price)).toFixed(2)})
-        total = total.reduce( (a, b) => parseFloat(a)+parseFloat(b), 0);
-        return total
-    }
-
-    inputText(e, id) {
+    const inputText = (e, id) => {
         let label = document.getElementById(id)
         if(e.target.value === "") {
             label.classList.remove("filled_label")
         } else {
             label.classList.add("filled_label")
         }
-        this.setState({[id]: e.target.value})
-    }
-
-    selectCountry(e, country) {
-        this.setState({country: country})
-    }
-
-    selectState(e, state) {
-        this.setState({state: state})
-    }
-
-    saveContact(e) {
-        if(e.target.checked === true) {
-            this.setState({save: true})
-        } else {
-            this.setState({save: false})
-        }
-    }
-
-    render() {
-
-       
-        return(
-            <div className="order-form-container">  
-
-                <div className="order-form">
-                    
-                    {this.state.total ? 
-                    
-                    <div className="order-contact-container"> 
-
-                        <div className="form-logo-container">
-                            <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
-                        </div>
-
-                        <h1>Contact Information</h1>
-                        
-                        <div className="order-user-profile">
-                            <img src={window.productImages.profileLogo} alt="" width="50" height="50"/>
-                            <div>
-                                <label htmlFor="">Email: </label>
-                                <span>{this.props.userEmail}</span>
-                            </div>
-                        </div>
-
-                            {/* <form action="" onSubmit={(e) => this.handleSubmit(e)}> */}
-
-                                <div className="order-name">
-                               
-                                        <div className='field-first-name'>
-                                            <label id="first_name" htmlFor="">First Name</label>
-                                            <input type="text" onChange={(e) => this.inputText(e, 'first_name')} defaultValue={this.state.first_name} required/>
-                                            <span className="contact-error">{this.props.contactErrors.first ? this.props.contactErrors.first : null}</span>
-                                        </div>
-
-
-                                        <div className="field-last-name">
-                                            <div className="last-name-container">
-                                                <div className="last-name-align">
-                                                    <label id="last_name">Last Name</label>
-                                                    <input type="text" onChange={(e) => this.inputText(e, 'last_name')} defaultValue={this.state.last_name} required/>
-                                                    <span className="contact-error">{this.props.contactErrors.last ? this.props.contactErrors.last : null}</span>
-                                                </div>
-                                            </div>
-                                        </div>
         
+        updateContact(Object.assign({}, contact, {[id]: e.target.value}))
+
+    }
+
+    const selectCountry = (e, country) => {
+        console.log(e)
+        console.log(country)
+        updateContact(Object.assign({}, contact, {country}))
+    }
+
+    const selectState = (e, state) => {
+        console.log(e)
+        console.log(state)
+        updateContact(Object.assign({}, contact, {state}))
+    }
+
+
+    return (
+
+        
+        <div className="order-summary-container">
+
+            {Object.values(props.order).length ? 
+                    <div className="order-show-container">
+
+                        <div className="order-address-payment">
+
+                            <div>
+                                <h2 className="payment-shipping-title">Shipping and Billing Information</h2>
+                            </div>
+                            
+
+                            <div id="contact-name-field">
+                                <div className='field-first-name'>
+                                    <label id="first_name" className="filled_label" htmlFor="">First Name</label>
+                                    <input type="text" onChange={(e) => inputText(e, 'first_name')} defaultValue={contact.first_name} required/>
+                                    {/* <span className="contact-error">{props.contactErrors.first ? props.contactErrors.first : null}</span> */}
                                 </div>
 
-                                <div className="order-address-one">
-                                    <div className="field">
-                                        <label id="address_one">Address</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'address_one')} defaultValue={this.state.address_one} required/>
-                                        <span className="contact-error">{this.props.contactErrors.address ? "Address can't be blank" : null}</span>
-                                    </div>
-                                </div> 
 
-                                <div className="order-address-two">
-                                    <div className="field">
-                                        <label id="address_two">Apartment, suite, etc. (optional)</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'address_two')} defaultValue={this.state.address_two}/>
+                                <div className="field-last-name">
+                                    <div className="last-name-container">
+                                        <div className="last-name-align">
+                                            <label id="last_name" className="filled_label">Last Name</label>
+                                            <input type="text" onChange={(e) => inputText(e, 'last_name')} defaultValue={contact.last_name} required/>
+                                            {/* <span className="contact-error">{props.contactErrors.last ? props.contactErrors.last : null}</span> */}
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div className="order-city">
-                                    <div className="field">
-                                        <label id="city">City</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'city')} defaultValue={this.state.city} required/>
-                                        <span className="contact-error">{this.props.contactErrors.city ? this.props.contactErrors.city : null}</span>
-                                    </div>
+                            <div className="order-address-one">
+                                <div className="field">
+                                    <label id="address_one" className="filled_label">Address</label>
+                                    <input type="text" onChange={(e) => inputText(e, 'address_one')} defaultValue={contact.address_one} required/>
+                                    {/* <span className="contact-error">{props.contactErrors.address ? "Address can't be blank" : null}</span> */}
                                 </div>
+                            </div> 
 
-                                <div className="order-country-state-zipcode">
+                            <div className="order-address-two">
+                                <div className="field">
+                                    <label id="address_two" className="filled_label">Apartment, suite, etc. (optional)</label>
+                                    <input type="text" onChange={(e) => inputText(e, 'address_two')} defaultValue={contact.address_two}/>
+                                </div>
+                            </div>
+
+                            <div className="order-city">
+                                <div className="field">
+                                    <label id="city" className="filled_label">City</label>
+                                    <input type="text" onChange={(e) => inputText(e, 'city')} defaultValue={contact.city} required/>
+                                    {/* <span className="contact-error">{props.contactErrors.city ? props.contactErrors.city : null}</span> */}
+                                </div>
+                            </div>
+
+                            <div className="order-country-state-zipcode">
                                     <div className="order-country">
                                         <label>Country/Region</label>
-                                        <select name="" id="" onChange={(e) => this.selectCountry(e, e.target.value)} defaultValue={this.state.country}>
+                                        <select name="" id="" onChange={(e) => selectCountry(e, e.target.value)} value={contact.country}>
                                             <option value="United States">United States</option>
                                             <option value="Canada">Canada</option>
                                             <option value="United Kingdom">United Kingdom</option>
@@ -477,7 +401,7 @@ class OrderContactForm extends React.Component {
 
                                         <div className="order-state">
                                             <label htmlFor="">State</label>
-                                            <select name="" id="" onChange={(e) => this.selectState(e, e.target.value)} value={this.state.state}>
+                                            <select name="" id="" onChange={(e) => selectState(e, e.target.value)} value={contact.state}>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AK">Alaska</option>
                                                 <option value="AZ">Arizona</option>
@@ -535,111 +459,118 @@ class OrderContactForm extends React.Component {
                                             </select>
                                         </div>
 
-                                    {/* <div> */}
-                                        <div className="order-zipcode">
-                                            <div className="field">
-                                                <label id="zipcode">Zipcode</label>
-                                                <input type="text" onChange={(e) => this.inputText(e, 'zipcode')} defaultValue={this.state.zipcode} required/>
-                                                <span className="contact-error">{this.props.contactErrors.zipcode ? this.props.contactErrors.zipcode : null}</span>
+                                        <div className="order-zipcode" >
+                                            <div className="field" className="filled_label">
+                                                <label id="zipcode" className="filled_label">Zipcode</label>
+                                                <input type="text" onChange={(e) => inputText(e, 'zipcode')} defaultValue={contact.zipcode} required/>
+                                                {/* <span className="contact-error">{props.contactErrors.zipcode ? props.contactErrors.zipcode : null}</span> */}
                                             </div>
                                         </div>
-                                    {/* </div> */}
-
                                 </div>
 
                                 <div className="order-phone">
-                                    <div className="field">
-                                        <label id="phone">Phone</label>
-                                        <input type="text" onChange={(e) => this.inputText(e, 'phone')} defaultValue={this.state.phone} required/>
-                                        <span className="contact-error">{this.props.contactErrors.phone ? this.props.contactErrors.phone : null}</span>
+                                    <div className="field" className="filled_label">
+                                        <label id="phone" className="filled_label">Phone</label>
+                                        <input type="text" onChange={(e) => inputText(e, 'phone')} defaultValue={contact.phone} required/>
+                                        {/* <span className="contact-error">{this.props.contactErrors.phone ? this.props.contactErrors.phone : null}</span> */}
                                     </div>
                                 </div>
-
-                                <div className="order-save-contact">
-                                    <input type="checkbox" onChange={(e) => this.saveContact(e)}/>
-                                    <label htmlFor="">Save this information for next time</label>
-                                </div>
-
-                                <div className="order-contact-buttons">    
-                                    <div className="order-cart-button">
-                                        <Link className="order-redirect-cart" to="/cart"><span className="cart-arrow">&#60;</span> Return to cart</Link>
-                                    </div>
-                        
-                                    <button className="order-form-button" onClick={this.handleSubmit}>Continue to Shipping</button>
-                                
-                                </div>
-
-                            {/* </form> */}
 
                             <div>
-                            {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Continue to Shipping</button></Link>  */}
+
+                                <h2 className="payment-shipping-title">Payment Information</h2>
+
+                                <div className="credit-card-container">
+
+                                    <div className="credit-card-header">
+                                        <span>Credit card</span>
+                                        <div className="card-icons">
+                                            <li className="card-list-item"><i className="fa fa-cc-visa fa-2x" id="visa"></i></li>
+                                            <li className="card-list-item"><i className="fa fa-cc-mastercard fa-2x" id="mastercard"></i></li>
+                                            <li className="card-list-item"><i className="fa fa-cc-amex fa-2x" id="americanexpress"></i></li>
+                                            <li className="card-list-item"><i className="fa fa-cc-discover fa-2x" id="discover"></i></li>
+                                            <span> and more ...</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="card-info">
+                                        <div className="card-number">
+                                            <label id="card-number">Card numbers</label>
+                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-number')} required/>
+                                        </div>
+
+                                        <div className="card-name">
+                                            <label id="card-name">Name on card</label>
+                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-name')} required/>
+                                        </div>
+
+                                        <div className="card-date-code">
+                                            <div className="card-exp-date">
+                                                <label id="card-exp-date">Expiration date (MM/YY)</label>
+                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-exp-date')} required/>
+                                            </div>
+
+                                            <div className="card-security-code">
+                                                <label id="card-security-code">Security code</label>
+                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-security-code')} required/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        
-                
-                    
-                    </div>
-                    : 
-                        <button>Your cart is empty! Click here to continue shopping!</button>
-                    }
-                </div> 
 
-                <div className="items-info">
-                    {this.cartItems().map((details) => {
-                        return <OrderItemDetails item={details} key={details.product.id}/>
-                    })}
+                            <div id="order-summary-buttons">
+                                <Link className="order-redirect-cart" to="/account"><span className="cart-arrow">&#60;</span> Return to account</Link>
+                                <button id="update-order-button" onClick={() => submitUpdate()}>Update Order</button>
+                            </div>
 
-                    <div className="price-info"> 
-
-                        <div className="promo">
-                            <input type="text" defaultValue="PROMO CODE"/> <button>Apply</button> 
                         </div>
 
-                        <div className="shipping">
-                            <p>Subtotal</p>
-                            <p>usd ${parseFloat(this.state.total).toFixed(2)}</p>
-                            {/* <p>FREE 1 DAY DELIVERY</p> */}
-                        </div>
+                        <div className="ordered-products-container">
+                            
+                            <div id="order-metrics">
+                                <div className="metrics" id="metric-top-bar">
+                                    <h2>Order Number:</h2>
+                                    <span>{order.id}</span>
+                                </div>
 
-                        <div className="tax">
-                            <p>Shipping + Handling</p>
-                            <p>Calculated at next step</p>
-                        </div>
+                                <div className="metrics">
+                                    <h2>Order Total:</h2>
+                                    <span>${parseFloat(total).toFixed(2)}</span>
+                                </div>
+                            </div>
 
-                        <div className="order-total">
-                            <div className="price-details">
-                                <span>Total</span>
-                                <span>usd ${parseFloat(this.state.total).toFixed(2)}</span>
+                            <div id="order-product-list">
+
+                            <h2 >Ordered Products:</h2>
+
+                                {orderedProducts.map((details, idx) => {
+                                    return <div key={idx} className="product-item-container">
+
+                                                <OrderedProduct key={details.id} details={details} product={props.products[details.product_id]}/> 
+
+                                                <div className="order-input-fields">
+                                                    <input type="number" className="product-quantity" onChange={(e) => updateQuantity(e, details.id)} placeholder={details.quantity} min='0'/>
+                                                    <button onClick={() => removeItem(details.id)}>Remove Item</button>
+                                                </div>
+                                            </div>
+                                })}
+
                             </div>
                         </div>
 
-
+                    </div>                  
+                : 
+                    <div className="no-exiting-orders">
+                        <div>No Order Found </div> 
+                        {/* {redirect()} */}
                     </div>
-                </div>
-
-            </div>
-        )
-    }
+                }
+        </div>
+    )
+    // }
 }
 
-export default OrderContactForm; 
 
-/*
-
-    store.dispatch(createOrder({purchaser_id: 26, total: 61.24}, [{product_id: 35, quantity: 2}]))
-
-    needs current user id (for now, should refactor to allow non users to sign in)
-    needs the cart, which is in the localStorage
-    really only need these two things to create an order 
-
-    should put in an address form 
-        on click should save this to the address table, which should return the address
-    should put in a credit card form 
-        on click should save this to the payments table, which should return just the payment id 
-
-    should make this a protected route forcing users to sign in before placing the order, this way you get the user id 
-    should redirect users back to this page after sign in
-
-        this.props.history.goBack(); may serve you 
-
-
-*/
+export default OrderShow

@@ -61,11 +61,16 @@ class OrderForm extends React.Component {
 
     handleSubmit(e) {
         // e.preventDefault();
-        console.log(this.orderedProducts())
-        console.log(this.state)
-        this.props.createOrder(this.state, this.orderedProducts())
-        // window.localStorage.clear(); // clears the cart after checkout 
-        // this.props.history.push("/account")
+
+        let inputs = document.getElementsByClassName("required-input")
+        let emptyInputs = [...inputs].every( input => input.value === "")
+        
+        if(!emptyInputs) { // only proceeds with checkout if the credit card fields are filled 
+            this.props.createOrder(this.state, this.orderedProducts())
+            window.localStorage.clear(); // clears the cart after checkout 
+            this.props.history.push("/account")
+        }
+      
     }
 
 
@@ -166,23 +171,23 @@ class OrderForm extends React.Component {
                                     <div className="card-info">
                                         <div className="card-number">
                                             <label id="card-number">Card numbers</label>
-                                            <input type="text" onChange={(e) => this.inputText(e, 'card-number')} required/>
+                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-number')} required/>
                                         </div>
 
                                         <div className="card-name">
                                             <label id="card-name">Name on card</label>
-                                            <input type="text" onChange={(e) => this.inputText(e, 'card-name')} required/>
+                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-name')} required/>
                                         </div>
 
                                         <div className="card-date-code">
                                             <div className="card-exp-date">
                                                 <label id="card-exp-date">Expiration date (MM/YY)</label>
-                                                <input type="text" onChange={(e) => this.inputText(e, 'card-exp-date')} required/>
+                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-exp-date')} required/>
                                             </div>
 
                                             <div className="card-security-code">
                                                 <label id="card-security-code">Security code</label>
-                                                <input type="text" onChange={(e) => this.inputText(e, 'card-security-code')} required/>
+                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-security-code')} required/>
                                             </div>
 
                                         </div>

@@ -1,8 +1,47 @@
 .order-summary-container {
-    border: 1px solid red; 
+    // border: 1px solid red; 
     margin-left: auto;
     margin-right: auto;
-    max-width: 75vw;
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+
+    .payment-shipping-title {
+        font-weight: bolder;
+        font-size: 1.5em;
+        margin-top: 20px;
+    }
+
+    #order-summary-buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+
+        #update-order-button {
+            font-size: 24px;
+            color: white;
+            background-color: black;
+            font-size: 1em;
+            padding: 1.4em 1.7em 1.4em 1.7em; 
+            border-radius: 3px;
+        }
+
+        .order-redirect-cart {
+            // border: 1px solid blue;
+            text-decoration: none;
+            color: black;
+            vertical-align: text-bottom;
+            align-self: flex-end;
+            display: inline-block;
+            margin-top: 53px;
+
+            .cart-arrow {
+                font-weight: bold;
+            }
+        }
+    }
+
+
+
 }
 
 .order-show-container {
@@ -11,39 +50,689 @@
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
-    align-items: center;
+    // align-items: center;
+
 }
 
 .ordered-products-container {
-    border: 1px solid yellow;
+    // border: 1px solid yellow;
+    background-color: whitesmoke;
     // display: inline-block;
     min-width: 50%;
 
-    .order-input-fields {
-        display: flex;
-        justify-content: space-evenly;
+    #order-metrics {
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+        padding: 10px 15px 10px 15px;
+        margin-top: 20px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+
+
+        h2 {
+            // border: 1px solid red;
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        span {
+            font-weight: bolder;
+        }
+
+        .metrics {
+            display: flex;
+        
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #metric-top-bar {
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    #order-product-list {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+        padding: 10px 15px 10px 15px;
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .product-item-container {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    
+        .order-input-fields {
+            display: flex;
+            justify-content: space-evenly;
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 10px; 
+            margin-bottom: 10px;
+        }
+    
+        .order-product-details {
+            // border: 1px solid green;
+            display: flex; 
+            justify-content: space-between;
+            margin-right: 30px;
+        
+            .order-product-text {
+                // border: 1px solid pink;
+                // align-items: center;
+                width: 50%;
+            }
+        }
+
+        button {
+            font-size: 1.5em;
+            color: white;
+            background-color: black;
+            font-size: 1em;
+            padding: .75em .75em .75em .75em; 
+            border-radius: 3px;
+        }
+
+        input {
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        p {
+            font-weight: bolder;
+        }
     }
 }
+
+
 
 .order-address-payment {
-    border: 1px solid blue;
-    text-align: center;
-    min-width: 50%;
+    // border: 1px solid pink;
+    margin-left: auto;
+    margin-right: auto;
+    // text-align: center;
+
+    #contact-name-field {
+        display: flex;
+        justify-content: space-between;
+
+        .field-first-name {
+            width: 100%;  // keeps the input from changing sizes when typing 
+            text-align: left;
+
+            input {
+                position: relative;
+                display: inline-block;
+                width: 95%;
+                padding: 12px 0 12px 0;
+                z-index: 10;
+                background: transparent;
+                font-size: 1em;
+                text-indent: 5px;
+                border-radius: 3px;
+            }
+        }
+
+        .field-last-name {
+            width: 100%;
+
+            .last-name-container {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                width: 100%;
+
+                .last-name-align {
+                    text-align: left;
+                    width: 95%;
+
+                    input {
+                        position: relative;
+                        display: inline-block;
+                        width: 100%;
+                        padding: 12px 0 12px 0;
+                        z-index: 10;
+                        background: transparent;
+                        font-size: 1em;
+                        text-indent: 5px;
+                        border-radius: 3px;
+                    }
+                }
+            }
+        }
+
+        label {
+            position: relative;
+            display: inline-block;
+            top: 30px;
+            left: 5px;
+            z-index: 1;
+            transition: all 0.5s ease-in-out;
+        }
+
+
+        .filled_label {
+            top: 15px; 
+            font-size: 0.7em;
+        }
+    }
+
+    .order-address-one {
+
+        text-align: left;
+        input, 
+        label {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            display: inline-block;
+            margin: 0 auto;
+            padding: 0 0 5px 0;
+            top: 40px; 
+            left: 5px;
+            z-index: 1;
+            transition: all 0.5s ease-in-out;
+        }
     
-}
+        input[type="text"] {
+            font-size: 1em;
+            padding: 12px 0 12px 0;
+            // margin-bottom: 0.5em;
+            z-index: 10;
+            background: transparent;
+            text-indent: 5px;
+            border-radius: 3px;
+        }
+    
+        .filled_label {
+            top: 18px; 
+            font-size: 0.7em;
+            min-width: 90%;
+        }
 
-.order-product-details {
-    border: 1px solid green;
-    display: flex; 
-    justify-content: space-between;
-
-    .order-product-img {
-        min-width: 50%;
     }
 
-    .order-product-text {
-        border: 1px solid pink;
-        align-items: center;
-        min-width: 50%;
+    .order-address-two {
+
+        input, 
+        label {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            display: inline-block;
+            margin: 0 auto;
+            padding: 0 0 5px 0;
+            top: 40px; 
+            left: 5px;
+            z-index: 1;
+            transition: all 0.5s ease-in-out;
+        }
+    
+        input[type="text"] {
+            font-size: 1em;
+            padding: 12px 0 12px 0;
+            // margin-bottom: 0.5em;
+            z-index: 10;
+            background: transparent;
+            text-indent: 5px;
+            border-radius: 3px;
+        }
+    
+        .filled_label {
+            top: 18px; 
+            font-size: 0.7em;
+            min-width: 90%;
+        }
+
     }
+
+    .order-city {
+
+        text-align: left;
+
+        input, 
+        label {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            display: inline-block;
+            margin: 0 auto;
+            padding: 0 0 5px 0;
+            top: 40px; 
+            left: 5px;
+            z-index: 1;
+            transition: all 0.5s ease-in-out;
+        }
+    
+        input[type="text"] {
+            font-size: 1em;
+            padding: 12px 0 12px 0;
+            // margin-bottom: 0.5em;
+            z-index: 10;
+            background: transparent;
+            text-indent: 5px;
+            border-radius: 3px;
+        }
+    
+        .filled_label {
+            top: 18px; 
+            font-size: 0.7em;
+            min-width: 90%;
+        }
+
+    }
+
+    .order-phone {
+        text-align: left;
+                    
+        input, 
+        label {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            display: inline-block;
+            margin: 0 auto;
+            padding: 0 0 5px 0;
+            top: 35px; 
+            left: 5px;
+            z-index: 1;
+            transition: all 0.5s ease-in-out;
+        }
+    
+        input[type="text"] {
+            font-size: 1em;
+            padding: 14px 0 14px 0;
+            // margin-bottom: 0.5em;
+            z-index: 10;
+            background: transparent;
+            text-indent: 5px;
+            border-radius: 3px;
+        }
+    
+        .filled_label {
+            top: 18px; 
+            font-size: 0.7em;
+            min-width: 90%;
+        }
+    }
+
+    .order-country-state-zipcode {
+
+                display: flex;
+                justify-content: space-between;
+                .order-country {
+                    width: 30%;
+                    text-align: left;
+                    label {
+                        display: block;        
+                        position: relative;
+                        top: 20px;
+                        text-indent: 5px;
+                        z-index: 1;  
+                        font-size: 1em;
+                    }
+                    select {
+                        width: 100%;
+                        font-size: 1em;
+                        padding: 25px 0 0 0;
+                        z-index: 10;
+                        border-radius: 3px;
+                    }
+                }
+                .order-state {
+                    text-align: left;
+                    width: 30%;
+                
+                    label {
+                        position: relative;
+                        display: block;
+                        top: 20px;
+                        text-indent: 5px;
+                        z-index: 1;  
+                        font-size: 1em;
+                    }
+                    select {
+                        width: 100%;
+                        font-size: 1em;
+                        padding: 25px 0 0 0;
+                        z-index: 10;
+                        border-radius: 3px;
+                    }
+                }
+                .order-zipcode {
+                    // border: 2px solid red;
+                    .field {
+                        text-align: left;
+                    }
+                    input, 
+                    label {
+                        position: relative;
+                        display: inline-block;
+                        text-align: left;
+                    }
+
+                    label {
+                        position: relative;
+                        display: inline-block;
+                        top: 35px;
+                        left: 5px;
+                        text-align: left; 
+                        z-index: 1;
+                        transition: all 0.5s ease-in-out;
+                        // // // margin: 0 auto;
+                        // // padding: 0 0 5px 0;
+                        // border: 1px solid blue;
+                    }
+                
+                    input[type="text"] {
+                        display: block;
+                        padding: 14px 0 14px 0;
+                        font-size: 1em;
+                        z-index: 10;
+                        background: transparent;
+                        text-indent: 5px;
+                        border-radius: 3px;
+                        margin-top: 5px;
+                        font-size: 1em;
+                        // margin-bottom: 0.5em;
+                        // width: 100%;
+                        // height: 100%;
+                    }
+                
+                    .filled_label {
+                        top: 18px; 
+                        font-size: 0.7em;
+                        right: 75px;
+                    }
+                }
+
+    }
+
+    .credit-card-container {
+
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+        margin-top: 20px;
+
+        
+    }
+
+    .credit-card-header {
+        border-bottom: 1px solid lightgrey;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        span {
+            padding-top: 7px;
+            margin-left: 20px;
+            
+        }
+
+        .card-icons {
+            list-style: none;
+            // border: 1px solid pink;
+            display: flex;
+            
+
+            span {
+                // border: 1px solid yellow;
+                margin-left: 4px;
+                margin-right: 20px;
+                color: lightgrey
+            }
+
+            li {
+                padding-left: 3px;
+            }
+
+            #visa {
+                color: blue;
+            }
+
+            #mastercard {
+                color: orange
+            }
+
+            #americanexpress {
+                color: blue
+            }
+
+            #discover {
+                color: orange;
+            }
+        }
+    }
+
+    .card-info {
+        background-color: whitesmoke;
+        padding-bottom: 20px;
+        // width: 90%;
+        // margin-left: auto;
+        // margin-right: auto;
+
+        .card-number {
+            // border: 1px solid green;
+            width: 90%; 
+            margin-left: auto;
+            margin-right: auto;
+
+
+            input, 
+            label {
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                text-align: left;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            label {
+                display: inline-block;
+                margin: 0 auto;
+                padding: 0 0 5px 0;
+                top: 40px; 
+                left: 5px;
+                z-index: 1;
+                transition: all 0.5s ease-in-out;
+            }
+        
+            input[type="text"] {
+                font-size: 1em;
+                padding: 12px 0 12px 0;
+                // margin-bottom: 0.5em;
+                z-index: 10;
+                background: transparent;
+                text-indent: 5px;
+                border-radius: 3px;
+            }
+        
+            .filled_label {
+                top: 18px; 
+                font-size: 0.7em;
+                min-width: 90%;
+            }
+        }
+
+        .card-name {
+            // border: 1px solid red;
+            width: 90%; 
+            margin-left: auto;
+            margin-right: auto;
+
+
+            input, 
+            label {
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                text-align: left;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            label {
+                display: inline-block;
+                margin: 0 auto;
+                padding: 0 0 5px 0;
+                top: 40px; 
+                left: 5px;
+                z-index: 1;
+                transition: all 0.5s ease-in-out;
+            }
+        
+            input[type="text"] {
+                font-size: 1em;
+                padding: 12px 0 12px 0;
+                // margin-bottom: 0.5em;
+                z-index: 10;
+                background: transparent;
+                text-indent: 5px;
+                border-radius: 3px;
+            }
+        
+            .filled_label {
+                top: 18px; 
+                font-size: 0.7em;
+                min-width: 90%;
+            }
+        }
+
+        .card-date-code {
+            // border: 1px solid blue; 
+            display: flex;
+            justify-content: space-between;
+            width: 90%; 
+            margin-left: auto;
+            margin-right: auto;
+
+            .card-exp-date {
+                width: 45%; 
+                // margin-left: auto;
+                // margin-right: auto;
+    
+    
+                input, 
+                label {
+                    position: relative;
+                    display: inline-block;
+                    width: 100%;
+                    text-align: left;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+    
+                label {
+                    display: inline-block;
+                    margin: 0 auto;
+                    padding: 0 0 5px 0;
+                    top: 40px; 
+                    left: 5px;
+                    z-index: 1;
+                    transition: all 0.5s ease-in-out;
+                }
+            
+                input[type="text"] {
+                    font-size: 1em;
+                    padding: 12px 0 12px 0;
+                    // margin-bottom: 0.5em;
+                    z-index: 10;
+                    background: transparent;
+                    text-indent: 5px;
+                    border-radius: 3px;
+                }
+            
+                .filled_label {
+                    top: 18px; 
+                    font-size: 0.7em;
+                    min-width: 90%;
+                }
+            }
+
+            .card-security-code {
+                width: 45%; 
+                // margin-left: auto;
+                // margin-right: auto;
+    
+    
+                input, 
+                label {
+                    position: relative;
+                    display: inline-block;
+                    width: 100%;
+                    text-align: left;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+    
+                label {
+                    display: inline-block;
+                    margin: 0 auto;
+                    padding: 0 0 5px 0;
+                    top: 40px; 
+                    left: 5px;
+                    z-index: 1;
+                    transition: all 0.5s ease-in-out;
+                }
+            
+                input[type="text"] {
+                    font-size: 1em;
+                    padding: 12px 0 12px 0;
+                    // margin-bottom: 0.5em;
+                    z-index: 10;
+                    background: transparent;
+                    text-indent: 5px;
+                    border-radius: 3px;
+                }
+            
+                .filled_label {
+                    top: 18px; 
+                    font-size: 0.7em;
+                    min-width: 90%;
+                }
+            }
+        }
+        
+
+
+    }
+
+    
+    
 }
