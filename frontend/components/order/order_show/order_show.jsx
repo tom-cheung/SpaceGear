@@ -98,7 +98,6 @@ const OrderShow = (props) => {
     }
 
     const inputText = (e, id) => {
-
         
         let label = document.getElementById(id)
         if(e.target.value === "") {

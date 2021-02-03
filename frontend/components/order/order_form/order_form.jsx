@@ -216,8 +216,13 @@ class OrderForm extends React.Component {
                         </form>
                         
                         : 
-                        
-                        <button>Your cart is empty! Click here to continue shopping!</button>
+                            <div className="empty-cart">
+                                <div className="form-logo-container">
+                                    <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                                </div>
+                                <h1>Your Cart is Empty!</h1> 
+                                <Link to="/allproducts"><button>Browse Products</button></Link>
+                            </div>
                     }
                 </div> 
 

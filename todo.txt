@@ -1,12 +1,14 @@
 2/2/21 
 
-    style order not found page 
+    style order not found page - DONE  
 
     search bar
 
     footer 
 
-    order edit page - check the css for the credit card field 
+    style empty card pages for order contact / shipping / form 
+
+    order edit page - check the css for the credit card field - DONE
 
 1/27/21
 
