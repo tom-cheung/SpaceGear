@@ -33,17 +33,23 @@ const OrderShow = (props) => {
 
     const updateQuantity = (e, id) => {
 
-        console.log(e.currentTarget.value === NaN)
+        // prevents NaN from being put into state 
+        let notNumber = isNaN(parseInt(e.target.value));
+
         updateProducts(
             orderedProducts.map(product => {
             if(product.id === id) {
-                product.quantity = parseInt(e.currentTarget.value);
-                return product;
+                if(notNumber) {
+                    product.quantity = 0;
+                    return product
+                } else {
+                    product.quantity = parseInt(e.currentTarget.value);
+                    return product;
+                }
             } else {
                 return product; 
             }
-            })
-        )
+            }))
     }
 
     const removeItem = (id) => {
@@ -81,14 +87,10 @@ const OrderShow = (props) => {
     }
 
     const selectCountry = (e, country) => {
-        console.log(e)
-        console.log(country)
         updateContact(Object.assign({}, contact, {country}))
     }
 
     const selectState = (e, state) => {
-        console.log(e)
-        console.log(state)
         updateContact(Object.assign({}, contact, {state}))
     }
 
@@ -551,7 +553,7 @@ const OrderShow = (props) => {
                                                 <OrderedProduct key={details.id} details={details} product={props.products[details.product_id]}/> 
 
                                                 <div className="order-input-fields">
-                                                    <input type="number" className="product-quantity" onChange={(e) => updateQuantity(e, details.id)} placeholder={details.quantity} min='0'/>
+                                                    <input type="number" className="product-quantity" onChange={(e) => updateQuantity(e, details.id)} value={details.quantity} min='0'/>
                                                     <button onClick={() => removeItem(details.id)}>Remove Item</button>
                                                 </div>
                                             </div>
