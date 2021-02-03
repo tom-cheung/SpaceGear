@@ -1,16 +1,26 @@
+2/2/21 
+
+    style order not found page 
+
+    search bar
+
+    footer 
+
+    order edit page - check the css for the credit card field 
+
 1/27/21
 
-    Checkout page
+    Checkout page - DONE
     
-    Have form for the address
+    Have form for the address - DONE 
 
-    Have form for the payment 
+    Have form for the payment - DONE 
 
-    On submission of the order it posts the address, posts the payment, and finally posts the order
+    On submission of the order it posts the address, posts the payment, and finally posts the order - DONE
 
-    use async and await 
+    use async and await - DONE
 
-    save the address and payments regardless, since you're already having the user login to checkout 
+    save the address and payments regardless, since you're already having the user login to checkout - DONE
 
 1/26/21 
     

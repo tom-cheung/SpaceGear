@@ -587,8 +587,12 @@ const OrderShow = (props) => {
 
                     </div>                  
                 : 
-                    <div className="no-exiting-orders">
-                        <div>No Order Found </div> 
+                    <div className="no-existing-orders">
+                        <div className="form-logo-container">
+                            <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                        </div>
+                        <h1>Order Not Found</h1> 
+                        <Link to="/allproducts"><button>Browse Products</button></Link>
                         {/* {redirect()} */}
                     </div>
                 }
