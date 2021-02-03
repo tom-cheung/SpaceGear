@@ -98,6 +98,8 @@ const OrderShow = (props) => {
     }
 
     const inputText = (e, id) => {
+
+        
         let label = document.getElementById(id)
         if(e.target.value === "") {
             label.classList.remove("filled_label")
@@ -521,23 +523,23 @@ const OrderShow = (props) => {
                                     <div className="card-info">
                                         <div className="card-number">
                                             <label id="card-number">Card numbers</label>
-                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-number')} required/>
+                                            <input type="text" className="required-input" onChange={(e) => inputText(e, 'card-number')} required/>
                                         </div>
 
                                         <div className="card-name">
                                             <label id="card-name">Name on card</label>
-                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-name')} required/>
+                                            <input type="text" className="required-input" onChange={(e) => inputText(e, 'card-name')} required/>
                                         </div>
 
                                         <div className="card-date-code">
                                             <div className="card-exp-date">
                                                 <label id="card-exp-date">Expiration date (MM/YY)</label>
-                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-exp-date')} required/>
+                                                <input type="text" className="required-input" onChange={(e) => inputText(e, 'card-exp-date')} required/>
                                             </div>
 
                                             <div className="card-security-code">
                                                 <label id="card-security-code">Security code</label>
-                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-security-code')} required/>
+                                                <input type="text" className="required-input" onChange={(e) => inputText(e, 'card-security-code')} required/>
                                             </div>
 
                                         </div>
