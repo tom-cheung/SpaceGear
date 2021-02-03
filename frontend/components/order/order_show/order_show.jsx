@@ -23,11 +23,20 @@ const OrderShow = (props) => {
         calcTotal()
     }, [orderedProducts])
 
+    // useEffect(() => {
+    //     props.retrieveContact(props.currentUser.id).then( res => {
+    //         updateContact(Object.values(res.contacts)[0])
+    //     })
+
+    // }, [])
+
     useEffect(() => {
         props.retrieveContact(props.currentUser.id).then( res => {
             updateContact(Object.values(res.contacts)[0])
         })
-
+        return () => {
+            props.removeContactError()
+        }
     }, [])
 
 
@@ -71,7 +80,21 @@ const OrderShow = (props) => {
     }
 
     const submitUpdate = () => {
-        props.editOrder(order, orderedProducts)
+        props.removeContactError()
+
+
+        props.editOrder(order, orderedProducts).then(() => {
+            props.editContact(contact).then(() => {
+
+                if(Object.values(props.contactErrors).length === 0) {
+                    props.history.push("/account")
+                }
+
+            })
+        })
+
+        
+
     }
 
     const inputText = (e, id) => {
@@ -114,7 +137,7 @@ const OrderShow = (props) => {
                                 <div className='field-first-name'>
                                     <label id="first_name" className="filled_label" htmlFor="">First Name</label>
                                     <input type="text" onChange={(e) => inputText(e, 'first_name')} defaultValue={contact.first_name} required/>
-                                    {/* <span className="contact-error">{props.contactErrors.first ? props.contactErrors.first : null}</span> */}
+                                    <span className="contact-error">{props.contactErrors.first ? props.contactErrors.first : null}</span>
                                 </div>
 
 
@@ -123,7 +146,7 @@ const OrderShow = (props) => {
                                         <div className="last-name-align">
                                             <label id="last_name" className="filled_label">Last Name</label>
                                             <input type="text" onChange={(e) => inputText(e, 'last_name')} defaultValue={contact.last_name} required/>
-                                            {/* <span className="contact-error">{props.contactErrors.last ? props.contactErrors.last : null}</span> */}
+                                            <span className="contact-error">{props.contactErrors.last ? props.contactErrors.last : null}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +156,7 @@ const OrderShow = (props) => {
                                 <div className="field">
                                     <label id="address_one" className="filled_label">Address</label>
                                     <input type="text" onChange={(e) => inputText(e, 'address_one')} defaultValue={contact.address_one} required/>
-                                    {/* <span className="contact-error">{props.contactErrors.address ? "Address can't be blank" : null}</span> */}
+                                    <span className="contact-error">{props.contactErrors.address ? "Address can't be blank" : null}</span>
                                 </div>
                             </div> 
 
@@ -148,7 +171,7 @@ const OrderShow = (props) => {
                                 <div className="field">
                                     <label id="city" className="filled_label">City</label>
                                     <input type="text" onChange={(e) => inputText(e, 'city')} defaultValue={contact.city} required/>
-                                    {/* <span className="contact-error">{props.contactErrors.city ? props.contactErrors.city : null}</span> */}
+                                    <span className="contact-error">{props.contactErrors.city ? props.contactErrors.city : null}</span>
                                 </div>
                             </div>
 
@@ -465,7 +488,7 @@ const OrderShow = (props) => {
                                             <div className="field" className="filled_label">
                                                 <label id="zipcode" className="filled_label">Zipcode</label>
                                                 <input type="text" onChange={(e) => inputText(e, 'zipcode')} defaultValue={contact.zipcode} required/>
-                                                {/* <span className="contact-error">{props.contactErrors.zipcode ? props.contactErrors.zipcode : null}</span> */}
+                                                <span className="contact-error">{props.contactErrors.zipcode ? props.contactErrors.zipcode : null}</span>
                                             </div>
                                         </div>
                                 </div>
@@ -474,7 +497,7 @@ const OrderShow = (props) => {
                                     <div className="field" className="filled_label">
                                         <label id="phone" className="filled_label">Phone</label>
                                         <input type="text" onChange={(e) => inputText(e, 'phone')} defaultValue={contact.phone} required/>
-                                        {/* <span className="contact-error">{this.props.contactErrors.phone ? this.props.contactErrors.phone : null}</span> */}
+                                        <span className="contact-error">{props.contactErrors.phone ? this.props.contactErrors.phone : null}</span>
                                     </div>
                                 </div>
 

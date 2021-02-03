@@ -516,6 +516,11 @@
                     border-radius: 3px;
                 }
 
+                .order-form-button:hover {
+                    background-color: white;
+                    color: black;
+                }
+
                 .order-cart-button {
                     display: flex;
                     flex-direction: column;

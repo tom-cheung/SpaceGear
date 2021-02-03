@@ -10,15 +10,22 @@ class UserShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchOrders();
+        this.props.retrieveContact(this.props.currentUser.id)
     }
 
     logoutUser(e) {
         e.preventDefault;
         this.props.logoutUser();
-        this.props.clearOrders();
     }
 
     render() {
+        let contact; 
+        if(this.props.contact.length) {
+            contact = this.props.contact[0]
+        }
+
+        console.log(contact)
+
         return(
             <div className="account-container">
                 <div className="header-container">
@@ -27,26 +34,56 @@ class UserShow extends React.Component {
                     <p id="welcome-message">Welcome back, {this.props.currentUser.email}!</p>
                 </div>
 
+                <div className="titles-container">
+                    <h1 id="order-title">MY ORDERS</h1>
+                    <h1 id="address-title">MY CONTACT INFORMATION</h1>
+                </div>
+
                 <div className="user-information-container">
 
                     <div className='order-container'>
-                        <h1 id="order-title">MY ORDERS</h1>
 
                         <ul>
                             {this.props.orders.map((order) => {
                                 return (
-                                    <div key={order.id}>
-                                        <Link id="order-show-page" to={`/order/${order.id}`}><h1 className="order-ref">Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</h1></Link> 
-                                        <button className="order-cancel-button" onClick={() => this.props.deleteOrder(order.id)}>Cancel Order</button> 
+                                    <div key={order.id} >
+                                        {console.log(order)}
+                                        <h1 className="order-ref">Order Number: {order.id} / Total: ${parseFloat(order.total).toFixed(2)}</h1>
+                                        <div className="edit-delete-buttons">
+                                            <button className="order-cancel-button" onClick={() => this.props.deleteOrder(order.id)}>Cancel Order</button> 
+                                            <Link id="order-show-page" to={`/order/${order.id}`}><button className="order-cancel-button">Edit Order</button></Link> 
+                                        </div>
                                     </div>
                                 )})}
                         </ul>
                     </div>
 
                     <div className='address-container'>
-                        <h1 id="address-title">MY ADDRESS</h1>
-                        <p>732 Harris Street</p>
-                        <p>New York, NY 10017</p>
+
+                        {contact ? 
+
+                            <div className="user-contact-container">
+                                <div className="contact-name">
+                                    <span>{contact.first_name} </span>
+                                    <span>{contact.last_name}</span>
+                                </div>
+                                <p className="contact-field">{contact.address_one}</p>
+                                <p className="contact-field">{contact.address_two}</p>
+                                <p className="contact-field">{contact.city}</p>
+
+                                <div className="city-state-zip">
+                                    <span>{contact.state},</span>
+                                    <span>{contact.country},</span>
+                                    <span>{contact.zipcode},</span> 
+                                </div>
+                                <p className="contact-field">{contact.phone}</p>
+
+                            </div>
+                            :
+
+                            null
+                    
+                        }
                     </div>
 
                 </div>

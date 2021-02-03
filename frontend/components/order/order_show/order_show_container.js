@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import OrderShow from './order_show';
 import { editOrder, deleteOrder } from '../../../actions/order_actions'; 
-import { retrieveContact} from "../../../actions/contact_actions";
+import { retrieveContact, editContact, removeContactError} from "../../../actions/contact_actions";
 
 const mSTP = (state, ownProps) => {
 
@@ -12,6 +12,7 @@ const mSTP = (state, ownProps) => {
         order: order ?  order : {},
         orderedProducts: order ? order.ordered_product : [],
         products: state.entities.products, 
+        contactErrors: state.errors.contacts,
         // contact: Object.values(state.entities.contacts),
     })
 }
@@ -21,6 +22,8 @@ const mDTP = (dispatch) => {
         editOrder: (order, products) => dispatch(editOrder(order, products)), 
         deleteOrder: (orderId) => dispatch(deleteOrder(orderId)),
         retrieveContact: (userID) => dispatch(retrieveContact(userID)),
+        editContact: (contactID) => dispatch(editContact(contactID)),
+        removeContactError: () => dispatch(removeContactError()),
     })
 }
 

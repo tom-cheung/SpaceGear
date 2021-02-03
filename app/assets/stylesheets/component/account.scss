@@ -3,7 +3,7 @@
     margin-right: auto;
     margin-left: auto;
     margin-top: 100px;
-    max-width: 1200px;
+    width: 90%;
     
     * {
         font-family: 'Noto Sans', sans-serif;
@@ -46,32 +46,52 @@
 
     }
 
+    .titles-container {
+        // border: 1px solid purple;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgrey;
+        
+
+        h1 {
+            font-weight: bolder;
+            font-size: 1em;
+            // border: 1px solid pink;
+        }
+
+
+    }
+
     .user-information-container {
         // border: 2px solid yellow;
         display: flex;
         justify-content: space-between;
-        margin-top: 50px;
 
 
         .order-container {
             // border: 2px solid blue;
 
-            #order-title {
-                // border-bottom: 1px solid lightgray;
-                min-width: 700px;
-                font-size: 20px;
-                margin-bottom: 30px;
-                padding-bottom: 10px;
+            
+
+            .edit-delete-buttons {
+                // border: 1px solid red;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
             }
 
-            .order-ref {
-
-            }
-
-            .order-cancel-button {
+            button {
                 margin-top: 10px;
                 background-color: black;
                 color: white;
+            }
+
+            button:hover {
+                background-color: white;
+                color: black;
             }
 
 
@@ -83,13 +103,22 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            // border: 1px solid blue;
+            width: 20%;
 
-            #address-title {
-                // border-bottom: 1px solid lightgray;
-                padding-bottom: 10px;
-                min-width: 200px;
-                text-align: right;
-                font-size: 20px;
+            .user-contact-container {
+                border: 1px solid lightgrey;
+                border-radius: 3px;
+                text-align: left;
+                padding: 5px 5px 5px 5px;
+
+                *{
+                    margin-bottom: 3px;
+                }
+                
+                span {
+                    margin-left: 2px;
+                }
             }
 
         }
