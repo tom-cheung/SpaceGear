@@ -24,8 +24,7 @@
             max-width: 100px;
             text-align: center;
             padding: 10px 15px 10px 15px; 
-
-            
+            transition: all .75s ease-in-out;
         }
 
         #logout-button:hover {
@@ -81,12 +80,14 @@
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 5px;
+                transition: all .75s ease-in-out;
             }
 
             button {
                 margin-top: 10px;
                 background-color: black;
                 color: white;
+                transition: all .75s ease-in-out;
             }
 
             button:hover {

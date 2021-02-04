@@ -2,11 +2,13 @@
 
     style order not found page - DONE  
 
-    search bar
+    search bar - DONE
 
     footer 
 
     make the header fixed 
+
+    redirect from login page to wherever you came from 
 
     style empty card pages for order contact / shipping / form - DONE
 

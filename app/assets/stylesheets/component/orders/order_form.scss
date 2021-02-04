@@ -365,6 +365,7 @@
         font-size: 1em;
         padding: 1.4em 1.7em 1.4em 1.7em; 
         border-radius: 3px;
+        transition: all .75s ease-in-out;
     }
 
     #submit-order:hover {
@@ -394,6 +395,7 @@
             font-size: 1em;
             padding: 1.4em 1.7em 1.4em 1.7em; 
             border-radius: 3px;
+            transition: all .75s ease-in-out;
         }
 
         button:hover {
