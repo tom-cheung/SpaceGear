@@ -1,14 +1,18 @@
-2/2/21 
-
-    style order not found page - DONE  
-
-    search bar - DONE
+2/4/21 
 
     footer 
 
     make the header fixed 
 
     redirect from login page to wherever you came from 
+
+    animate remaining buttons
+
+2/2/21 
+
+    style order not found page - DONE  
+
+    search bar - DONE
 
     style empty card pages for order contact / shipping / form - DONE
 

@@ -158,7 +158,9 @@ class OrderContactForm extends React.Component {
 
        
         return(
-            <div className="order-form-container">  
+            <div className="order-form-container"> 
+
+            <div className="order-top-container"> 
 
                 <div className="order-form">
                     
@@ -622,6 +624,13 @@ class OrderContactForm extends React.Component {
                     </div>
                 </div>
 
+            
+            </div>
+
+                <div className="fill-container">
+                    <div className="left-container"></div>
+                    <div className="right-container"></div>
+                </div>
             </div>
         )
     }

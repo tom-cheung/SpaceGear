@@ -92,109 +92,118 @@ class OrderShipping extends React.Component {
         return(
             <div className="order-form-container">  
 
-                <div className="order-form">
-                    {/* <div className="form-logo-container">
-                        <Link to="/" className="order-form-logo">SPOOK</Link>
-                    </div> */}
+                <div className="shipping-top-container">
 
-                    {this.state.total ? 
+                        <div className="order-form">
+                            {/* <div className="form-logo-container">
+                                <Link to="/" className="order-form-logo">SPOOK</Link>
+                            </div> */}
 
-                        <div className="order-shipping-container">
-                            <div className="form-logo-container">
-                                <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
-                            </div>
+                            {this.state.total ? 
 
-                            <div className="order-shipping-information">
-                                <div className="shipping-info-inner">   
-                                    <div className="shipping-email" id="shipping-email">
-                                        <div >Email</div>
-                                        <span>{
-                                            this.props.userEmail
-                                        }</span>
+                                <div className="order-shipping-container">
+                                    <div className="form-logo-container">
+                                        <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
                                     </div>
-                                    <div className="shipping-email">
-                                        <div >Ship to</div>
-                                        <div id="shipping-address">{this.props.contact.length ? 
+                            
+                                    <div className="order-shipping-information">
+                                        <div className="shipping-info-inner">   
+                                            <div className="shipping-email" id="shipping-email">
+                                                <div >Email</div>
+                                                <span>{
+                                                    this.props.userEmail
+                                                }</span>
+                                            </div>
+                                            <div className="shipping-email">
+                                                <div >Ship to</div>
+                                                <div id="shipping-address">{this.props.contact.length ? 
 
-                                            address_one + address_two + city + state + country + zipcode
-                                            :
-                                        
-                                            null
-                                        }</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="order-shipping-method">
-                                <div id="order-shipping-title">
-                                    <span>Shipping method</span>
-                                </div>
-
-
-                                <div id="shipping-option-container"> 
-                                    <div className="order-shipping-option" id="order-shipping-option-one">
-                                        <div id="shipping-ups">
-                                            <input type="radio" disabled/>
-                                            <span>Shipping - UPS Home Delivery®</span>
+                                                    address_one + address_two + city + state + country + zipcode
+                                                    :
+                                                
+                                                    null
+                                                }</div>
+                                            </div>
                                         </div>
-                                        <span className="shipping-price">$11.24</span>
                                     </div>
-
-                                    <div className="order-shipping-option">
-                                        <div>
-                                            <input type="radio" readOnly/>
-                                            <span>Free - One Day Delivery</span>
+                                            
+                                    <div className="order-shipping-method">
+                                        <div id="order-shipping-title">
+                                            <span>Shipping method</span>
                                         </div>
-                                        <span className="shipping-price">$0.00</span>
+                                            
+                                            
+                                        <div id="shipping-option-container"> 
+                                            <div className="order-shipping-option" id="order-shipping-option-one">
+                                                <div id="shipping-ups">
+                                                    <input type="radio" disabled/>
+                                                    <span>Shipping - UPS Home Delivery®</span>
+                                                </div>
+                                                <span className="shipping-price">$11.24</span>
+                                            </div>
+                                            
+                                            <div className="order-shipping-option">
+                                                <div>
+                                                    <input type="radio" readOnly/>
+                                                    <span>Free - One Day Delivery</span>
+                                                </div>
+                                                <span className="shipping-price">$0.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                            
+                                    <div className="order-button-container">
+                                        <Link to="/checkout/form"><button className="order-shipping-button" onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
+                                    </div>
+                                            
+                                </div>
+                            : 
+                                <div className="empty-cart">
+                                    <div className="form-logo-container">
+                                        <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                                    </div>
+                                    <h1>Your Cart is Empty!</h1> 
+                                    <Link to="/allproducts"><button>Browse Products</button></Link>
+                                </div>
+                            }
+
+                        </div> 
+                        
+                        <div className="items-info">
+                            {this.cartItems().map((details) => {
+                                return <OrderItemDetails item={details} key={details.product.id}/>
+                            })}
+
+                            <div className="price-info"> 
+                        
+                                <div className="promo">
+                                    <input type="text" defaultValue="PROMO CODE"/> <button>Apply</button> 
+                                </div>
+                        
+                                <div className="shipping">
+                                    <p>Shipping + Handling</p>
+                                    <p>FREE ONE DAY DELIVERY</p>
+                                </div>
+                        
+                                <div className="tax">
+                                    <p>Taxes</p>
+                                    <p>NONE</p>
+                                </div>
+                        
+                                <div className="order-total">
+                                    <div className="price-details">
+                                        <span>Total</span>
+                                        <span>usd ${parseFloat(this.state.total).toFixed(2)}</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="order-button-container">
-                                <Link to="/checkout/form"><button className="order-shipping-button" onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
-                            </div>
-
-                        </div>
-                    : 
-                        <div className="empty-cart">
-                            <div className="form-logo-container">
-                                <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
-                            </div>
-                            <h1>Your Cart is Empty!</h1> 
-                            <Link to="/allproducts"><button>Browse Products</button></Link>
-                        </div>
-                    }
-
-                </div> 
-
-                <div className="items-info">
-                    {this.cartItems().map((details) => {
-                        return <OrderItemDetails item={details} key={details.product.id}/>
-                    })}
-
-                    <div className="price-info"> 
-
-                        <div className="promo">
-                            <input type="text" defaultValue="PROMO CODE"/> <button>Apply</button> 
                         </div>
 
-                        <div className="shipping">
-                            <p>Shipping + Handling</p>
-                            <p>FREE ONE DAY DELIVERY</p>
-                        </div>
+                </div>
 
-                        <div className="tax">
-                            <p>Taxes</p>
-                            <p>NONE</p>
-                        </div>
-
-                        <div className="order-total">
-                            <div className="price-details">
-                                <span>Total</span>
-                                <span>usd ${parseFloat(this.state.total).toFixed(2)}</span>
-                            </div>
-                        </div>
-                    </div>
+                <div className="fill-container">
+                    <div className="left-container"></div>
+                    <div className="right-container"></div>
                 </div>
 
             </div>

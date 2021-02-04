@@ -1,9 +1,13 @@
 // order_contact.jsx
 .order-form-container {
-    display: flex;
-    min-height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
+
+    .order-top-container {
+        display: flex;
+        min-height: 100vh;
+        margin-left: auto;
+        margin-right: auto;
+        // padding-bottom: 25%;
+    }
 
     * {
         font-family: 'Noto Sans', sans-serif;
@@ -15,6 +19,8 @@
 
     .order-contact-container {
         text-align: left;
+        height: 100%;
+        // border: 1px solid blue;
     }
     
     .order-user-profile {
@@ -455,46 +461,6 @@
             // }
 
 
-
-            // test
-
-            // .contact-name {
-            //     display: flex;
-            //     justify-content: space-between;
-            
-
-            //     .contact-test {
-            //         // border: 1px solid purple;
-            //         position: static;
-            //         width: 50%;
-            //         text-align: left;
-
-            //         input:focus ~ .floating-label, 
-            //         input:not(:focus):valid ~ .floating-label {
-            //             // top: 180px;
-            //             // bottom: 10px; 
-            //             // left: 200px; 
-            //             // font-size: 11px; 
-            //             // opacity: 1; 
-            //         } 
-
-            //         .contact-input {
-            //             font-size: 14px; 
-            //             width: 80%; 
-            //             height: 100%;
-            //         }
-
-            //         .floating-first-name {
-            //             position: absolute; 
-            //             pointer-events: none;
-            //             color: red;
-            //             left: 12%;
-            //             top: 27%;
-            //         }
-
-            //     }
-            // }
-
             .order-save-contact {
                 margin-top: 3%;
             }
@@ -558,8 +524,9 @@
         display: flex;
         flex-direction: column;
         min-width: 50%;
+        min-height: 100%;
         background-color: whitesmoke;
-        border-bottom: 1px solid lightgrey;
+        // border-bottom: 1px solid lightgrey;
         padding-top: 80px;
         // border: 1px solid yellow;
     
@@ -690,4 +657,5 @@
             box-shadow: 10px 5px 5px black;
         }
     }
+
 }

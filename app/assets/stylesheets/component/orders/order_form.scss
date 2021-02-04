@@ -1,13 +1,16 @@
-
+.order-form-inner {
+    display: flex;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .order-payment-container {
-    // border: 1px solid blue;
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
 
     .form-logo-container {
-        // width: 80%;
         text-align: left;
         margin-left: auto;
         margin-right: auto;
@@ -23,12 +26,10 @@
         margin-bottom: 20px;
 
         .shipping-info-inner {
-
             width: 95%;  
-            // background-color: red;          
+     
             
             .shipping-info span {
-                // border: 1px solid green;
                 margin-left: 5%;
                 font-size: 1em; 
                 color: black;
@@ -40,7 +41,6 @@
 
             .shipping-info div {
                 display: inline-block;
-                // border: 1px solid purple;
                 min-width: 75px;
             }
 
@@ -48,13 +48,11 @@
                 margin-left: auto;
                 margin-right: auto;
                 border-bottom: 1px solid lightgrey;
-                // border: 1px solid red;
                 padding-bottom: 2%;
                 margin-bottom: 2%;
             }
 
             #shipping-address {
-                // border: 1px solid purple;
                 overflow: visible;
                 margin-left: 5%;
                 color: black;
@@ -106,12 +104,10 @@
 
         .card-icons {
             list-style: none;
-            // border: 1px solid pink;
             display: flex;
             
 
             span {
-                // border: 1px solid yellow;
                 margin-left: 4px;
                 margin-right: 20px;
                 color: lightgrey
@@ -142,12 +138,9 @@
     .card-info {
         background-color: whitesmoke;
         padding-bottom: 20px;
-        // width: 90%;
-        // margin-left: auto;
-        // margin-right: auto;
+
 
         .card-number {
-            // border: 1px solid green;
             width: 90%; 
             margin-left: auto;
             margin-right: auto;
@@ -176,7 +169,6 @@
             input[type="text"] {
                 font-size: 1em;
                 padding: 12px 0 12px 0;
-                // margin-bottom: 0.5em;
                 z-index: 10;
                 background: transparent;
                 text-indent: 5px;
@@ -191,7 +183,6 @@
         }
 
         .card-name {
-            // border: 1px solid red;
             width: 90%; 
             margin-left: auto;
             margin-right: auto;
@@ -220,7 +211,6 @@
             input[type="text"] {
                 font-size: 1em;
                 padding: 12px 0 12px 0;
-                // margin-bottom: 0.5em;
                 z-index: 10;
                 background: transparent;
                 text-indent: 5px;
@@ -235,7 +225,6 @@
         }
 
         .card-date-code {
-            // border: 1px solid blue; 
             display: flex;
             justify-content: space-between;
             width: 90%; 
@@ -244,10 +233,7 @@
 
             .card-exp-date {
                 width: 45%; 
-                // margin-left: auto;
-                // margin-right: auto;
-    
-    
+ 
                 input, 
                 label {
                     position: relative;
@@ -271,7 +257,6 @@
                 input[type="text"] {
                     font-size: 1em;
                     padding: 12px 0 12px 0;
-                    // margin-bottom: 0.5em;
                     z-index: 10;
                     background: transparent;
                     text-indent: 5px;
@@ -287,10 +272,7 @@
 
             .card-security-code {
                 width: 45%; 
-                // margin-left: auto;
-                // margin-right: auto;
-    
-    
+     
                 input, 
                 label {
                     position: relative;
@@ -314,7 +296,6 @@
                 input[type="text"] {
                     font-size: 1em;
                     padding: 12px 0 12px 0;
-                    // margin-bottom: 0.5em;
                     z-index: 10;
                     background: transparent;
                     text-indent: 5px;
@@ -333,8 +314,6 @@
     }
 
     .order-billing-address {
-
-        // border: 1px solid red;
         margin-top: 20px;
         text-align: left;
 
@@ -384,8 +363,6 @@
             font-weight: bolder;
             font-size: 1.5em;
             margin-bottom: 30px;
-            // box-shadow: 10px 5px 5px black;
-            // width: 30%;
         }
 
         button {

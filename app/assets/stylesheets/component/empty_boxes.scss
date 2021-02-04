@@ -1,0 +1,15 @@
+.fill-container {
+    display: flex;
+    // justify-content: space-between;
+
+    div {
+        // flex: 1;
+        width: 50%;
+        height: 100px;
+    }
+
+    .right-container {
+        background: whitesmoke
+    }
+
+}

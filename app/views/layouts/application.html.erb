@@ -53,9 +53,24 @@
     }
   </script>
 
-  <body>
+  <body class="main-body">
     <%= yield %>
   </body>
+
+  <footer id="main-footer">
+    <div class="inner-footer">
+      <a href="" class="link-tags"><div class="footer-links">LinkedIn</div></a>
+      <a href="" class="link-tags"><div class="footer-links">Github</div></a>
+      <a href="" class="link-tags"><div class="footer-links">Profile</div></a>
+      <a href="" class="link-tags"><div class="footer-links">Tom's Planetarium</div></a>
+      <a href="" class="link-tags"><div class="footer-links">TBDeveloped</div></a>
+    </div>
+
+    <div>
+      Tom Cheung
+    </div>
+  </footer>
+
 </html>
 
 <!-- the logic with current_user is so that if there is a current_user / user logged in then it creates a 

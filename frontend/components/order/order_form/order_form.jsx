@@ -111,151 +111,160 @@ class OrderForm extends React.Component {
         return(
             <div className="order-form-container">  
 
-                <div className="order-form">
-                        
+                <div className="order-form-inner">
+
+                    <div className="order-form">
 
 
-                    {this.state.total ? 
-                    
 
-                        <form onSubmit={this.handleSubmit}>
+                        {this.state.total ? 
 
-                            <div className="order-payment-container">
 
-                                <div className="form-logo-container">
-                                    <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
-                                </div>
+                            <form onSubmit={this.handleSubmit}>
 
-                                <div className="order-shipping-information">
-                                    <div className="shipping-info-inner">   
-                                        <div className="shipping-info" id="shipping-email">
-                                            <div >Email</div>
-                                            <span>{
-                                                this.props.userEmail
-                                            }</span>
-                                        </div>
-                                        <div className="shipping-info" id="shipping-option">
-                                            <div >Ship to</div>
-                                            <div id="shipping-address">{this.props.contacts.length ? 
-                                                address_one + address_two + city + state + country + zipcode
-                                                :
-                                                null
-                                            }</div>
-                                        </div>
-                                        <div className="shipping-info">
-                                            <div>Method</div>
-                                            <span>Free - One Day Delivery</span>
-                                            <span id="shipping-price">$0.00</span>
-                                        </div>
+                                <div className="order-payment-container">
+
+                                    <div className="form-logo-container">
+                                        <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
                                     </div>
-                                </div>
 
-                                <div className="payment-messages">
-                                    <h2 id="payment-title">Payment</h2>
-                                    <p id="payment-message">No credit card information will be saved.</p>
-                                </div>
-
-                                <div className="credit-card-container">
-
-                                    <div className="credit-card-header">
-                                        <span>Credit card</span>
-                                        <div className="card-icons">
-                                            <li className="card-list-item"><i className="fa fa-cc-visa fa-2x" id="visa"></i></li>
-                                            <li className="card-list-item"><i className="fa fa-cc-mastercard fa-2x" id="mastercard"></i></li>
-                                            <li className="card-list-item"><i className="fa fa-cc-amex fa-2x" id="americanexpress"></i></li>
-                                            <li className="card-list-item"><i className="fa fa-cc-discover fa-2x" id="discover"></i></li>
-                                            <span> and more ...</span>
+                                    <div className="order-shipping-information">
+                                        <div className="shipping-info-inner">   
+                                            <div className="shipping-info" id="shipping-email">
+                                                <div >Email</div>
+                                                <span>{
+                                                    this.props.userEmail
+                                                }</span>
+                                            </div>
+                                            <div className="shipping-info" id="shipping-option">
+                                                <div >Ship to</div>
+                                                <div id="shipping-address">{this.props.contacts.length ? 
+                                                    address_one + address_two + city + state + country + zipcode
+                                                    :
+                                                    null
+                                                }</div>
+                                            </div>
+                                            <div className="shipping-info">
+                                                <div>Method</div>
+                                                <span>Free - One Day Delivery</span>
+                                                <span id="shipping-price">$0.00</span>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className="card-info">
-                                        <div className="card-number">
-                                            <label id="card-number">Card numbers</label>
-                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-number')} required/>
+                                    <div className="payment-messages">
+                                        <h2 id="payment-title">Payment</h2>
+                                        <p id="payment-message">No credit card information will be saved.</p>
+                                    </div>
+
+                                    <div className="credit-card-container">
+
+                                        <div className="credit-card-header">
+                                            <span>Credit card</span>
+                                            <div className="card-icons">
+                                                <li className="card-list-item"><i className="fa fa-cc-visa fa-2x" id="visa"></i></li>
+                                                <li className="card-list-item"><i className="fa fa-cc-mastercard fa-2x" id="mastercard"></i></li>
+                                                <li className="card-list-item"><i className="fa fa-cc-amex fa-2x" id="americanexpress"></i></li>
+                                                <li className="card-list-item"><i className="fa fa-cc-discover fa-2x" id="discover"></i></li>
+                                                <span> and more ...</span>
+                                            </div>
                                         </div>
 
-                                        <div className="card-name">
-                                            <label id="card-name">Name on card</label>
-                                            <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-name')} required/>
-                                        </div>
-
-                                        <div className="card-date-code">
-                                            <div className="card-exp-date">
-                                                <label id="card-exp-date">Expiration date (MM/YY)</label>
-                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-exp-date')} required/>
+                                        <div className="card-info">
+                                            <div className="card-number">
+                                                <label id="card-number">Card numbers</label>
+                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-number')} required/>
                                             </div>
 
-                                            <div className="card-security-code">
-                                                <label id="card-security-code">Security code</label>
-                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-security-code')} required/>
+                                            <div className="card-name">
+                                                <label id="card-name">Name on card</label>
+                                                <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-name')} required/>
                                             </div>
 
+                                            <div className="card-date-code">
+                                                <div className="card-exp-date">
+                                                    <label id="card-exp-date">Expiration date (MM/YY)</label>
+                                                    <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-exp-date')} required/>
+                                                </div>
+
+                                                <div className="card-security-code">
+                                                    <label id="card-security-code">Security code</label>
+                                                    <input type="text" className="required-input" onChange={(e) => this.inputText(e, 'card-security-code')} required/>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="order-billing-address">
-                                    <h2 id="billing-title">Billing address</h2>
-                                    <span>Will default to your shipping address.</span>
+                                    <div className="order-billing-address">
+                                        <h2 id="billing-title">Billing address</h2>
+                                        <span>Will default to your shipping address.</span>
 
-                                    <div id="billing-address-container">
-                                        <input type="radio" readOnly selected/>
-                                        <span>Same as shipping address</span>
+                                        <div id="billing-address-container">
+                                            <input type="radio" readOnly selected/>
+                                            <span>Same as shipping address</span>
+                                        </div>
+                                            
                                     </div>
-                                    
-                                </div>
-                                
-                                <div>
-                                    {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link>  */}
-                                    <button id="submit-order" onClick={this.handleSubmit} className="order-form-button">Submit Order</button>
-                                </div>
+                                            
+                                    <div>
+                                        {/* <Link to="/account"><button onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link>  */}
+                                        <button id="submit-order" onClick={this.handleSubmit} className="order-form-button">Submit Order</button>
+                                    </div>
 
 
+                                </div>
+
+                            </form>
+
+                            : 
+                                <div className="empty-cart">
+                                    <div className="form-logo-container">
+                                        <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                                    </div>
+                                    <h1>Your Cart is Empty!</h1> 
+                                    <Link to="/allproducts"><button>Browse Products</button></Link>
+                                </div>
+                        }
+                    </div> 
+
+                    <div className="items-info">
+                        {this.cartItems().map((details) => {
+                            return <OrderItemDetails item={details} key={details.product.id}/>
+                        })}
+
+                        <div className="price-info"> 
+
+                            <div className="promo">
+                                <input type="text" defaultValue="PROMO CODE"/> <button>Apply</button> 
                             </div>
 
-                        </form>
-                        
-                        : 
-                            <div className="empty-cart">
-                                <div className="form-logo-container">
-                                    <Link to="/"><img src={window.productImages.mainLogoBlack} alt="" width="200" height="200"/></Link>
+                            <div className="shipping">
+                                <p>Shipping + Handling</p>
+                                <p>FREE ONE DAY DELIVERY</p>
+                            </div>
+
+                            <div className="tax">
+                                <p>Taxes</p>
+                                <p>NONE</p>
+                            </div>
+
+                            <div className="order-total">
+                                <div className="price-details">
+                                    <span>Total</span>
+                                    <span>usd ${parseFloat(this.state.total).toFixed(2)}</span>
                                 </div>
-                                <h1>Your Cart is Empty!</h1> 
-                                <Link to="/allproducts"><button>Browse Products</button></Link>
                             </div>
-                    }
-                </div> 
 
-                <div className="items-info">
-                    {this.cartItems().map((details) => {
-                        return <OrderItemDetails item={details} key={details.product.id}/>
-                    })}
 
-                    <div className="price-info"> 
-
-                        <div className="promo">
-                            <input type="text" defaultValue="PROMO CODE"/> <button>Apply</button> 
                         </div>
-
-                        <div className="shipping">
-                            <p>Shipping + Handling</p>
-                            <p>FREE ONE DAY DELIVERY</p>
-                        </div>
-
-                        <div className="tax">
-                            <p>Taxes</p>
-                            <p>NONE</p>
-                        </div>
-
-                        <div className="order-total">
-                            <div className="price-details">
-                                <span>Total</span>
-                                <span>usd ${parseFloat(this.state.total).toFixed(2)}</span>
-                            </div>
-                        </div>
-
-
                     </div>
+
+                </div>
+
+                <div className="fill-container">
+                    <div className="left-container"></div>
+                    <div className="right-container"></div>
                 </div>
 
             </div>
