@@ -10,7 +10,8 @@ import { fetchProducts } from '../../actions/product_actions'
 
 const mSTP = (state) => {
     return ({
-        categories: Object.values(state.entities.categories)
+        categories: Object.values(state.entities.categories),
+        products: Object.values(state.entities.products), 
     })
 }
 
