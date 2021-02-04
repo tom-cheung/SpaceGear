@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/user_actions';
 import { fetchOrders, clearOrders, deleteOrder } from '../../actions/order_actions';
 import { retrieveContact } from '../../actions/contact_actions'; 
-
+import { removeContact } from '../../actions/contact_actions';
 
 
 const mSTP = (state) => {
@@ -24,6 +24,7 @@ const mDTP = (dispatch) => {
             clearOrders: () => dispatch(clearOrders()),
             deleteOrder: (orderId) => dispatch(deleteOrder(orderId)),
             retrieveContact: (userID) => dispatch(retrieveContact(userID)), 
+            removeContact: (contactID) => dispatch(removeContact(contactID)),
         }
     )
 }

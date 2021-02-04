@@ -12,10 +12,10 @@ const receiveContact = (contacts) => {
     })
 }
 
-const removeContact = (contact) => {
+export const removeContact = (contactID) => {
     return ({
         type: REMOVE_CONTACT,
-        contactID : Object.keys(contact)[0],
+        contactID, 
     })
 }
 

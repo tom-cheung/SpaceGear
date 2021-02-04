@@ -597,6 +597,12 @@ const OrderShow = (props) => {
                         {/* {redirect()} */}
                     </div>
                 }
+
+                <div className="fill-container">
+                    <div className="left-container"></div>
+                    <div className="right-container"></div>
+                </div>
+
         </div>
     )
     // }

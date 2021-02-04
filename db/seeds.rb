@@ -19,7 +19,8 @@ category_three = Category.create(category_name: 'Children')
 category_four = Category.create(category_name: 'Miscellaneous')
 
 type_one = ProductType.create(type_name: 'T-Shirt')
-type_two =ProductType.create(type_name: 'Outwear')
+type_two = ProductType.create(type_name: 'Outwear')
+type_three = ProductType.create(type_name: 'Accessories') 
 
 # MEN
 
@@ -160,6 +161,56 @@ product_twelve = Product.create(
                                 description: 'Fly as high as the Falcon',
                                 price: 20.00,
                                 img_name: 'kidsf9tshirt'
+)
+
+# MISC 
+
+product_thirteen = Product.create(
+                                product_name: "SPACEX CREW WATER BOTTLE",
+                                type_id: type_three.id,
+                                category_id: category_four.id,
+                                color: 'White', 
+                                size: 'One size',
+                                description: '20 oz. Capacity/18/8 Food Grade Stainless Steel Construction/Vacuum Insulation/Copper Plated Inner Wall/HOT: 16 HOURS/COLD: 24 HOURS/Hand wash only',
+                                price: 30.00,
+                                img_name: 'spacexwaterbottle1'
+)
+
+product_fourteen = Product.create(
+                                product_name: "SPACEX CREW JOURNAL",
+                                type_id: type_three.id,
+                                category_id: category_four.id,
+                                color: 'Black', 
+                                size: 'One size',
+                                description: '
+                                            5.25" x 8.25"/ 
+                                            Flexible, perfect bound journal with side scorings for easy opening/
+                                            Flat elastic closure & rounded corners/
+                                            100 standard lined white sheets',
+                                price: 30.00,
+                                img_name: 'spacexjournal'
+)
+
+product_fifteen = Product.create(
+                                product_name: "X CAP",
+                                type_id: type_three.id,
+                                category_id: category_four.id,
+                                color: 'Navy', 
+                                size: 'One size',
+                                description: 'Keep your head cool in space',
+                                price: 20.00,
+                                img_name: 'xcap1' 
+)
+
+product_sixteen = Product.create(
+                                product_name: "SPACEX STARMAN POSTER",
+                                type_id: type_three.id,
+                                category_id: category_four.id,
+                                color: 'N/A', 
+                                size: 'One size',
+                                description: 'Cruising around the stars',
+                                price: 20.00,
+                                img_name: 'starmanposter' 
 )
 
 

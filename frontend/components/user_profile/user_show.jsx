@@ -14,17 +14,19 @@ class UserShow extends React.Component {
     }
 
     logoutUser(e) {
-        e.preventDefault;
+        e.preventDefault();
         this.props.logoutUser();
+
+        if(this.props.contact.length) {
+            this.props.removeContact(this.props.contact[0].id);
+        }
     }
 
     render() {
         let contact; 
-        if(this.props.contact.length) {
+        if(this.props.contact.length && this.props.contact[0].user_id === this.props.currentUser.id ) {
             contact = this.props.contact[0]
         }
-
-        console.log(contact)
 
         return(
             <div className="account-container">
