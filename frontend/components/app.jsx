@@ -20,7 +20,7 @@ import CartContainer from './cart/cart_container';
 import OrderFormContainer from './order/order_form/order_form_container';
 import OrderContactContainer from './order/order_contact_container';
 import OrderShippingContainer from './order/order_shipping/order_shipping_container';
-
+import SearchIndexContainer from './search_index/search_index_container';
 import OrderShowContainer from './order/order_show/order_show_container'
 
 
@@ -35,6 +35,7 @@ const App = () => {
                 <Route exact path='/products/:categoryName/:categoryId/:typeName/:typeId' component={ProductTypeContainer}/>
                 <Route exact path='/products/:categoryName/:categoryId' component={ProductCategoryContainer}/>
                 <Route exact path="/allproducts" component={ProductIndexContainer}/>
+                <Route path="/search/:searchTerm" component={SearchIndexContainer} />
                 <Route path='/cart' component={CartContainer}/>
                 <ShowRoute exact path='/checkout/contact' component={OrderContactContainer}/> 
                 <ShowRoute exact path='/checkout/shipping' component={OrderShippingContainer}/> 

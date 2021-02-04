@@ -2,7 +2,6 @@ import React from 'react'
 import ProductIndexItem from './product_index_item'
 
 const ProductIndex = ({filteredProducts, categoryName=null, typeName=null}) => {
-    console.log(filteredProducts)
     
     return(
         <div className="product-index-container">

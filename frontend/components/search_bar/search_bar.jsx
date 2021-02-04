@@ -8,6 +8,7 @@ const SearchBar = ({products}) => {
     const [womens, updateWomens] = useState({});
     const [kids, updateKids] = useState({});
     const [misc, updateMisc] = useState({});
+    const [searchTerm, UpdateTerm] = useState("");
 
     const search = (e) => {
         updateMens({});
@@ -44,6 +45,7 @@ const SearchBar = ({products}) => {
         }
 
         updateResult(results);
+        UpdateTerm(e.target.value)
     }
 
     return(
@@ -59,42 +61,45 @@ const SearchBar = ({products}) => {
 
                         <div className="search-bar-titles">
                             <h2>{searchResults.length} RESULTS</h2>
-                            <h2>VIEW ALL</h2>
+                            <Link id="view-results-link" to={`/search/${searchTerm}`}><h2>VIEW ALL</h2></Link>
                         </div>
 
                         <div className="result-product-container">
                             {Object.values(mens).length ? 
                                 <div className="product-container">
-                                    {/* <img src={window.productImages[product.img_name]} alt="" width="600" height="600"/> */}
-                                    {<img src={window.productImages[mens.img_name]} alt="" width="300" height="300"/>}
+                                    <Link to={`/product/${mens.id}`}><img src={window.productImages[mens.img_name]} alt="" width="300" height="300"/></Link>
                                     <h2>{mens.product_name}</h2>
-                                    <h2>${parseInt(mens.price).toFixed(2)}</h2>
+                                    <Link className="result-price-link" to={`/product/${mens.id}`}><h2>${parseInt(mens.price).toFixed(2)}</h2></Link>
+                                    
                                 </div> 
                                 : 
                                 null }
 
                             {Object.values(womens).length ? 
                                 <div className="product-container">
-                                    {<img src={window.productImages[womens.img_name]} alt="" width="300" height="300"/>}
+                                    <Link to={`/product/${womens.id}`}><img src={window.productImages[womens.img_name]} alt="" width="300" height="300"/></Link>
                                     <h2>{womens.product_name}</h2>
-                                    <h2>${parseInt(womens.price).toFixed(2)}</h2>
+                                    <Link className="result-price-link" to={`/product/${womens.id}`}><h2>${parseInt(womens.price).toFixed(2)}</h2></Link>
+                                    
                                 </div> 
                                 : 
                                 null }
 
                             {Object.values(kids).length ? 
                                 <div className="product-container">
-                                    {<img src={window.productImages[kids.img_name]} alt="" width="300" height="300"/>}
+                                    <Link to={`/product/${kids.id}`}><img src={window.productImages[kids.img_name]} alt="" width="300" height="300"/></Link>
                                     <h2>{kids.product_name}</h2>
-                                    <h2>${parseInt(kids.price).toFixed(2)}</h2>
+                                    <Link className="result-price-link" to={`/product/${kids.id}`}><h2>${parseInt(kids.price).toFixed(2)}</h2></Link>
+                                    
                                 </div> 
                                 : null }
 
                             {Object.values(misc).length ? 
                                 <div className="product-container">
-                                    {<img src={window.productImages[misc.img_name]} alt="" width="300" height="300"/>}
+                                    <Link to={`/product/${misc.id}`}><img src={window.productImages[misc.img_name]} alt="" width="300" height="300"/></Link>
                                     <h2>{misc.product_name}</h2>
-                                    <h2>${parseInt(misc.price).toFixed(2)}</h2>
+                                    <Link className="result-price-link" to={`/product/${misc.id}`}><h2>${parseInt(misc.price).toFixed(2)}</h2></Link>
+                                    
                                 </div> 
                                 : null }
                         </div>

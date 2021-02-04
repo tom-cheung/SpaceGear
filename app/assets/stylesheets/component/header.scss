@@ -108,7 +108,7 @@
 
     .dropDown:hover .dropdownContent {
         display: block;
-        z-index: 2;
+        z-index: 10;
     }
 
     .dropdownContent a:hover {
@@ -132,7 +132,7 @@
         display: block;
         background-color: white; 
         width: 100%;
-        z-index: 1;
+        z-index: 9;
         border-bottom: 1px solid black;
     }
 
@@ -179,6 +179,24 @@
             font-weight: bolder;
             padding-bottom: 20px;
             border-bottom: 1px solid lightgray;
+
+            #view-results-link {
+                text-decoration: none;
+                color: black;
+                cursor: pointer;
+                border: 1px solid black;
+                padding: 5px 10px 5px 10px;
+                color: white; 
+                background-color: black;
+                transition: all .75s ease-in-out;
+            }
+
+            #view-results-link:hover {
+                color: black;
+                background-color: white;
+            }
+
+
         }
 
         .result-product-container {
@@ -194,6 +212,11 @@
             h2 {
                 margin-top: 20px;
                 font-weight: bold;
+            }
+
+            .result-price-link {
+                text-decoration: none;
+                color: black;
             }
         }
     }
