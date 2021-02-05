@@ -41,6 +41,10 @@ class Header extends React.Component {
 
         // console.log(searchBar);
     }
+
+    closeSearchBar(e) {
+        this.setState({showSearch: false})
+    }
     
     render() {
         return (
@@ -87,7 +91,11 @@ class Header extends React.Component {
                 this.state.showSearch ? 
 
                     <div id="search-bar" className="show-search-bar">
-                        <SearchBar products={this.props.products}/>
+                        <div className="close-search-button">
+                            <button onClick={(e) => this.closeSearchBar(e)}>X</button>
+                        </div>
+
+                        <SearchBar products={this.props.products} categories={this.props.categories}/>
                     </div>
 
                 :

@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { Link } from 'react-router-dom'
 
-const SearchBar = ({products}) => {
+const SearchBar = ({products, categories}) => {
 
     const [searchResults, updateResult] = useState([]);
     const [mens, updateMens] = useState({});
@@ -9,6 +9,11 @@ const SearchBar = ({products}) => {
     const [kids, updateKids] = useState({});
     const [misc, updateMisc] = useState({});
     const [searchTerm, UpdateTerm] = useState("");
+
+    let mensID = categories.find(cat => cat.category_name === "Mens").id;
+    let womensID = categories.find(cat => cat.category_name === "Womens").id;
+    let childrensID = categories.find(cat => cat.category_name === "Children").id;
+    let miscID = categories.find(cat => cat.category_name === "Miscellaneous").id;
 
     const search = (e) => {
         updateMens({});
@@ -24,19 +29,19 @@ const SearchBar = ({products}) => {
                 // console.log(product.product_name.includes(e.currentTarget.value))
                 if(product.product_name.toLowerCase().includes((e.target.value).toLowerCase())) {
                     results.push(product)
-                    if(product.category_id === 11 && Object.values(mens).length <= 1 ) {
+                    if(product.category_id === mensID && Object.values(mens).length <= 1 ) {
                         updateMens(product)
                     }
 
-                    if(product.category_id === 12 && Object.values(womens).length <= 1 ) {
+                    if(product.category_id === womensID && Object.values(womens).length <= 1 ) {
                         updateWomens(product)
                     }
 
-                    if(product.category_id === 13 && Object.values(kids).length <= 1 ) {
+                    if(product.category_id === childrensID && Object.values(kids).length <= 1 ) {
                         updateKids(product)
                     }
 
-                    if(product.category_id === 14 && Object.values(misc).length <= 1 ) {
+                    if(product.category_id === miscID && Object.values(misc).length <= 1 ) {
                         updateMisc(product)
                     }
                 }
