@@ -45,15 +45,17 @@ class Cart extends React.Component {
     }
 
     updateQuantity({product}) {
-        return(e) => {
+        
+        return(e) => { // this is the function being passed as the event handler (curried function )
 
             // localStorage.setItem(product.id, JSON.stringify({'quantity': e.currentTarget.value, 'product': product}))
             // this.total();
 
             // console.log(product)
+            let newQuantity = isNaN(parseInt(e.currentTarget.value)) ? 0 : e.currentTarget.value
 
             let oldCart = JSON.parse(localStorage.getItem('cart')); // turns the stringified cart back into a json object
-            let newCart = Object.assign({}, oldCart, { [product.id]: { 'quantity': e.currentTarget.value, 'product': product} })
+            let newCart = Object.assign({}, oldCart, { [product.id]: { 'quantity': newQuantity, 'product': product} })
     
             localStorage.setItem('cart', JSON.stringify(newCart))
 
@@ -101,7 +103,6 @@ class Cart extends React.Component {
                 {this.cartItems().length != 0 ? this.cartItems().map((item, idx) => {
                     return (
                         <div key={item.product.id}>
-
                             <div className="items-in-cart">
 
                                 <div>

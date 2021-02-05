@@ -7,9 +7,10 @@
 
 .order-shipping-container {
 
-    max-width: 80%;
+    max-width: 83%;
     margin-left: 15%;
     text-align: left;
+    // padding-right: 5%;
     
     .order-shipping-information {
         text-align: left;
@@ -45,7 +46,7 @@
             }
 
             #shipping-address {
-                // border: 1px solid purple;
+                border: 1px solid purple;
                 overflow: visible;
                 margin-left: 5%;
                 color: black;
