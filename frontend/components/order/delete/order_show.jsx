@@ -7,6 +7,7 @@ const OrderShow = (props) => {
     const [order, updateOrder] = useState(Object.assign({}, props.order))
     const [orderedProducts, updateProducts] = useState([...props.orderedProducts])
     const [total, updateTotal] = useState(props.order.total)
+    const [destroy, updateDestroy] = useState([])
 
     useEffect(() => {
         let inputs = document.getElementsByTagName("INPUT")
@@ -35,6 +36,9 @@ const OrderShow = (props) => {
     }
 
     const removeItem = (id) => {
+        let toBeDestroyed = [...destroy];
+        toBeDestroyed.push({id: id, _destroy: '1'})
+        updateDestroy(toBeDestroyed)
         updateProducts( orderedProducts.filter((product) => product.id !== id ) )
     }
 
@@ -53,7 +57,10 @@ const OrderShow = (props) => {
     }
 
     const submitUpdate = () => {
-        props.editOrder(order, orderedProducts)
+        console.log(orderedProducts.concat(destroy))
+        console.log('hi')
+        props.editOrder(order, orderedProducts.concat(destroy))
+
     }
 
     // const redirect = () => (

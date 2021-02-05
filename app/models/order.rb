@@ -26,5 +26,5 @@ class Order < ApplicationRecord
         foreign_key: :address_id, 
         class_name: :Contact 
 
-    accepts_nested_attributes_for :ordered_products
+    accepts_nested_attributes_for :ordered_products, allow_destroy: true
 end

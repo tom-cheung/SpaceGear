@@ -8,6 +8,7 @@ const OrderShow = (props) => {
     const [orderedProducts, updateProducts] = useState([...props.orderedProducts]);
     const [total, updateTotal] = useState(props.order.total);
     const [contact, updateContact] = useState({});
+    const [destroy, updateDestroy] = useState([])
 
 
     useEffect(() => {
@@ -62,7 +63,12 @@ const OrderShow = (props) => {
     }
 
     const removeItem = (id) => {
-        updateProducts( orderedProducts.filter((product) => product.id !== id ) )
+
+        let toBeDestroyed = [...destroy];
+        toBeDestroyed.push({id: id, _destroy: '1'})
+        updateDestroy(toBeDestroyed)
+
+        updateProducts( orderedProducts.filter((product) => product.id !== id ))
     }
 
     const calcTotal = () => {
@@ -80,10 +86,10 @@ const OrderShow = (props) => {
     }
 
     const submitUpdate = () => {
+
         props.removeContactError()
 
-
-        props.editOrder(order, orderedProducts).then(() => {
+        props.editOrder(order, orderedProducts.concat(destroy)).then(() => {
             props.editContact(contact).then(() => {
 
                 if(Object.values(props.contactErrors).length === 0) {
