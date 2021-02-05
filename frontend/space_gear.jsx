@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
       // testing 
-      window.store = store; 
-      window.createContact = createContact
+      // window.store = store; 
+      // window.createContact = createContact
       // window.editContact = editContact; 
       // window.deleteContact = deleteContact;
       // window.retrieveContact = retrieveContact;

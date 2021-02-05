@@ -34,19 +34,41 @@
         margin-top: 20px;
     }
 
-    .splash-category {
-        flex: 1;
+    .splash-content-container {
         height: 700px;
-        font-weight: 900;
-        font-size: 48px;
+        width: 100%;
+        overflow: hidden;
     }
 
+    .splash-category {
+        // flex: 1;
+        height: 100%;
+        width: 100%;
+        font-weight: 900;
+        font-size: 48px;
+        transition: all 3s ease-in-out;
+    }
+
+    .splash-header {
+        display: block;
+        position: relative;
+        top: -200px;
+        text-align: left;
+
+        h1 {
+            
+            text-decoration: none;
+        }
+    }
+
+
+        
     #splash-category-1 {
         background: image-url('womensbomberjacket.png');
         background-position: center;
         background-repeat: no-repeat;
         background-color: #ededf1;
-        filter: brightness(90%)
+        filter: brightness(90%);
         // background-size: cover;
     }
 
@@ -55,7 +77,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-color: #ededf1;
-        filter: brightness(90%)
+        filter: brightness(90%);
         // background-size: cover;
     }
 
@@ -64,8 +86,12 @@
         background-position: center;
         background-repeat: no-repeat;
         background-color: #ededf1;
-        filter: brightness(90%)
+        filter: brightness(90%);
         // background-size: cover;
+    }
+
+    .splash-content-container:hover .splash-category{
+        transform: scale(1.2);
     }
 
     .view-products-button {
@@ -76,18 +102,20 @@
         font-weight: 100;
         font-size: 24px;
         background-color: white;
-        top: 75%;
         left: 10%;
         padding: 5px 10px 5px 10px;
         transition: all .75s ease-in-out;
+        width: 200px;
     }
 
     .splash-category-title {
-        position: absolute;
+        position: relative;
         text-decoration: none;
         color: white;
-        top: 65%;
-        left: 10%;
+        font-weight: 900;
+        font-size: 48px;
+        left: 7.5%;
+        margin: 20px;
     }
 
     .view-products-button:hover {

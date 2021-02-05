@@ -9,8 +9,8 @@ const HeaderDropdown = ({categoryName, categoryId, categoryTypes}) => {
             <Link to={`/products/${categoryName}/${categoryId}`}><h1 className="header-category-name">{categoryName}</h1></Link>
 
             <div className="dropdownContent">
-                {categoryTypes.map((type, idx) => {return <Link to={`/products/${categoryName}/${categoryId}/${type.type_name}/${type.id}`} key={idx}>{type.type_name}</Link>})}
-                <Link to={`/products/${categoryName}/${categoryId}`}>View All</Link>
+                {categoryTypes.map((type, idx) => {return <Link className="dropdown-links" to={`/products/${categoryName}/${categoryId}/${type.type_name}/${type.id}`} key={idx}> <span>{type.type_name}</span> </Link>})}
+                <Link  className="dropdown-links" to={`/products/${categoryName}/${categoryId}`}><span>View All</span></Link>
             </div>
         </div>
     )

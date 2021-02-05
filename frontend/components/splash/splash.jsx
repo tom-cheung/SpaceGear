@@ -17,22 +17,34 @@ const ProductIndex = ({categories}) => {
 
                 <div id='splash-category-container'>
 
-                    <div className="splash-category" id="splash-category-1">
-                        {/* <img className="splash-category-img" src={window.productImages['womensbomberjacket']} alt="" width="400" height="400"/> */}
-                        <h2 className="splash-category-title">WOMEN'S</h2>
-                        <Link className="splash-category-link" to={`/products/${categories[1].category_name}/${categories[1].id}`}><h1 className="view-products-button">VIEW PRODUCTS</h1></Link>
+                    <div className="splash-content-container">
+                        <div className="splash-category" id="splash-category-1">
+                            {/* <img className="splash-category-img" src={window.productImages['womensbomberjacket']} alt="" width="400" height="400"/> */}
+                        </div>
+                        <div className="splash-header">
+                            <h2 className="splash-category-title">WOMEN'S</h2>
+                            <Link className="splash-category-link" to={`/products/${categories[1].category_name}/${categories[1].id}`}><h1 className="view-products-button">VIEW PRODUCTS</h1></Link>
+                        </div>
                     </div>
 
-                    <div className="splash-category" id="splash-category-2">
-                        {/* <img className="splash-category-img" src={window.productImages['mensbomberjacket']} alt="" width="400" height="400"/> */}
-                        <h2 className="splash-category-title">MEN'S</h2>
-                        <Link className="splash-category-link" to={`/products/${categories[0].category_name}/${categories[0].id}`}><h1 className="view-products-button">VIEW PRODUCTS</h1></Link>
+                    <div className="splash-content-container">
+                        <div className="splash-category" id="splash-category-2">
+                            {/* <img className="splash-category-img" src={window.productImages['mensbomberjacket']} alt="" width="400" height="400"/> */}
+                        </div>
+                        <div className="splash-header">
+                            <h2 className="splash-category-title">MEN'S</h2>
+                            <Link className="splash-category-link" to={`/products/${categories[0].category_name}/${categories[0].id}`}><h1 className="view-products-button">VIEW PRODUCTS</h1></Link>
+                        </div>
                     </div>
 
-                    <div className="splash-category" id="splash-category-3">
-                        {/* <img className="splash-category-img" src={window.productImages['kidsonesie']} alt="" width="400" height="400"/> */}
-                        <h2 className="splash-category-title">CHILDREN'S</h2>
-                        <Link className="splash-category-link" to={`/products/${categories[2].category_name}/${categories[2].id}`}><h1 className="view-products-button">VIEW PRODUCTS</h1></Link>
+                    <div className="splash-content-container">
+                        <div className="splash-category" id="splash-category-3">
+                            {/* <img className="splash-category-img" src={window.productImages['kidsonesie']} alt="" width="400" height="400"/> */}
+                        </div>
+                        <div className="splash-header">
+                            <h2 className="splash-category-title">CHILDREN'S</h2>
+                            <Link className="splash-category-link" to={`/products/${categories[2].category_name}/${categories[2].id}`}><h1 className="view-products-button">VIEW PRODUCTS</h1></Link>
+                        </div>
                     </div>
                 </div>
 

@@ -62,3 +62,14 @@ To Do
 DECISIONS 
 
     Include the header and footer during checkout for now 
+
+
+    <!-- <meta property="og:title" content="SpaceGear" />
+    <meta property="og:image" content="<%= image_url('front-page.png') %>" />
+    <meta property="og:description"
+      content="SpaceGear is an ecommerce site inspired by Space Exploration Technologies Corp. (SpaceX)"
+    />
+    <meta property="og:url"
+      content="https://spacegear.herokuapp.com/#/"
+    />
+    <meta name="author" content="Thomas Cheung"> -->
