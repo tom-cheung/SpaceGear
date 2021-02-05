@@ -153,7 +153,7 @@ class OrderShipping extends React.Component {
                                     </div>
                                             
                                     <div className="order-button-container">
-                                        <Link to="/checkout/form"><button className="order-shipping-button" onClick={this.handleSubmit} className="order-form-button">Submit Order</button></Link> 
+                                        <Link to="/checkout/form"><button className="order-shipping-button" onClick={this.handleSubmit} className="order-form-button">Proceed to Payment</button></Link> 
                                     </div>
                                             
                                 </div>

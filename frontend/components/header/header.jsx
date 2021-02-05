@@ -51,6 +51,12 @@ class Header extends React.Component {
 
         <div id="mainHeader">
 
+            <div className="empty-container">
+                
+            </div>
+
+            <div className="content-container">
+
             <div className="header-top">
 
                 <div id="headerLeft">
@@ -107,7 +113,7 @@ class Header extends React.Component {
                 <p>hello</p>
             </div> */}
         
-
+            </div>
 
         </div>
     )}

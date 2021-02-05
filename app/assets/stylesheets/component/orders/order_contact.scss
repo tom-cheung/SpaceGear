@@ -68,7 +68,7 @@
                             display: inline-block;
                             width: 95%;
                             padding: 12px 0 12px 0;
-                            z-index: 10;
+                            z-index: 2;
                             background: transparent;
                             font-size: 1em;
                             text-indent: 5px;
@@ -94,7 +94,7 @@
                                     display: inline-block;
                                     width: 100%;
                                     padding: 12px 0 12px 0;
-                                    z-index: 10;
+                                    z-index: 2;
                                     background: transparent;
                                     font-size: 1em;
                                     text-indent: 5px;
@@ -185,7 +185,7 @@
                         font-size: 1em;
                         padding: 12px 0 12px 0;
                         // margin-bottom: 0.5em;
-                        z-index: 10;
+                        z-index: 2;
                         background: transparent;
                         text-indent: 5px;
                         border-radius: 3px;
@@ -225,7 +225,7 @@
                         font-size: 1em;
                         padding: 12px 0 12px 0;
                         // margin-bottom: 0.5em;
-                        z-index: 10;
+                        z-index: 2;
                         background: transparent;
                         text-indent: 5px;
                         border-radius: 3px;
@@ -266,7 +266,7 @@
                         font-size: 1em;
                         padding: 12px 0 12px 0;
                         // margin-bottom: 0.5em;
-                        z-index: 10;
+                        z-index: 2;
                         background: transparent;
                         text-indent: 5px;
                         border-radius: 3px;
@@ -307,7 +307,7 @@
                         font-size: 1em;
                         padding: 12px 0 12px 0;
                         // margin-bottom: 0.5em;
-                        z-index: 10;
+                        z-index: 2;
                         background: transparent;
                         text-indent: 5px;
                         border-radius: 3px;
@@ -344,20 +344,11 @@
                             font-size: 1em;
                         }
 
-                        label {
-                            // top: 20px;
-                            // text-indent: 5px;
-                            // z-index: 1;  
-                            // font-size: 1em; 
-                            // margin: 0 auto;
-                            // padding: 0 0 5px 0;
-                        }
-
                         select {
                             width: 100%;
                             font-size: 1em;
                             padding: 25px 0 0 0;
-                            z-index: 10;
+                            z-index: 2;
                             border-radius: 3px;
                             // background: transparent;
                             // border-style: none;
@@ -381,18 +372,12 @@
                             font-size: 1em;
                         }
 
-                        label {
-                            // margin: 0 auto;
-                            // padding: 0 0 5px 0;
-                            // z-index: 1;  
-                            // font-size: 1em; 
-                        }
 
                         select {
                             width: 100%;
                             font-size: 1em;
                             padding: 25px 0 0 0;
-                            z-index: 10;
+                            z-index: 2;
                             border-radius: 3px;
                             // font-size: 1em;
                             // z-index: 10;
@@ -439,7 +424,7 @@
                             display: block;
                             padding: 12px 0 12px 0;
                             font-size: 1em;
-                            z-index: 10;
+                            z-index: 2;
                             background: transparent;
                             text-indent: 5px;
                             border-radius: 3px;

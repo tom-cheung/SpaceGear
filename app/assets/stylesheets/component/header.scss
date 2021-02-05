@@ -1,8 +1,28 @@
 
 #mainHeader {
-    background-color: #000000;
-    font-family: 'Noto Sans', sans-serif;
-    border-bottom: 1px solid lightgrey;
+    // background-color: #000000;
+    // font-family: 'Noto Sans', sans-serif;
+    // border-bottom: 1px solid lightgrey;
+    // position: fixed;
+    // width: 100vw;
+    // top: 0;
+    // z-index: 3;
+    // border: 1px solid red;
+
+    .empty-container {
+        height: 150px;
+        position: relative;
+    }
+
+    .content-container {
+        background-color: #000000;
+        font-family: 'Noto Sans', sans-serif;
+        border-bottom: 1px solid lightgrey;
+        position: fixed;
+        width: 100vw;
+        top: 0;
+        z-index: 3;
+    }
 
     .header-top {
         display: flex;

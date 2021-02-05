@@ -1,12 +1,12 @@
 2/4/21 
 
-    footer 
+    footer - DONE
 
-    make the header fixed 
+    make the header fixed - DONE
 
-    redirect from login page to wherever you came from 
+    redirect from login page to wherever you came from -  
 
-    animate remaining buttons
+    animate remaining buttons - DONE
 
 2/2/21 
 
