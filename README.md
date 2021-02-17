@@ -2,7 +2,7 @@
 
 # SpaceGear 
 
-SpaceGear is a clone of the SpaceX online store. The site sells aerospace related merchandise.
+SpaceGear is an ecommerce site inspired by Space Exploration Techbologies Corp. (SpaceX). The site sells aerospace themed merchandise.
 
 <a href="https://spacegear.herokuapp.com/#/">Visit SpaceGear</a>
 
