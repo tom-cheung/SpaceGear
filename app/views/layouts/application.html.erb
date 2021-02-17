@@ -11,8 +11,10 @@
     
     <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
 
-
-
+    <meta property='og:title' content='SpaceGear'/>
+    <meta property='og:image' content="<%= image_url('preview.gif')%>"/>
+    <meta property='og:description' content='Inspired by SpaceX and humanities endless desire to explore!'/>
+    <meta property='og:url' content='https://spacegear.herokuapp.com/#/'/>
 
     <link
     rel="stylesheet"
