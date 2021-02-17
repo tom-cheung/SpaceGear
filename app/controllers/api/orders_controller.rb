@@ -46,10 +46,10 @@ class Api::OrdersController < ApplicationController
     private
 
     def order_params 
+        # utilizing nested attributes to write to multiple tables  
         params.require(:order).permit(:purchaser_id, :total, :address_id, ordered_products_attributes: [:id, :product_id, :quantity, :_destroy])
-        # pass in an array of objects with the attributes of the associated model 
     end
-
+    
     #  need ordered_products_attributes in order to pass in additional attributed to the associated models 
     #  if there is only one attribute that needs to be passed in then you can write something like 
     # Order.create(purchaser_id: 31, total: 99, products_ids: [31]) 

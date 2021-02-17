@@ -1,34 +1,93 @@
+
+
 # SpaceGear
 
-SpaceGear is an ecommerce site inspired by Space Exploration Techbologies Corp. (SpaceX). The site offers aerospace themed merchandise. Users can browse products by category and type, add products to a shopping cart, and checkout products. Users may also edit prior orders made. 
+[SpaceGear](https://spacegear.herokuapp.com/#/) is an ecommerce site inspired by Space Exploration Technologies Corp. (SpaceX). The site offers aerospace themed merchandise. Users can browse products by category and type, add products to a shopping cart, and checkout products. Users may also edit prior orders made. 
 
-<img src="./app/assets/images/preview.gif" alt="./app/assets/images/previewimg.png" width="1280" height="720">
+<img src="./app/assets/images/preview.gif" alt="./app/assets/images/previewimg.png" width="852" height="480">
 
-<a href="https://spacegear.herokuapp.com/#/">Visit SpaceGear</a>
+## Technologies Utilized 
 
-<h2>Technologies</h2>
+* PostgreSQL 10.15
+* Rails 5.2.4.4
+* React 17.0.1
+* Redux
+* Ruby
+* JavaScript
+* HTML
+* CSS
 
-<li>PostgreSQL 10.15</li>
-<li>Rails 5.2.4.4</li>
-<li>React 17.0.1</li>
-<li>Redux</li>
-<li>Ruby</li>
-<li>JavaScript</li>
-<li>HTML</li>
-<li>CSS</li>
-</li>
+## Key Features 
+
+### Shopping Cart 
+
+<img src="./app/assets/images/cartpreview.gif" alt="./app/assets/images/cartpreview.gif" width="852" height="480">
+
+Users can store items in a shopping cart. The cart reflects the products stored, the quantity, and the total cost of all products in the cart. Users can also update the cart at any point and receive instant feedback based on changes made. This feature was implemented using localStorage to cache products allowing them to persist in the cart through refresh. Utilizing localStorage also eliminated the need to make frequent queries to the backend.
+
+```javascript 
+    cartItems() {
+        // retrieves items in the cart and returns an array of items 
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        if(cart) {
+            let items = Object.keys(cart)
+            items = items.map( (key) => {
+                return cart[key]
+            })
+            return items 
+        } else {
+            return [];
+        }
+    }
+```
 
 
-<h2>Key Features</h2>
-<h3>Shopping Cart<h3>
+```javascript 
+    updateQuantity({product}) {
+        // updates the quantity of products in the cart and recalculates total 
+        return(e) => { 
+            let newQuantity = isNaN(parseInt(e.currentTarget.value)) ? 0 : e.currentTarget.value
+            let oldCart = JSON.parse(localStorage.getItem('cart')); 
+            let newCart = Object.assign({}, oldCart, { [product.id]: { 'quantity': newQuantity, 'product': product} }) 
+            localStorage.setItem('cart', JSON.stringify(newCart))
+            this.total();
+        }
+    }
+```
 
-<p>Created a shopping cart feature for users to store items for future checkout. Users could also update cart and recieve real time feedback based upon the changes made. This feature was implemented using localStorage to cache products allowing the products to persist in the cart through refresh. Utilizing localStorage also elimanted the need to make frequest queries to the backend whenever the cart was updated</p>
+### Ordering Products 
 
-<h3>Ordering Products<h3>
+<img src="./app/assets/images/orderpreview.gif" alt="./app/assets/images/orderpreview.gif" width="852" height="480">
 
-<p>Allowed users to checkout items in their shopping carts. Upon checkout a new order would be created which included the total dollar value of the order, the orderer's ID, the orderer's address, and an order ID. Simultaneously the ordered products and their respective quantities would be recorded on a seperate table, and would be tied to the order ID through a foreign key. All orders and ordered products were written to the SQL database using Ajax calls. In order to deal with the asynchronous nature of the Ajax calls and avoid making multiple queries to the database, Rails active record associations was utilized to write to multiple tables simultaneously. Specifically, a mixture of nested attributes and has many through associations was utilized between the order and ordered_products tables.</p>
+Users can checkout items in their shopping cart. Upon checkout a new entry is created on the `orders` table. The `orders` table contains the `total`, `purchaser_id`, `address_id`, and `payment_id`. Simulataneously the ordered products and their quantities are recorded on the `ordered_products` table. Queries to the database are made via jQuery.ajax() calls. In order to work with the asynchronous ajax() call and avoid making multiple queries to the database, Rails active record associations was utilized to write to multiple tables simultaneously. Specifically, a mixture of nested attributes and has many through associations was utilized between the `orders` and `ordered_products tables`.
 
+```javascript 
+class Order < ApplicationRecord
+    
+    has_many :ordered_products, dependent: :destroy
+   
+    has_many :products, 
+        through: :ordered_products,
+        source: :product
 
+    belongs_to :orderer, 
+        foreign_key: :purchaser_id, 
+        class_name: :User
+
+    belongs_to :address, 
+        foreign_key: :address_id, 
+        class_name: :Contact 
+
+    accepts_nested_attributes_for :ordered_products, allow_destroy: true
+end
+```
+
+```javascript
+    def order_params 
+        # utilizing nested attributes to write to multiple tables  
+        params.require(:order).permit(:purchaser_id, :total, :address_id, ordered_products_attributes: [:id, :product_id, :quantity, :_destroy])
+    end
+```
 
 
 

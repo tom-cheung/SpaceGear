@@ -24,14 +24,7 @@ class Cart extends React.Component {
     }
 
     cartItems() {
-        // let localStorageCopy = Object.assign({})
-        // delete items["better_errors_previous_commands"];
-        // needs to return an array
-
-        // let items = Object.keys(localStorage).filter( (key) => parseInt(key) != NaN);
-        // items = items.map( (id) => {return JSON.parse(localStorage.getItem(id))})
-        // return items; 
-        
+        // retrieves items in the cart and returns an array of items 
         let cart = JSON.parse(localStorage.getItem('cart'));
         if(cart) {
             let items = Object.keys(cart)
@@ -45,38 +38,25 @@ class Cart extends React.Component {
     }
 
     updateQuantity({product}) {
-        
-        return(e) => { // this is the function being passed as the event handler (curried function )
-
-            // localStorage.setItem(product.id, JSON.stringify({'quantity': e.currentTarget.value, 'product': product}))
-            // this.total();
-
-            // console.log(product)
+        // updates the quantity of products in the cart and recalculates total 
+        return(e) => { 
             let newQuantity = isNaN(parseInt(e.currentTarget.value)) ? 0 : e.currentTarget.value
-
-            let oldCart = JSON.parse(localStorage.getItem('cart')); // turns the stringified cart back into a json object
-            let newCart = Object.assign({}, oldCart, { [product.id]: { 'quantity': newQuantity, 'product': product} })
-    
+            let oldCart = JSON.parse(localStorage.getItem('cart')); 
+            let newCart = Object.assign({}, oldCart, { [product.id]: { 'quantity': newQuantity, 'product': product} }) 
             localStorage.setItem('cart', JSON.stringify(newCart))
-
             this.total();
         }
     }
 
     removeItem(id) {
-        // localStorage.removeItem('cart');
         let oldCart = JSON.parse(localStorage.getItem('cart'));
         delete oldCart[id]
         let newCart = Object.assign({}, oldCart)
         localStorage.setItem('cart', JSON.stringify(newCart))
-        // console.log(oldCart)
         this.total(); 
     }
 
     render() {
-        // console.log(this.props)
-        // console.log(this.props.history.location)
-
         return (
             <div className="shopping-cart-container">
 
