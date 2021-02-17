@@ -2,7 +2,7 @@
 
 # SpaceGear
 
-[SpaceGear](https://spacegear.herokuapp.com/#/) is an ecommerce site inspired by Space Exploration Technologies Corp. (SpaceX). The site offers aerospace themed merchandise. Users can browse products by category and type, add products to a shopping cart, and checkout products. Users may also edit prior orders made. 
+[SpaceGear](https://spacegear.herokuapp.com/#/) is an ecommerce site inspired by Space Exploration Technologies Corp. (SpaceX). The site offers aerospace themed merchandise. Users can browse products by category and type, add products to a shopping cart, order products, and edit prior orders. 
 
 <img src="./app/assets/images/preview.gif" alt="./app/assets/images/previewimg.png" width="852" height="480">
 
@@ -59,7 +59,7 @@ Users can store items in a shopping cart. The cart reflects the products stored,
 
 <img src="./app/assets/images/orderpreview.gif" alt="./app/assets/images/orderpreview.gif" width="852" height="480">
 
-Users can checkout items in their shopping cart. Upon checkout a new entry is created on the `orders` table. The `orders` table contains the `total`, `purchaser_id`, `address_id`, and `payment_id`. Simulataneously the ordered products and their quantities are recorded on the `ordered_products` table. Queries to the database are made via jQuery.ajax() calls. In order to work with the asynchronous ajax() call and avoid making multiple queries to the database, Rails active record associations was utilized to write to multiple tables simultaneously. Specifically, a mixture of nested attributes and has many through associations was utilized between the `orders` and `ordered_products tables`.
+Users can checkout items in their shopping cart. Upon checkout a new entry is created on the `orders` table. The `orders` table contains the `total`, `purchaser_id`, `address_id`, and `payment_id`. Simulataneously the ordered products and their quantities are recorded on the `ordered_products` table. Queries to the database are made via jQuery.ajax() calls. In order to work with asynchronous ajax() calls and avoid making multiple queries to the database, Rails active record associations were leveraged to write to multiple tables simultaneously. Specifically, a mixture of nested attributes and has many through associations was utilized between the `orders` and `ordered_products tables`.
 
 ```javascript 
 class Order < ApplicationRecord
