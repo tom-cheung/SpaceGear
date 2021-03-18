@@ -7,7 +7,7 @@ const SearchBar = ({products, categories}) => {
     const [searchResults, updateResult] = useState([]);
 
     // prevSearches is an object where keys are previous search terms and values are the products 
-    const [prevSearches, updateSearch] = useState(JSON.parse(localStorage.getItem("prevSearch")));   
+    const [prevSearches, updateSearch] = useState({});   
         // saving this to the database may optimize search, would only have to pull it each time this component mounts  
     
     // products seperated by category, which is used as a preview in the search results 
@@ -103,8 +103,6 @@ const SearchBar = ({products, categories}) => {
             // updates the prevSearches object so if a user retypes the same input we do not have to iterate through all products again
             updateSearch(Object.assign({}, prevSearches, {[e.target.value]: results}))
 
-            // save previous search results to local storage to preserve history 
-            localStorage.setItem("prevSearch", JSON.stringify(prevSearches));
         }
     }
 
